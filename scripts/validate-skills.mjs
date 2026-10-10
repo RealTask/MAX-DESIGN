@@ -44,6 +44,54 @@ function findAliases(value, prefix = [], output = []) {
 }
 
 async function main() {
+  // The repository root must be one installable skill. Without this entrypoint,
+  // the Skills CLI discovers the specialist playbooks as separate skills.
+  try {
+    const rootSkill = await readFile(path.join(root, "SKILL.md"), "utf8");
+    const frontMatterEnd = rootSkill.indexOf("\n---\n", 4);
+    if (!rootSkill.startsWith("---\n") || frontMatterEnd === -1) {
+      fail("Root SKILL.md is missing valid YAML-style front matter.");
+    } else {
+      const frontMatter = rootSkill.slice(4, frontMatterEnd);
+      if (!/^name:\\s*max-design\\s*$/m.test(frontMatter)) {
+        fail("Root SKILL.md must declare name: max-design.");
+      }
+      if (!/^description:\\s*.+$/m.test(frontMatter)) {
+        fail("Root SKILL.md must include a description.");
+      }
+    }
+  } catch {
+    fail("Root SKILL.md is missing; the repository may install as multiple separate skills.");
+  }
+
+  for (const bundledPath of [
+    "docs/decision-framework.md",
+    "docs/quality-matrix.md",
+    "examples/design-brief.md",
+    "knowledge/design-patterns.json",
+    "scripts/search-design-knowledge.mjs",
+    "skills/frontend-design/SKILL.md",
+  ]) {
+    if (!(await exists(path.join(root, bundledPath)))) {
+      fail("Missing bundled MAX-DESIGN resource: " + bundledPath + ".");
+    }
+  }
+
+  try {
+    const manifest = JSON.parse(await readFile(path.join(root, "skill.json"), "utf8"));
+    if (manifest.name !== "max-design") fail("skill.json must declare name: max-design.");
+    if (!Array.isArray(manifest.skills) || manifest.skills.length !== 1) {
+      fail("skill.json must declare exactly one installable skill.");
+    } else {
+      const skill = manifest.skills[0];
+      if (skill.name !== "max-design" || ![".", "./"].includes(skill.path) || skill.entrypoint !== "SKILL.md") {
+        fail("skill.json must point its sole max-design entry to the root SKILL.md.");
+      }
+    }
+  } catch (error) {
+    fail("skill.json is missing or invalid JSON: " + error.message);
+  }
+
   if (!(await exists(skillsRoot))) {
     fail("Missing skills/ directory.");
   } else {
@@ -207,7 +255,7 @@ async function main() {
     return;
   }
 
-  console.log("MAX-DESIGN validation passed: " + names.size + " skills, reference docs, token aliases, and searchable design knowledge checked.");
+  console.log("MAX-DESIGN validation passed: unified root entrypoint, " + names.size + " specialist playbooks, bundled docs and scripts, token aliases, and searchable design knowledge checked.");
 }
 
 main().catch((error) => {
