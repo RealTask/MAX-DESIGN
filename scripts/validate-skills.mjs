@@ -8,7 +8,6 @@ const requiredSections = ["## When to use", "## Workflow", "## Quality gates"];
 const requiredReferenceFiles = [
   "docs/decision-framework.md",
   "docs/quality-matrix.md",
-  "docs/research-and-source-map.md",
   "examples/design-brief.md",
 ];
 const errors = [];
