@@ -27,7 +27,7 @@ It is framework-agnostic: use the project's existing HTML/CSS/JavaScript, React,
 | **resilient-localization** | Hardens UI against long text, localization, unexpected data, and failures |
 | **ui-testing** | Plans practical interaction, responsive, accessibility, and visual checks |
 
-Use only the skills relevant to a task. Shared references in `docs/` provide decision frameworks, page-type heuristics, quality matrices, and source attribution. The original `knowledge/` catalog can also be searched locally by topic.
+Use only the skills relevant to a task. Shared references in `docs/` provide decision frameworks, page-type heuristics, and quality matrices. The original `knowledge/` catalog can also be searched locally by topic.
 
 ## 📦 Installation
 
@@ -165,7 +165,6 @@ Domains: `all`, `direction`, `page`, `interaction`, `density`. Use `--require-al
 - `skills/` — 12 modular, independently activatable skills
 - `docs/decision-framework.md` — brief intake, design direction, page-pattern heuristics, routing
 - `docs/quality-matrix.md` — states, responsive coverage, risk priority, evidence levels
-- `docs/research-and-source-map.md` — sources reviewed and how lessons were independently applied
 - `docs/design-principles.md` — shared product and engineering principles
 - `docs/preflight-checklist.md` — before-delivery checklist
 - `examples/design-brief.md` — reusable brief and acceptance-criteria template
@@ -182,10 +181,6 @@ npm test
 ```
 
 The validator checks skill metadata and structure, unique names, README coverage, reference-document presence, token JSON, required semantic roles, primitive colors, and token aliases.
-
-## 📚 Research and attribution
-
-This toolkit learns from public discussions, open-source skill designs, and standards while retaining its own language and workflows. See `docs/research-and-source-map.md` for the source list, applied lessons, and limitations. The repository does not bundle other projects' skill text, style catalogs, or assets.
 
 ## 📄 License
 
