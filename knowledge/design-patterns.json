@@ -2,7 +2,7 @@
   "schemaVersion": "1.0.0",
   "title": "MAX-DESIGN decision catalog",
   "description": "Original, searchable design heuristics for AI coding agents. These are contextual starting points, not mandatory themes or imported upstream style catalogs.",
-  "guidance": "Inspect the product and current codebase before selecting a direction. Match patterns to the user's task, available evidence, and constraints. See docs/decision-framework.md and docs/research-and-source-map.md.",
+  "guidance": "Inspect the product and current codebase before selecting a direction. Match patterns to the user's task, available evidence, and constraints. See docs/decision-framework.md.",
   "directions": [
     {
       "id": "editorial-clarity",
