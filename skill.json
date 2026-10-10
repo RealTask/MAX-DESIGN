@@ -26,7 +26,7 @@
   "skills": [
     {
       "name": "max-design",
-      "path": ".",
+      "path": "./",
       "description": "Coordinate full product-interface work with frontend design, information architecture, UX writing, forms, design systems, data visualization, motion, accessibility, localization resilience, critique, and evidence-based verification.",
       "entrypoint": "SKILL.md",
       "category": "ui-ux",
