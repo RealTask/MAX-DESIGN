@@ -1,16 +1,16 @@
-# MAX-DESIGN
+# 🎨 MAX-DESIGN
 
 **Production-minded UI/UX skills for AI coding agents.** Build distinctive, accessible, responsive interfaces with coherent systems and real behavior—not generic template UI.
 
-**Discover → Define → Design → Build → Critique → Verify**
+**Discover → Define → Design → Build → Critique → Verify** ✨
 
-## What this is
+## 🚀 What is MAX-DESIGN?
 
 MAX-DESIGN is a modular toolkit for turning product intent into high-quality interface work. It combines end-to-end orchestration with focused skills for the parts of interface design that commonly fail: information structure, form completion, UX copy, charts, responsive edge cases, accessibility, and verification.
 
 It is framework-agnostic: use the project's existing HTML/CSS/JavaScript, React, Vue, Svelte, Next.js, or other stack. The repository has no third-party runtime dependencies. Its local validator runs with Node.js 20+.
 
-## Included skills
+## 🧩 Included skills
 
 | Skill | Purpose |
 | --- | --- |
@@ -27,29 +27,95 @@ It is framework-agnostic: use the project's existing HTML/CSS/JavaScript, React,
 | **resilient-localization** | Hardens UI against long text, localization, unexpected data, and failures |
 | **ui-testing** | Plans practical interaction, responsive, accessibility, and visual checks |
 
-Use only the skills relevant to a task. Shared references in docs/ provide decision frameworks, page-type heuristics, quality matrices, and source attribution. The original knowledge/ catalog can also be searched locally by topic.
+Use only the skills relevant to a task. Shared references in `docs/` provide decision frameworks, page-type heuristics, quality matrices, and source attribution. The original `knowledge/` catalog can also be searched locally by topic.
 
-## Quick start
+## 📦 Installation
 
-### Skills CLI
+### ✅ Option 1: Install with the Skills CLI (recommended)
 
-If your agent supports the Skills CLI, install the repository:
+You need Node.js and npm. The `npx` command runs the Skills CLI without a separate global install.
 
-    npx skills add RealTask/MAX-DESIGN
+**Install interactively** and choose the skills and agent(s) you need:
 
-Select the skills you want when prompted. CLI behavior varies by agent; verify the selected skill appears in the tool's skill list.
+```bash
+npx skills add RealTask/MAX-DESIGN
+```
 
-### Manual installation
+**List the available skills** without installing:
 
-Copy the skill folder(s) from skills/ into the directory your agent recognizes.
+```bash
+npx skills add RealTask/MAX-DESIGN --list
+```
 
-- Codex-style project skills: .agents/skills/
-- Claude Code: .claude/skills/
-- Other agents: use the agent's current skill-discovery documentation.
+**Install one specific skill**:
 
-Keep each folder with its SKILL.md file and any related references. Refresh or restart the agent if required.
+```bash
+npx skills add RealTask/MAX-DESIGN --skill max-design
+```
 
-## Example requests
+**Install multiple specific skills** (repeat `--skill` for each one):
+
+```bash
+npx skills add RealTask/MAX-DESIGN --skill frontend-design --skill design-system --skill accessibility-audit
+```
+
+**Install all skills for all supported agents**:
+
+```bash
+npx skills add RealTask/MAX-DESIGN --all
+```
+
+**Install globally** so the selected skill(s) are available across projects:
+
+```bash
+npx skills add RealTask/MAX-DESIGN --global
+```
+
+To target a specific supported agent, add the `--agent` option, for example:
+
+```bash
+npx skills add RealTask/MAX-DESIGN --agent codex
+npx skills add RealTask/MAX-DESIGN --agent claude-code --skill max-design
+```
+
+Agent IDs can vary by CLI version. Check supported agents and options in the [Skills CLI documentation](https://github.com/vercel-labs/skills).
+
+### 🛠️ Option 2: Manual installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/RealTask/MAX-DESIGN.git
+cd MAX-DESIGN
+```
+
+Copy the skill folders you need into the directory recognized by your coding agent. For example, to copy **all** skills into a Codex-style project skills directory:
+
+**macOS / Linux:**
+
+```bash
+mkdir -p .agents/skills
+cp -R skills/* .agents/skills/
+```
+
+**Windows PowerShell:**
+
+```powershell
+New-Item -ItemType Directory -Force .agents/skills
+Copy-Item -Recurse .\\skills\\* .\\.agents\\skills\\
+```
+
+For Claude Code, use `.claude/skills/` instead of `.agents/skills/`. For other agents, check their current skill-discovery documentation. Keep each skill folder intact, including its `SKILL.md` and related references. Restart or refresh the agent if needed.
+
+### 🔄 Update installed skills
+
+Use the Skills CLI to check for and install available updates:
+
+```bash
+npx skills update
+```
+
+## 💬 Example requests
 
 - “Use max-design to design a responsive SaaS dashboard based on this codebase and its existing components.”
 - “Use information-architecture to simplify this navigation without breaking deep links.”
@@ -59,27 +125,29 @@ Keep each folder with its SKILL.md file and any related references. Refresh or r
 - “Use design-review and ui-testing to find and verify the highest-impact problems.”
 - “Use accessibility-audit to remediate keyboard and focus issues without changing the brand.”
 
-## Searchable design knowledge
+## 🔎 Searchable design knowledge
 
 MAX-DESIGN includes an original, local decision catalog with visual directions, page patterns, interaction patterns, and density guidance. Search it without network access or third-party dependencies:
 
-    node scripts/search-design-knowledge.mjs "dashboard charts"
-    node scripts/search-design-knowledge.mjs "form errors" --domain interaction
-    node scripts/search-design-knowledge.mjs "editorial" --domain direction --limit 5
+```bash
+node scripts/search-design-knowledge.mjs "dashboard charts"
+node scripts/search-design-knowledge.mjs "form errors" --domain interaction
+node scripts/search-design-knowledge.mjs "editorial" --domain direction --limit 5
+```
 
-Domains: all, direction, page, interaction, density. Add --json for structured output. Treat matches as context-aware starting points, not automatic style prescriptions.
+Domains: `all`, `direction`, `page`, `interaction`, `density`. Add `--json` for structured output. Treat matches as context-aware starting points, not automatic style prescriptions.
 
-## Workflow
+## 🧭 Workflow
 
 1. **Understand the job.** Identify users, primary task, content, constraints, and observable success criteria.
 2. **Inspect before inventing.** Read project instructions, routes, components, tokens, assets, scripts, and tests.
-3. **Choose a clear direction.** Use docs/decision-framework.md to avoid generic visual defaults.
+3. **Choose a clear direction.** Use `docs/decision-framework.md` to avoid generic visual defaults.
 4. **Route specialist work.** Select the narrowest skill or combination that actually fits.
 5. **Implement real behavior.** Include relevant loading, empty, error, disabled, focus, active, and success states.
 6. **Critique by impact.** Fix correctness and task clarity before decorative polish.
 7. **Verify and report.** Check relevant viewports, interactions, accessibility, performance, and project scripts; accurately state what was and was not verified.
 
-## Design principles
+## 💎 Design principles
 
 - **Distinctive over decorative:** visual choices express the product and user task.
 - **Content before chrome:** realistic content reveals layout and hierarchy problems.
@@ -90,35 +158,37 @@ Domains: all, direction, page, interaction, density. Add --json for structured o
 - **Evidence beats claims:** no tests, measurements, or conformance claims without supporting evidence.
 - **Preserve by default:** reuse the stack, conventions, and design system unless the evidence supports a change.
 
-## Repository map
+## 🗂️ Repository map
 
-- skills/ — 12 modular, independently activatable skills
-- docs/decision-framework.md — brief intake, design direction, page-pattern heuristics, routing
-- docs/quality-matrix.md — states, responsive coverage, risk priority, evidence levels
-- docs/research-and-source-map.md — sources reviewed and how lessons were independently applied
-- docs/design-principles.md — shared product and engineering principles
-- docs/preflight-checklist.md — before-delivery checklist
-- examples/design-brief.md — reusable brief and acceptance-criteria template
-- examples/design-tokens.json — illustrative semantic token structure
-- scripts/validate-skills.mjs — dependency-free structure, token, catalog, and search smoke checks
-- scripts/search-design-knowledge.mjs — local design knowledge search CLI
+- `skills/` — 12 modular, independently activatable skills
+- `docs/decision-framework.md` — brief intake, design direction, page-pattern heuristics, routing
+- `docs/quality-matrix.md` — states, responsive coverage, risk priority, evidence levels
+- `docs/research-and-source-map.md` — sources reviewed and how lessons were independently applied
+- `docs/design-principles.md` — shared product and engineering principles
+- `docs/preflight-checklist.md` — before-delivery checklist
+- `examples/design-brief.md` — reusable brief and acceptance-criteria template
+- `examples/design-tokens.json` — illustrative semantic token structure
+- `scripts/validate-skills.mjs` — dependency-free structure, token, catalog, and search smoke checks
+- `scripts/search-design-knowledge.mjs` — local design knowledge search CLI
 
-## Validate locally
+## 🧪 Validate locally
 
 Requires Node.js 20 or newer. No third-party dependencies are needed.
 
-    npm test
+```bash
+npm test
+```
 
 The validator checks skill metadata and structure, unique names, README coverage, reference-document presence, token JSON, required semantic roles, primitive colors, and token aliases.
 
-## Research and attribution
+## 📚 Research and attribution
 
-This toolkit learns from public discussions, open-source skill designs, and standards while retaining its own language and workflows. See docs/research-and-source-map.md for the source list, applied lessons, and limitations. The repository does not bundle other projects' skill text, style catalogs, or assets.
+This toolkit learns from public discussions, open-source skill designs, and standards while retaining its own language and workflows. See `docs/research-and-source-map.md` for the source list, applied lessons, and limitations. The repository does not bundle other projects' skill text, style catalogs, or assets.
 
-## Contributing
+## 🤝 Contributing
 
-Read CONTRIBUTING.md before proposing a new skill. Prefer focused workflows with observable quality gates over redundant skills or giant prompts.
+Read `CONTRIBUTING.md` before proposing a new skill. Prefer focused workflows with observable quality gates over redundant skills or giant prompts.
 
-## License
+## 📄 License
 
-MIT. See LICENSE.
+MIT. See `LICENSE`.
