@@ -7,7 +7,7 @@ description: Coordinate end-to-end product interface work with context discovery
 
 ## When to use
 
-Use for a new product interface, a substantial redesign, or quality-critical UI work spanning several concerns. For a narrow task, use the relevant specialist directly. Keep the project's existing architecture and design system unless inspection gives a reason to change them.
+Use for a new product interface, a substantial redesign, or quality-critical UI work spanning several concerns. For a narrow task, load the matching bundled specialist playbook under `skills/` and follow only its relevant workflow; the unified installed skill remains the entrypoint. Keep the project's existing architecture and design system unless inspection gives a reason to change them.
 
 ## Operating principles
 
