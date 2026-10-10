@@ -52,6 +52,12 @@ MAX-DESIGN is an independent, framework-agnostic toolkit. The sources below comp
 - Useful approach: use portable token structures and avoid treating an illustrative example as a required implementation format.
 - Applied here: the token JSON is a reference example; agents should preserve the target project's token and theme conventions.
 
+## Local searchable knowledge catalog
+
+The file knowledge/design-patterns.json contains original, structured heuristics for visual directions, common page types, interaction behavior, and density profiles. The CLI in scripts/search-design-knowledge.mjs searches titles, summaries, tags, and guidance without network calls. It is intentionally a compact decision aid rather than an attempt to recreate another project's large style database.
+
+When adding an entry, state the context where it fits, what to prioritize, likely failure modes, and a way to validate the result. Keep the wording original, preserve caveats, and test a representative query with npm test.
+
 ## How to apply the research
 
 1. Inspect the current repository and product context before introducing a pattern.
