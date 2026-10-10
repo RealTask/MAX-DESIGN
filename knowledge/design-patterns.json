@@ -1,0 +1,670 @@
+{
+  "schemaVersion": "1.0.0",
+  "title": "MAX-DESIGN decision catalog",
+  "description": "Original, searchable design heuristics for AI coding agents. These are contextual starting points, not mandatory themes or imported upstream style catalogs.",
+  "guidance": "Inspect the product and current codebase before selecting a direction. Match patterns to the user's task, available evidence, and constraints. See docs/decision-framework.md and docs/research-and-source-map.md.",
+  "directions": [
+    {
+      "id": "editorial-clarity",
+      "title": "Editorial clarity",
+      "summary": "Type-led layouts for content-rich products where comprehension and expertise matter.",
+      "tags": [
+        "editorial",
+        "documentation",
+        "content",
+        "knowledge",
+        "portfolio",
+        "reading"
+      ],
+      "fitWhen": [
+        "Content is the main product value",
+        "Users need to scan, compare, or read deeply"
+      ],
+      "layout": [
+        "Use a controlled reading measure and visible heading hierarchy",
+        "Use grids only when they help comparison or browsing"
+      ],
+      "typography": "Use a restrained type system with obvious heading and body roles; validate line length and text resizing.",
+      "colorApproach": "Use a deliberate neutral base and a small semantic accent; preserve readable contrast.",
+      "signature": [
+        "Strong typographic rhythm",
+        "Purposeful rules, indices, captions, or editorial alignment"
+      ],
+      "avoid": [
+        "Making every section a boxed card",
+        "Oversized headings that crowd actual content"
+      ],
+      "risks": [
+        "Long titles and translations may alter the composition",
+        "Thin or decorative type can fail at small sizes"
+      ],
+      "references": [
+        "docs/decision-framework.md"
+      ]
+    },
+    {
+      "id": "calm-enterprise",
+      "title": "Calm enterprise",
+      "summary": "Predictable and trustworthy interfaces for complex workflows, settings, and business tools.",
+      "tags": [
+        "enterprise",
+        "b2b",
+        "admin",
+        "settings",
+        "finance",
+        "trust",
+        "productivity"
+      ],
+      "fitWhen": [
+        "Users perform repeated operational tasks",
+        "Auditability and low ambiguity matter"
+      ],
+      "layout": [
+        "Group by task and show related controls together",
+        "Make primary, secondary, and destructive actions visually distinct"
+      ],
+      "typography": "Prioritize legible text, tabular numeric alignment where useful, and stable hierarchy.",
+      "colorApproach": "Use semantic roles for surfaces, text, borders, focus, and status instead of using brand color everywhere.",
+      "signature": [
+        "Clear active navigation",
+        "Quiet but explicit status and focus treatment"
+      ],
+      "avoid": [
+        "Making all actions equally prominent",
+        "Generic grey cards with no information hierarchy"
+      ],
+      "risks": [
+        "Over-minimal controls can become ambiguous",
+        "Dense tables require responsive and zoom testing"
+      ],
+      "references": [
+        "docs/decision-framework.md",
+        "docs/quality-matrix.md"
+      ]
+    },
+    {
+      "id": "technical-instrument",
+      "title": "Technical instrument",
+      "summary": "Information-dense interfaces for monitoring, developer tools, and analytical work.",
+      "tags": [
+        "technical",
+        "developer",
+        "monitoring",
+        "analytics",
+        "dashboard",
+        "observability",
+        "data"
+      ],
+      "fitWhen": [
+        "Users monitor changing values or investigate anomalies",
+        "High information density is useful to the target audience"
+      ],
+      "layout": [
+        "Prioritize changes, thresholds, and actionable anomalies",
+        "Use persistent metric names, units, filters, and freshness indicators"
+      ],
+      "typography": "Favor high legibility and stable numeral treatment; never shrink labels simply to fit more cards.",
+      "colorApproach": "Reserve vivid status colors for consistent meanings and pair them with text or icons.",
+      "signature": [
+        "Useful comparison views",
+        "Compact but well-labeled instrumentation"
+      ],
+      "avoid": [
+        "Neon decoration unrelated to a state",
+        "Charts without definitions, ranges, or source context"
+      ],
+      "risks": [
+        "Dense views can overwhelm novice users",
+        "Streaming data and large tables may hurt performance"
+      ],
+      "references": [
+        "docs/quality-matrix.md"
+      ]
+    },
+    {
+      "id": "warm-guidance",
+      "title": "Warm guidance",
+      "summary": "Supportive product flows for onboarding, setup, learning, and help-oriented tasks.",
+      "tags": [
+        "onboarding",
+        "education",
+        "support",
+        "setup",
+        "guided",
+        "friendly",
+        "forms"
+      ],
+      "fitWhen": [
+        "Users are new to the product or task",
+        "Confidence and recoverability matter"
+      ],
+      "layout": [
+        "Break the task into understandable chunks",
+        "Show helpful next steps and preserve context across steps"
+      ],
+      "typography": "Use direct labels, clear instructions, and comfortable body text.",
+      "colorApproach": "Use restrained warmth as a supporting tone; retain strong contrast and clear status roles.",
+      "signature": [
+        "Helpful inline examples",
+        "Progress that represents real steps or actual work"
+      ],
+      "avoid": [
+        "Forced product tours",
+        "Cheerful copy that hides errors or consequences"
+      ],
+      "risks": [
+        "Long steps create scroll burden on mobile",
+        "Progress indicators can mislead if work is not linear"
+      ],
+      "references": [
+        "docs/decision-framework.md"
+      ]
+    },
+    {
+      "id": "expressive-brand",
+      "title": "Expressive brand",
+      "summary": "Memorable visual systems for creative, cultural, or consumer brands where identity is part of the value.",
+      "tags": [
+        "creative",
+        "brand",
+        "consumer",
+        "music",
+        "culture",
+        "campaign",
+        "visual"
+      ],
+      "fitWhen": [
+        "Brand expression is an explicit product goal",
+        "The audience and task can support a distinctive composition"
+      ],
+      "layout": [
+        "Select one focal point and let supporting content recede",
+        "Use contrast, scale, or asymmetry intentionally"
+      ],
+      "typography": "Use expressive display type only when body copy remains highly readable.",
+      "colorApproach": "Choose a small, intentional palette with semantic status and accessible interaction states.",
+      "signature": [
+        "A product-specific composition or art direction",
+        "Meaningful imagery or graphic motifs"
+      ],
+      "avoid": [
+        "Stacking every effect at once",
+        "Animation or contrast that competes with primary actions"
+      ],
+      "risks": [
+        "Large type and asymmetry can fail at narrow widths",
+        "Brand colors may fail contrast for controls or text"
+      ],
+      "references": [
+        "docs/decision-framework.md",
+        "docs/quality-matrix.md"
+      ]
+    },
+    {
+      "id": "commerce-confidence",
+      "title": "Commerce confidence",
+      "summary": "Product discovery and purchase flows that help people evaluate choices and understand cost, availability, and next steps.",
+      "tags": [
+        "commerce",
+        "shop",
+        "ecommerce",
+        "catalog",
+        "product",
+        "pricing",
+        "checkout"
+      ],
+      "fitWhen": [
+        "Users browse, compare, select, or buy items",
+        "Transparent details and predictable next steps build trust"
+      ],
+      "layout": [
+        "Make product identity, price, availability, and relevant differences easy to scan",
+        "Keep filters and selected options visible and reversible"
+      ],
+      "typography": "Keep prices, quantities, units, and option labels unambiguous.",
+      "colorApproach": "Use clear selection and availability states; never rely on color alone.",
+      "signature": [
+        "Useful product comparisons",
+        "Clear selected, unavailable, and confirmation states"
+      ],
+      "avoid": [
+        "Invented reviews, urgency, scarcity, or social proof",
+        "Surprise fees or hidden selection state"
+      ],
+      "risks": [
+        "Filters can reset user intent",
+        "Variant and price data must remain consistent across states"
+      ],
+      "references": [
+        "docs/decision-framework.md",
+        "docs/quality-matrix.md"
+      ]
+    }
+  ],
+  "pagePatterns": [
+    {
+      "id": "saas-landing",
+      "title": "SaaS landing page",
+      "summary": "Explain value quickly, establish credible proof, show how the product works, then present a clear next action.",
+      "tags": [
+        "landing",
+        "marketing",
+        "saas",
+        "conversion",
+        "hero"
+      ],
+      "question": "Who is this for, what outcome does it create, and why should the visitor believe it?",
+      "priorities": [
+        "Specific headline and supporting sentence",
+        "Product evidence or a real use-case demonstration",
+        "One clear primary CTA with a predictable destination",
+        "Important objections, limits, or pricing context where relevant"
+      ],
+      "states": [
+        "Mobile navigation open/closed",
+        "CTA destination and failure",
+        "Consent or preference state if present"
+      ],
+      "antiPatterns": [
+        "Generic claims like best-in-class with no evidence",
+        "Fabricated metrics or testimonials",
+        "Repeated feature cards with indistinguishable hierarchy"
+      ],
+      "references": [
+        "docs/decision-framework.md"
+      ]
+    },
+    {
+      "id": "analytics-dashboard",
+      "title": "Analytics dashboard",
+      "summary": "Turn measurements into a decision rather than presenting a wall of equally weighted cards.",
+      "tags": [
+        "dashboard",
+        "analytics",
+        "metrics",
+        "charts",
+        "business-intelligence"
+      ],
+      "question": "What changed, compared with what, and what should the user do next?",
+      "priorities": [
+        "Metric definitions, units, and time range",
+        "Data freshness and current filters",
+        "A hierarchy that distinguishes critical signals from context",
+        "Chart choice matched to the decision"
+      ],
+      "states": [
+        "Loading",
+        "No data and no filter matches",
+        "Stale or partial data",
+        "Error and retry"
+      ],
+      "antiPatterns": [
+        "Unlabeled numbers",
+        "Decorative charts with no decision value",
+        "Treating missing values as zero"
+      ],
+      "references": [
+        "docs/quality-matrix.md"
+      ]
+    },
+    {
+      "id": "data-management-table",
+      "title": "Data management table",
+      "summary": "Help users find, compare, and act on records while preserving context and preventing accidental changes.",
+      "tags": [
+        "table",
+        "admin",
+        "records",
+        "search",
+        "filter",
+        "sort",
+        "bulk-actions"
+      ],
+      "question": "How does a person find the right record and understand the effect of an action?",
+      "priorities": [
+        "Clear column labels and meaningful sort behavior",
+        "Search, filters, and active filter summary",
+        "Selection and bulk-action scope",
+        "Responsive fallback for wide data"
+      ],
+      "states": [
+        "Loading",
+        "Empty dataset",
+        "No search results",
+        "Partial or failed page",
+        "Long values and large numbers"
+      ],
+      "antiPatterns": [
+        "Actions only discoverable on hover",
+        "Unclear bulk-action target",
+        "Tiny text instead of adapting the layout"
+      ],
+      "references": [
+        "docs/quality-matrix.md"
+      ]
+    },
+    {
+      "id": "settings-management",
+      "title": "Settings and admin",
+      "summary": "Make configuration discoverable, changes understandable, and destructive operations safe.",
+      "tags": [
+        "settings",
+        "preferences",
+        "admin",
+        "permissions",
+        "configuration"
+      ],
+      "question": "Can users locate a setting, understand its current value, and safely change it?",
+      "priorities": [
+        "Task-based grouping and local navigation",
+        "Explanatory labels for consequential options",
+        "Visible saved/unsaved state",
+        "Permission and reset behavior"
+      ],
+      "states": [
+        "Saved",
+        "Unsaved",
+        "Saving",
+        "Failed save",
+        "Read-only or permission denied"
+      ],
+      "antiPatterns": [
+        "Ambiguous toggles",
+        "Hidden autosave semantics",
+        "Destructive reset beside routine controls without distinction"
+      ],
+      "references": [
+        "docs/decision-framework.md",
+        "docs/quality-matrix.md"
+      ]
+    },
+    {
+      "id": "accessible-form-flow",
+      "title": "Form and onboarding flow",
+      "summary": "Help users submit accurate information with minimal unnecessary effort and recoverable errors.",
+      "tags": [
+        "forms",
+        "onboarding",
+        "registration",
+        "checkout",
+        "input",
+        "validation"
+      ],
+      "question": "What is the minimum necessary data, and how can a user correct mistakes without losing work?",
+      "priorities": [
+        "Persistent labels and useful examples",
+        "Necessary fields only",
+        "Clear validation timing and correction guidance",
+        "Server response and success confirmation"
+      ],
+      "states": [
+        "Untouched",
+        "Invalid",
+        "Submitting",
+        "Success",
+        "Server failure and retry"
+      ],
+      "antiPatterns": [
+        "Placeholder-only labels",
+        "Discarding entered values on failure",
+        "Fake success when no submission succeeded"
+      ],
+      "references": [
+        "docs/quality-matrix.md"
+      ]
+    },
+    {
+      "id": "search-and-empty-states",
+      "title": "Search and empty states",
+      "summary": "Help users recover when content is absent, a filter is too narrow, or a search query has no match.",
+      "tags": [
+        "search",
+        "empty",
+        "no-results",
+        "filters",
+        "discovery",
+        "recovery"
+      ],
+      "question": "Why is there no content, and what is the next useful action?",
+      "priorities": [
+        "Distinguish genuinely empty from filter mismatch",
+        "Preserve query and selected filters",
+        "Offer relevant reset, retry, or create action",
+        "Make errors separate from no-results"
+      ],
+      "states": [
+        "Initial empty",
+        "Searching",
+        "Results",
+        "No results",
+        "Search failed"
+      ],
+      "antiPatterns": [
+        "Same empty message for every cause",
+        "Resetting filters without consent",
+        "Fake content presented as live results"
+      ],
+      "references": [
+        "docs/quality-matrix.md"
+      ]
+    }
+  ],
+  "interactionPatterns": [
+    {
+      "id": "async-save-feedback",
+      "title": "Asynchronous save",
+      "summary": "Communicate pending and confirmed save state without implying success prematurely.",
+      "tags": [
+        "save",
+        "async",
+        "loading",
+        "success",
+        "error",
+        "retry",
+        "forms"
+      ],
+      "behavior": [
+        "Show pending feedback on the affected control or region",
+        "Prevent duplicate submission if it would create harmful duplicate work",
+        "Confirm success only after the system confirms it",
+        "On failure, preserve safe input and explain retry or correction"
+      ],
+      "verify": [
+        "Slow request",
+        "Rejected request",
+        "Repeated activation",
+        "Offline or interrupted request"
+      ],
+      "references": [
+        "docs/quality-matrix.md"
+      ]
+    },
+    {
+      "id": "destructive-action",
+      "title": "Destructive action guard",
+      "summary": "Make irreversible consequences clear without adding pointless confirmation friction to routine work.",
+      "tags": [
+        "delete",
+        "reset",
+        "destructive",
+        "confirm",
+        "safety",
+        "undo"
+      ],
+      "behavior": [
+        "Use an explicit verb naming the target or consequence",
+        "Keep destructive and routine actions visually distinct",
+        "Require confirmation when risk justifies it; provide undo when feasible",
+        "Explain what cannot be restored"
+      ],
+      "verify": [
+        "Keyboard access",
+        "Cancel path",
+        "Accidental repeated activation",
+        "Clear result after completion"
+      ],
+      "references": [
+        "docs/quality-matrix.md"
+      ]
+    },
+    {
+      "id": "filter-and-search",
+      "title": "Filter and search state",
+      "summary": "Keep search, active filters, result counts, and empty states synchronized and recoverable.",
+      "tags": [
+        "search",
+        "filter",
+        "sort",
+        "query",
+        "results",
+        "table"
+      ],
+      "behavior": [
+        "Represent active filters so users can review and remove them",
+        "Preserve query when details or pagination are revisited when appropriate",
+        "Debounce only where it improves behavior and expose loading state when delay matters",
+        "Differentiate no data from no matches"
+      ],
+      "verify": [
+        "No matches",
+        "Clear one filter",
+        "Clear all filters",
+        "Long query",
+        "Keyboard navigation"
+      ],
+      "references": [
+        "docs/quality-matrix.md"
+      ]
+    },
+    {
+      "id": "accessible-dialog",
+      "title": "Dialog and overlay",
+      "summary": "Keep modal context, keyboard focus, and dismissal behavior predictable.",
+      "tags": [
+        "dialog",
+        "modal",
+        "overlay",
+        "focus",
+        "keyboard",
+        "escape"
+      ],
+      "behavior": [
+        "Give the dialog a programmatic name",
+        "Move focus in and return focus logically on close",
+        "Support Escape for dismissible dialogs and make dismissal rules clear",
+        "Prevent background interaction only when the dialog is truly modal"
+      ],
+      "verify": [
+        "Keyboard-only path",
+        "Focus return",
+        "Narrow viewport",
+        "Error within dialog",
+        "Repeated open/close"
+      ],
+      "references": [
+        "https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/"
+      ]
+    },
+    {
+      "id": "meaningful-loading",
+      "title": "Meaningful loading and empty states",
+      "summary": "Show accurate status and a helpful next step without fabricating progress or results.",
+      "tags": [
+        "loading",
+        "skeleton",
+        "empty",
+        "error",
+        "stale",
+        "partial"
+      ],
+      "behavior": [
+        "Use skeletons when they reduce perceived structural shift, not as decoration",
+        "Use determinate progress only when progress can be measured",
+        "Explain what is missing and the next useful action in an empty state",
+        "Distinguish stale, partial, and failed data when the difference matters"
+      ],
+      "verify": [
+        "Slow network",
+        "No data",
+        "Failure",
+        "Retry",
+        "Reduced motion"
+      ],
+      "references": [
+        "docs/quality-matrix.md"
+      ]
+    }
+  ],
+  "densityProfiles": [
+    {
+      "id": "spacious",
+      "title": "Spacious",
+      "summary": "Emphasize focus and readability for low-density tasks and content-led pages.",
+      "tags": [
+        "spacious",
+        "marketing",
+        "editorial",
+        "onboarding",
+        "readability"
+      ],
+      "useWhen": [
+        "Few high-value actions or content elements",
+        "Users need to read or decide without distraction"
+      ],
+      "layoutRules": [
+        "Use a clear content width and visible grouping",
+        "Keep vertical rhythm consistent"
+      ],
+      "cautions": [
+        "Do not waste space on operational screens where comparison matters"
+      ]
+    },
+    {
+      "id": "balanced",
+      "title": "Balanced",
+      "summary": "Support mixed content, actions, and context without overwhelming the page.",
+      "tags": [
+        "balanced",
+        "general",
+        "saas",
+        "product",
+        "settings"
+      ],
+      "useWhen": [
+        "A page combines summary and a handful of actions",
+        "A broad audience needs scanability and breathing room"
+      ],
+      "layoutRules": [
+        "Keep one primary action prominent",
+        "Group related details and collapse only secondary complexity"
+      ],
+      "cautions": [
+        "Avoid applying the same card grid to every section"
+      ]
+    },
+    {
+      "id": "compact",
+      "title": "Compact",
+      "summary": "Support expert workflows and high-volume information while retaining legible controls.",
+      "tags": [
+        "compact",
+        "dense",
+        "admin",
+        "analytics",
+        "developer",
+        "table"
+      ],
+      "useWhen": [
+        "Users compare many records or act repeatedly",
+        "Information density is a real task requirement"
+      ],
+      "layoutRules": [
+        "Use clear alignment and stable labels",
+        "Preserve sorting, focus, spacing, and status meaning"
+      ],
+      "cautions": [
+        "Do not shrink text and targets as the only means of fitting more content"
+      ]
+    }
+  ]
+}
