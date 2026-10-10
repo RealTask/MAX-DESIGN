@@ -1,0 +1,14 @@
+{
+  "name": "max-design",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Production-minded design skills for AI coding agents",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "node scripts/validate-skills.mjs",
+    "lint:skills": "node scripts/validate-skills.mjs"
+  },
+  "license": "MIT"
+}
