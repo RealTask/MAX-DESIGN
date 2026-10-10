@@ -27,7 +27,7 @@ It is framework-agnostic: use the project's existing HTML/CSS/JavaScript, React,
 | **resilient-localization** | Hardens UI against long text, localization, unexpected data, and failures |
 | **ui-testing** | Plans practical interaction, responsive, accessibility, and visual checks |
 
-Use only the skills relevant to a task. Shared references in docs/ provide decision frameworks, page-type heuristics, quality matrices, and source attribution.
+Use only the skills relevant to a task. Shared references in docs/ provide decision frameworks, page-type heuristics, quality matrices, and source attribution. The original knowledge/ catalog can also be searched locally by topic.
 
 ## Quick start
 
@@ -58,6 +58,16 @@ Keep each folder with its SKILL.md file and any related references. Refresh or r
 - “Use data-visualization to redesign these charts so units, ranges, and missing data are clear.”
 - “Use design-review and ui-testing to find and verify the highest-impact problems.”
 - “Use accessibility-audit to remediate keyboard and focus issues without changing the brand.”
+
+## Searchable design knowledge
+
+MAX-DESIGN includes an original, local decision catalog with visual directions, page patterns, interaction patterns, and density guidance. Search it without network access or third-party dependencies:
+
+    node scripts/search-design-knowledge.mjs "dashboard charts"
+    node scripts/search-design-knowledge.mjs "form errors" --domain interaction
+    node scripts/search-design-knowledge.mjs "editorial" --domain direction --limit 5
+
+Domains: all, direction, page, interaction, density. Add --json for structured output. Treat matches as context-aware starting points, not automatic style prescriptions.
 
 ## Workflow
 
@@ -90,7 +100,8 @@ Keep each folder with its SKILL.md file and any related references. Refresh or r
 - docs/preflight-checklist.md — before-delivery checklist
 - examples/design-brief.md — reusable brief and acceptance-criteria template
 - examples/design-tokens.json — illustrative semantic token structure
-- scripts/validate-skills.mjs — dependency-free structure and token checks
+- scripts/validate-skills.mjs — dependency-free structure, token, catalog, and search smoke checks
+- scripts/search-design-knowledge.mjs — local design knowledge search CLI
 
 ## Validate locally
 
