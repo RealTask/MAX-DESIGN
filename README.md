@@ -1,20 +1,90 @@
 # 🎨 MAX-DESIGN
 
-**Production-minded UI/UX skills for AI coding agents.** Build distinctive, accessible, responsive interfaces with coherent systems and real behavior—not generic template UI.
+**One complete, production-minded UI/UX skill for AI coding agents.** Build distinctive, accessible, responsive interfaces with coherent systems and real behavior—not generic template UI.
 
 **Discover → Define → Design → Build → Critique → Verify** ✨
 
 ## 🚀 What is MAX-DESIGN?
 
-MAX-DESIGN is a modular toolkit for turning product intent into high-quality interface work. It combines end-to-end orchestration with focused skills for the parts of interface design that commonly fail: information structure, form completion, UX copy, charts, responsive edge cases, accessibility, and verification.
+MAX-DESIGN combines the complete product-interface workflow with specialist playbooks for frontend design, information architecture, UX writing, forms, design systems, data visualization, design review, motion, accessibility, localization resilience, and UI testing.
 
-It is framework-agnostic: use the project's existing HTML/CSS/JavaScript, React, Vue, Svelte, Next.js, or other stack. The repository has no third-party runtime dependencies. Its local validator runs with Node.js 20+.
+**Install once, use everything.** The repository root contains the `SKILL.md` skill entrypoint. When you install from this repository with the Skills CLI, the CLI discovers the root skill and installs the toolkit as **one `max-design` skill**, rather than twelve separate peer skills.
 
-## 🧩 Included skills
+The installed skill includes its `SKILL.md`, specialist playbooks, decision documents, examples, scripts, and searchable design-knowledge catalog. It is framework-agnostic and has no third-party runtime dependencies. The bundled validator requires Node.js 20+.
 
-| Skill | Purpose |
+## 📦 Installation
+
+### ✅ Skills CLI (recommended)
+
+Install the complete toolkit as one skill:
+
+```bash
+npx skills add RealTask/MAX-DESIGN
+```
+
+List available skills before installing:
+
+```bash
+npx skills add RealTask/MAX-DESIGN --list
+```
+
+Install only the unified skill explicitly:
+
+```bash
+npx skills add RealTask/MAX-DESIGN --skill max-design
+```
+
+Install it to all detected supported agents:
+
+```bash
+npx skills add RealTask/MAX-DESIGN --all
+```
+
+Install globally for the selected agent(s):
+
+```bash
+npx skills add RealTask/MAX-DESIGN --global
+```
+
+Target a specific agent, for example Codex or Claude Code:
+
+```bash
+npx skills add RealTask/MAX-DESIGN --agent codex --skill max-design
+npx skills add RealTask/MAX-DESIGN --agent claude-code --skill max-design
+```
+
+The CLI installs the whole root skill directory, so the paths `docs/`, `examples/`, `knowledge/`, `scripts/`, and `skills/` remain available inside the installed `max-design` directory. See the [Skills CLI documentation](https://github.com/vercel-labs/skills) for supported agents and options.
+
+**Upgrading from the previous multi-skill layout:** an older installation may still have the 12 skills installed as separate directories. Remove those old standalone entries from the agent/location where you installed them, then run the install command above again. The CLI does not automatically remove directories left by an earlier installation.
+
+### 🛠️ Manual installation
+
+Copy the full toolkit into one `.agents/skills/max-design/` directory. Do not copy only `skills/*`: the scripts and design-knowledge catalog are siblings of that folder.
+
+**macOS / Linux:**
+
+```bash
+mkdir -p .agents/skills/max-design
+cp SKILL.md README.md skill.json package.json .agents/skills/max-design/
+cp -R docs examples knowledge scripts skills .agents/skills/max-design/
+```
+
+**Windows PowerShell:**
+
+```powershell
+New-Item -ItemType Directory -Force .agents/skills/max-design
+Copy-Item SKILL.md, README.md, skill.json, package.json, docs, examples, knowledge, scripts, skills -Destination .agents/skills/max-design -Recurse -Force
+```
+
+For a different agent, use that agent's supported skill directory and keep the same single `max-design/` folder. Preserve the folder structure so relative documentation and script paths continue to work.
+
+## 🧠 Bundled specialist playbooks
+
+These are reference workflows **inside the unified MAX-DESIGN skill**, not separate skills installed side by side.
+
+| Playbook | Purpose |
 | --- | --- |
-| **max-design** | Coordinates discovery, direction, implementation, critique, and verification |
+| **max-design** | Coordinates discovery, visual direction, implementation, critique, and verification |
 | **frontend-design** | Builds distinctive, polished, responsive interfaces |
 | **information-architecture** | Structures navigation, hierarchy, search, and user task flows |
 | **ux-writing-content** | Writes clear labels, helper text, onboarding, success, and error copy |
@@ -27,107 +97,13 @@ It is framework-agnostic: use the project's existing HTML/CSS/JavaScript, React,
 | **resilient-localization** | Hardens UI against long text, localization, unexpected data, and failures |
 | **ui-testing** | Plans practical interaction, responsive, accessibility, and visual checks |
 
-Use only the skills relevant to a task. Shared references in `docs/` provide decision frameworks, page-type heuristics, and quality matrices. The original `knowledge/` catalog can also be searched locally by topic.
-
-## 📦 Installation
-
-### ✅ Option 1: Install with the Skills CLI (recommended)
-
-You need Node.js and npm. The `npx` command runs the Skills CLI without a separate global install.
-
-**Install interactively** and choose the skills and agent(s) you need:
-
-```bash
-npx skills add RealTask/MAX-DESIGN
-```
-
-**List the available skills** without installing:
-
-```bash
-npx skills add RealTask/MAX-DESIGN --list
-```
-
-**Install one specific skill**:
-
-```bash
-npx skills add RealTask/MAX-DESIGN --skill max-design
-```
-
-**Install multiple specific skills** (repeat `--skill` for each one):
-
-```bash
-npx skills add RealTask/MAX-DESIGN --skill frontend-design --skill design-system --skill accessibility-audit
-```
-
-**Install all skills for all supported agents**:
-
-```bash
-npx skills add RealTask/MAX-DESIGN --all
-```
-
-**Install globally** so the selected skill(s) are available across projects:
-
-```bash
-npx skills add RealTask/MAX-DESIGN --global
-```
-
-To target a specific supported agent, add the `--agent` option, for example:
-
-```bash
-npx skills add RealTask/MAX-DESIGN --agent codex
-npx skills add RealTask/MAX-DESIGN --agent claude-code --skill max-design
-```
-
-Agent IDs can vary by CLI version. Check supported agents and options in the [Skills CLI documentation](https://github.com/vercel-labs/skills).
-
-### 🛠️ Option 2: Manual installation
-
-Clone the repository:
-
-```bash
-git clone https://github.com/RealTask/MAX-DESIGN.git
-cd MAX-DESIGN
-```
-
-Copy the skill folders you need into the directory recognized by your coding agent. For example, to copy **all** skills into a Codex-style project skills directory:
-
-**macOS / Linux:**
-
-```bash
-mkdir -p .agents/skills
-cp -R skills/* .agents/skills/
-```
-
-**Windows PowerShell:**
-
-```powershell
-New-Item -ItemType Directory -Force .agents/skills
-Copy-Item -Recurse .\\skills\\* .\\.agents\\skills\\
-```
-
-For Claude Code, use `.claude/skills/` instead of `.agents/skills/`. For other agents, check their current skill-discovery documentation. Keep each skill folder intact, including its `SKILL.md` and related references. Restart or refresh the agent if needed.
-
-### 🔄 Update installed skills
-
-Use the Skills CLI to check for and install available updates:
-
-```bash
-npx skills update
-```
-
-## 💬 Example requests
-
-- “Use max-design to design a responsive SaaS dashboard based on this codebase and its existing components.”
-- “Use information-architecture to simplify this navigation without breaking deep links.”
-- “Use forms-ux to fix validation and preserve user input after failed submission.”
-- “Use design-system to audit tokens and plan a safe migration.”
-- “Use data-visualization to redesign these charts so units, ranges, and missing data are clear.”
-- “Use design-review and ui-testing to find and verify the highest-impact problems.”
-- “Use accessibility-audit to remediate keyboard and focus issues without changing the brand.”
+MAX-DESIGN reads only the specialist playbooks relevant to a task and combines them into one coherent workflow.
 
 ## 🔎 Searchable design knowledge
 
-MAX-DESIGN includes an original, local decision catalog with visual directions, page patterns, interaction patterns, and density guidance. Search it without network access or third-party dependencies:
+The included decision catalog has visual directions, page patterns, interaction patterns, and density guidance. Search it locally without a network connection or third-party runtime dependencies.
+
+Run these commands **from the installed `max-design` directory**:
 
 ```bash
 node scripts/search-design-knowledge.mjs "dashboard charts"
@@ -137,14 +113,14 @@ node scripts/search-design-knowledge.mjs "mobile animation" --explain
 node scripts/search-design-knowledge.mjs "responsive charts" --require-all --limit 5
 ```
 
-Domains: `all`, `direction`, `page`, `interaction`, `density`. Use `--require-all` to require every query term, `--explain` to inspect matches, and `--json` for structured output. Search uses weighted fields, useful related terms (for example, mobile/responsive and motion/animation), Unicode text, and stable ordering. Treat matches as context-aware starting points, not automatic style prescriptions.
+Domains: `all`, `direction`, `page`, `interaction`, and `density`. Use `--json` for structured output. Search uses weighted fields, related terms, Unicode text, and stable ordering. Treat matches as context-aware starting points, not automatic style prescriptions.
 
 ## 🧭 Workflow
 
-1. **Understand the job.** Identify users, primary task, content, constraints, and observable success criteria.
+1. **Understand the job.** Identify users, primary tasks, content, constraints, and observable success criteria.
 2. **Inspect before inventing.** Read project instructions, routes, components, tokens, assets, scripts, and tests.
 3. **Choose a clear direction.** Use `docs/decision-framework.md` to avoid generic visual defaults.
-4. **Route specialist work.** Select the narrowest skill or combination that actually fits.
+4. **Load relevant playbooks.** Find them in `skills/` and read the narrowest workflows that match the task.
 5. **Implement real behavior.** Include relevant loading, empty, error, disabled, focus, active, and success states.
 6. **Critique by impact.** Fix correctness and task clarity before decorative polish.
 7. **Verify and report.** Check relevant viewports, interactions, accessibility, performance, and project scripts; accurately state what was and was not verified.
@@ -162,15 +138,18 @@ Domains: `all`, `direction`, `page`, `interaction`, `density`. Use `--require-al
 
 ## 🗂️ Repository map
 
-- `skills/` — 12 modular, independently activatable skills
+- `SKILL.md` — single installable entrypoint, named `max-design`
+- `skill.json` — manifest for the unified skill
+- `skills/` — 12 specialist playbooks bundled within the one skill
 - `docs/decision-framework.md` — brief intake, design direction, page-pattern heuristics, routing
 - `docs/quality-matrix.md` — states, responsive coverage, risk priority, evidence levels
 - `docs/design-principles.md` — shared product and engineering principles
 - `docs/preflight-checklist.md` — before-delivery checklist
 - `examples/design-brief.md` — reusable brief and acceptance-criteria template
 - `examples/design-tokens.json` — illustrative semantic token structure
-- `scripts/validate-skills.mjs` — dependency-free structure, token, catalog, and search smoke checks
-- `scripts/search-design-knowledge.mjs` — local design knowledge search CLI
+- `knowledge/design-patterns.json` — local searchable design-knowledge catalog
+- `scripts/validate-skills.mjs` — toolkit structure, token, catalog, and search smoke checks
+- `scripts/search-design-knowledge.mjs` — local design-knowledge search CLI
 
 ## 🧪 Validate locally
 
@@ -180,7 +159,7 @@ Requires Node.js 20 or newer. No third-party dependencies are needed.
 npm test
 ```
 
-The validator checks skill metadata and structure, unique names, README coverage, reference-document presence, token JSON, required semantic roles, primitive colors, and token aliases.
+The validator checks specialist-playbook metadata and structure, unique names, README coverage, reference-document presence, token JSON, required semantic roles, primitive colors, token aliases, catalog structure, and search smoke tests.
 
 ## 📄 License
 
