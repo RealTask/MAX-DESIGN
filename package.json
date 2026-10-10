@@ -8,7 +8,8 @@
   },
   "scripts": {
     "test": "node scripts/validate-skills.mjs",
-    "lint:skills": "node scripts/validate-skills.mjs"
+    "lint:skills": "node scripts/validate-skills.mjs",
+    "search:design": "node scripts/search-design-knowledge.mjs"
   },
   "license": "MIT"
 }
