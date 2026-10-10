@@ -21,7 +21,7 @@ Use MAX-DESIGN for interface creation, product redesign, frontend implementation
 - **Make accessibility and resilience part of implementation.** Consider semantic HTML, keyboard behavior, visible focus, contrast, reduced motion, zoom, touch input, long content, localization, RTL where relevant, and recovery from failed requests.
 - **Verify and report honestly.** Separate code inspection, automated checks, browser testing, accessibility testing, performance measurement, and user research. Never claim a check that was not performed.
 
-## End-to-end workflow
+## Workflow
 
 ### 1. Discover the user job
 
