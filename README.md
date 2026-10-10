@@ -133,9 +133,11 @@ MAX-DESIGN includes an original, local decision catalog with visual directions, 
 node scripts/search-design-knowledge.mjs "dashboard charts"
 node scripts/search-design-knowledge.mjs "form errors" --domain interaction
 node scripts/search-design-knowledge.mjs "editorial" --domain direction --limit 5
+node scripts/search-design-knowledge.mjs "mobile animation" --explain
+node scripts/search-design-knowledge.mjs "responsive charts" --require-all --limit 5
 ```
 
-Domains: `all`, `direction`, `page`, `interaction`, `density`. Add `--json` for structured output. Treat matches as context-aware starting points, not automatic style prescriptions.
+Domains: `all`, `direction`, `page`, `interaction`, `density`. Use `--require-all` to require every query term, `--explain` to inspect matches, and `--json` for structured output. Search uses weighted fields, useful related terms (for example, mobile/responsive and motion/animation), Unicode text, and stable ordering. Treat matches as context-aware starting points, not automatic style prescriptions.
 
 ## 🧭 Workflow
 

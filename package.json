@@ -7,9 +7,10 @@
     "node": ">=20"
   },
   "scripts": {
-    "test": "node scripts/validate-skills.mjs",
+    "test": "node --test && node scripts/validate-skills.mjs",
     "lint:skills": "node scripts/validate-skills.mjs",
-    "search:design": "node scripts/search-design-knowledge.mjs"
+    "search:design": "node scripts/search-design-knowledge.mjs",
+    "test:unit": "node --test"
   },
   "license": "MIT"
 }
