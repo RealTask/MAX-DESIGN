@@ -53,10 +53,10 @@ async function main() {
       fail("Root SKILL.md is missing valid YAML-style front matter.");
     } else {
       const frontMatter = rootSkill.slice(4, frontMatterEnd);
-      if (!/^name:\\s*max-design\\s*$/m.test(frontMatter)) {
+      if (!/^name:\s*max-design\s*$/m.test(frontMatter)) {
         fail("Root SKILL.md must declare name: max-design.");
       }
-      if (!/^description:\\s*.+$/m.test(frontMatter)) {
+      if (!/^description:\s*.+$/m.test(frontMatter)) {
         fail("Root SKILL.md must include a description.");
       }
     }
