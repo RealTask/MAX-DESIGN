@@ -1,0 +1,194 @@
+{
+  "$schema": "https://skill.json.org/schema/1.0.0/skill.schema.json",
+  "name": "max-design",
+  "version": "1.0.0",
+  "description": "Production-minded UI/UX design skills for AI coding agents, covering frontend design, design systems, accessibility, motion, and design review.",
+  "author": {
+    "name": "RealTask",
+    "url": "https://github.com/RealTask"
+  },
+  "license": "MIT",
+  "repository": "https://github.com/RealTask/MAX-DESIGN",
+  "homepage": "https://github.com/RealTask/MAX-DESIGN",
+  "keywords": [
+    "ai-agents",
+    "agent-skills",
+    "ui-ux",
+    "frontend-design",
+    "design-systems",
+    "accessibility",
+    "motion-design",
+    "ux-writing",
+    "design-review"
+  ],
+  "skills": [
+    {
+      "name": "accessibility-audit",
+      "path": "./skills/accessibility-audit",
+      "description": "Audit and improve interface accessibility across semantics, keyboard use, focus, forms, contrast, zoom, touch, and reduced-motion behavior.",
+      "entrypoint": "SKILL.md",
+      "category": "accessibility",
+      "tags": [
+        "accessibility",
+        "a11y",
+        "keyboard",
+        "contrast",
+        "reduced-motion"
+      ]
+    },
+    {
+      "name": "data-visualization",
+      "path": "./skills/data-visualization",
+      "description": "Select, design, label, and verify charts and data displays that help users interpret evidence accurately and accessibly.",
+      "entrypoint": "SKILL.md",
+      "category": "data-visualization",
+      "tags": [
+        "charts",
+        "dashboards",
+        "data",
+        "visualization",
+        "accessibility"
+      ]
+    },
+    {
+      "name": "design-review",
+      "path": "./skills/design-review",
+      "description": "Critique an implemented interface using evidence-based findings prioritized by user impact, severity, scope, and practical remediation.",
+      "entrypoint": "SKILL.md",
+      "category": "design-review",
+      "tags": [
+        "critique",
+        "audit",
+        "usability",
+        "quality",
+        "remediation"
+      ]
+    },
+    {
+      "name": "design-system",
+      "path": "./skills/design-system",
+      "description": "Audit, document, create, and safely extend a product design system with semantic tokens, component rules, themes, and migration guidance.",
+      "entrypoint": "SKILL.md",
+      "category": "design-system",
+      "tags": [
+        "design-tokens",
+        "components",
+        "theming",
+        "design-system",
+        "migration"
+      ]
+    },
+    {
+      "name": "forms-ux",
+      "path": "./skills/forms-ux",
+      "description": "Design accessible, resilient forms and multi-step input flows with sensible validation, clear errors, preserved data, and safe submission behavior.",
+      "entrypoint": "SKILL.md",
+      "category": "forms",
+      "tags": [
+        "forms",
+        "validation",
+        "errors",
+        "onboarding",
+        "usability"
+      ]
+    },
+    {
+      "name": "frontend-design",
+      "path": "./skills/frontend-design",
+      "description": "Design and implement distinctive, polished, responsive frontend interfaces with production-quality hierarchy, realistic content, working states, and maintainable code.",
+      "entrypoint": "SKILL.md",
+      "category": "frontend",
+      "tags": [
+        "frontend",
+        "ui",
+        "responsive-design",
+        "implementation",
+        "web-design"
+      ]
+    },
+    {
+      "name": "information-architecture",
+      "path": "./skills/information-architecture",
+      "description": "Plan and improve navigation, information hierarchy, page structure, findability, and task flows around real user goals.",
+      "entrypoint": "SKILL.md",
+      "category": "ux",
+      "tags": [
+        "navigation",
+        "information-architecture",
+        "user-flows",
+        "findability",
+        "content-structure"
+      ]
+    },
+    {
+      "name": "interaction-motion",
+      "path": "./skills/interaction-motion",
+      "description": "Design purposeful micro-interactions, transitions, feedback states, and responsive motion that clarify behavior without harming accessibility or performance.",
+      "entrypoint": "SKILL.md",
+      "category": "interaction-design",
+      "tags": [
+        "motion",
+        "animation",
+        "micro-interactions",
+        "transitions",
+        "reduced-motion"
+      ]
+    },
+    {
+      "name": "max-design",
+      "path": "./skills/max-design",
+      "description": "Coordinate end-to-end product interface work with context discovery, visual direction, specialist workflows, implementation, critique, and evidence-based verification.",
+      "entrypoint": "SKILL.md",
+      "category": "orchestration",
+      "tags": [
+        "ui-ux",
+        "design-workflow",
+        "frontend",
+        "design-review",
+        "verification"
+      ]
+    },
+    {
+      "name": "resilient-localization",
+      "path": "./skills/resilient-localization",
+      "description": "Harden interfaces against slow networks, unexpected data, long text, localization, right-to-left layouts, and recoverable failures.",
+      "entrypoint": "SKILL.md",
+      "category": "localization",
+      "tags": [
+        "localization",
+        "internationalization",
+        "rtl",
+        "resilience",
+        "error-states"
+      ]
+    },
+    {
+      "name": "ui-testing",
+      "path": "./skills/ui-testing",
+      "description": "Build practical UI verification plans for interactions, responsive layouts, accessibility, visual regression, and real-world edge cases.",
+      "entrypoint": "SKILL.md",
+      "category": "testing",
+      "tags": [
+        "ui-testing",
+        "responsive-testing",
+        "accessibility",
+        "visual-regression",
+        "quality-assurance"
+      ]
+    },
+    {
+      "name": "ux-writing-content",
+      "path": "./skills/ux-writing-content",
+      "description": "Write clear, consistent interface copy for navigation, buttons, forms, onboarding, empty states, errors, confirmations, and notifications.",
+      "entrypoint": "SKILL.md",
+      "category": "ux-writing",
+      "tags": [
+        "ux-writing",
+        "microcopy",
+        "content-design",
+        "forms",
+        "error-messages"
+      ]
+    }
+  ]
+}
