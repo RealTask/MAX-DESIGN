@@ -185,10 +185,6 @@ The validator checks skill metadata and structure, unique names, README coverage
 
 This toolkit learns from public discussions, open-source skill designs, and standards while retaining its own language and workflows. See `docs/research-and-source-map.md` for the source list, applied lessons, and limitations. The repository does not bundle other projects' skill text, style catalogs, or assets.
 
-## 🤝 Contributing
-
-Read `CONTRIBUTING.md` before proposing a new skill. Prefer focused workflows with observable quality gates over redundant skills or giant prompts.
-
 ## 📄 License
 
 MIT. See `LICENSE`.
