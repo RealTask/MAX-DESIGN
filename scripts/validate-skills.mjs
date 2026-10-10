@@ -151,6 +151,56 @@ async function main() {
     fail("examples/design-tokens.json is missing or invalid JSON: " + error.message);
   }
 
+
+  const knowledgePath = path.join(root, "knowledge", "design-patterns.json");
+  let catalog = null;
+  try {
+    catalog = JSON.parse(await readFile(knowledgePath, "utf8"));
+  } catch (error) {
+    fail("knowledge/design-patterns.json is missing or invalid JSON: " + error.message);
+  }
+
+  if (catalog) {
+    const collections = [
+      ["directions", 6],
+      ["pagePatterns", 6],
+      ["interactionPatterns", 5],
+      ["densityProfiles", 3],
+    ];
+    const knowledgeIds = new Set();
+    for (const [collectionName, minimumCount] of collections) {
+      const records = catalog[collectionName];
+      if (!Array.isArray(records) || records.length < minimumCount) {
+        fail("Design knowledge: " + collectionName + " must contain at least " + minimumCount + " records.");
+        continue;
+      }
+      for (const record of records) {
+        if (!record.id || !record.title || !record.summary || !Array.isArray(record.tags) || record.tags.length === 0) {
+          fail("Design knowledge: each " + collectionName + " record needs id, title, summary, and non-empty tags.");
+          continue;
+        }
+        if (knowledgeIds.has(record.id)) fail("Design knowledge: duplicate id " + record.id + ".");
+        knowledgeIds.add(record.id);
+      }
+    }
+
+    try {
+      const { searchKnowledge } = await import(new URL("./search-design-knowledge.mjs", import.meta.url));
+      for (const [query, domain] of [
+        ["dashboard", "all"],
+        ["forms", "all"],
+        ["save", "interaction"],
+        ["editorial", "direction"],
+      ]) {
+        if (searchKnowledge(catalog, query, { domain, limit: 3 }).length === 0) {
+          fail("Design knowledge: search smoke test returned no results for " + query + " in " + domain + ".");
+        }
+      }
+    } catch (error) {
+      fail("Design knowledge search utility could not be imported or tested: " + error.message);
+    }
+  }
+
   if (errors.length > 0) {
     console.error("MAX-DESIGN validation failed:");
     for (const error of errors) console.error(" - " + error);
@@ -158,7 +208,7 @@ async function main() {
     return;
   }
 
-  console.log("MAX-DESIGN validation passed: " + names.size + " skills checked, references present, token aliases resolved.");
+  console.log("MAX-DESIGN validation passed: " + names.size + " skills, reference docs, token aliases, and searchable design knowledge checked.");
 }
 
 main().catch((error) => {
