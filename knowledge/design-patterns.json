@@ -1,7 +1,7 @@
 {
-  "schemaVersion": "1.0.0",
+  "schemaVersion": "1.1.0",
   "title": "MAX-DESIGN decision catalog",
-  "description": "Original, searchable design heuristics for AI coding agents. These are contextual starting points, not mandatory themes or imported upstream style catalogs.",
+  "description": "Original, locally searchable MAX-DESIGN decision guidance for product profiles, visual direction, page patterns, interactions, density, color, typography, motion, UX quality, charts, and implementation stacks.",
   "guidance": "Inspect the product and current codebase before selecting a direction. Match patterns to the user's task, available evidence, and constraints. See docs/decision-framework.md.",
   "directions": [
     {
@@ -664,6 +664,1756 @@
       ],
       "cautions": [
         "Do not shrink text and targets as the only means of fitting more content"
+      ]
+    }
+  ],
+  "productProfiles": [
+    {
+      "id": "ai-saas-product",
+      "title": "AI SaaS product",
+      "summary": "Design AI products around useful outcomes, trust, controllability, and clear limits—not a chat box with decorative gradients.",
+      "tags": [
+        "ai",
+        "saas",
+        "llm",
+        "assistant",
+        "copilot",
+        "generation"
+      ],
+      "fitWhen": [
+        "The product generates, summarizes, classifies, or transforms user content",
+        "Users need to understand model capability, cost, privacy, and uncertainty"
+      ],
+      "priorities": [
+        "Make the primary task and expected output clear before asking for a prompt",
+        "Show generation state, partial results, failure, retry, stop, and edit/regenerate controls",
+        "Separate model output from verified facts and label sources where available",
+        "Explain data retention and external processing where applicable"
+      ],
+      "avoid": [
+        "Invented accuracy badges or unsupported model claims",
+        "Infinite chat as the only information architecture",
+        "Hiding latency, limits, credits, or destructive consequences"
+      ]
+    },
+    {
+      "id": "ai-chat-workspace",
+      "title": "AI conversation workspace",
+      "summary": "Treat conversation as a work surface with history, context, artifact editing, and recovery.",
+      "tags": [
+        "chat",
+        "assistant",
+        "conversation",
+        "history",
+        "prompt",
+        "ai"
+      ],
+      "priorities": [
+        "Preserve user input after errors and allow cancellation",
+        "Distinguish user messages, model output, tool activity, and cited sources",
+        "Provide useful empty-state examples without pretending they are real conversations",
+        "Keep long output readable with copy, regenerate, and navigation affordances"
+      ],
+      "avoid": [
+        "Autoscrolling when a user is reviewing older content",
+        "Showing tool success before the tool confirms it",
+        "Unlabeled controls represented only by icons"
+      ]
+    },
+    {
+      "id": "developer-tool-product",
+      "title": "Developer tool or API platform",
+      "summary": "Optimize technical confidence, discoverability, copyable examples, and fast feedback.",
+      "tags": [
+        "developer",
+        "api",
+        "docs",
+        "console",
+        "cli",
+        "technical",
+        "code"
+      ],
+      "priorities": [
+        "Put the common task and working example before exhaustive reference material",
+        "Make code, status, errors, scopes, and environment distinctions explicit",
+        "Keep navigation, search, version selection, and copy feedback predictable",
+        "Provide safe sandbox or preview behavior when the product supports it"
+      ],
+      "avoid": [
+        "Marketing language in operational controls",
+        "Code examples that omit required context or error handling",
+        "Color-only status or uncopyable long tokens"
+      ]
+    },
+    {
+      "id": "ecommerce-catalog",
+      "title": "E-commerce catalog",
+      "summary": "Help shoppers narrow a large inventory without losing context or creating accidental purchases.",
+      "tags": [
+        "ecommerce",
+        "shop",
+        "commerce",
+        "catalog",
+        "filters",
+        "products"
+      ],
+      "priorities": [
+        "Use meaningful category, price, availability, and attribute filters",
+        "Keep applied filters visible and removable; show result counts when reliable",
+        "Preserve sort and filter state during back navigation",
+        "Use product photography consistently and reserve space to avoid layout shifts"
+      ],
+      "avoid": [
+        "Filters that silently reset on navigation",
+        "Fake scarcity, countdowns, ratings, or inventory",
+        "Hover-only product actions on touch devices"
+      ]
+    },
+    {
+      "id": "ecommerce-product-detail",
+      "title": "Product detail and purchase flow",
+      "summary": "Make product suitability, total cost, variants, availability, and purchase consequences easy to evaluate.",
+      "tags": [
+        "product",
+        "details",
+        "checkout",
+        "cart",
+        "commerce",
+        "purchase"
+      ],
+      "priorities": [
+        "Show price, essential options, availability, delivery/returns, and primary action in a clear order",
+        "Make variant selection affect the displayed product state accurately",
+        "Validate cart changes and surface asynchronous success or failure",
+        "Keep checkout progress, totals, and editable details visible"
+      ],
+      "avoid": [
+        "Hiding fees until the last step",
+        "Using a disabled button without explaining what is missing",
+        "Treating a click as confirmation before the server responds"
+      ]
+    },
+    {
+      "id": "analytics-operations-dashboard",
+      "title": "Analytics or operations dashboard",
+      "summary": "Make status and change over time legible before adding visual density.",
+      "tags": [
+        "dashboard",
+        "analytics",
+        "operations",
+        "metrics",
+        "monitoring",
+        "reporting"
+      ],
+      "priorities": [
+        "Choose a small set of decision-driving summary metrics",
+        "State time range, timezone, filters, freshness, and units near the data",
+        "Provide drill-down from aggregate to supporting detail",
+        "Design loading, stale, partial, no-data, and failed-query states"
+      ],
+      "avoid": [
+        "Decorative chart walls with no decisions attached",
+        "Comparing incompatible time windows or units",
+        "Red/green status without text or shape cues"
+      ]
+    },
+    {
+      "id": "editorial-content-site",
+      "title": "Editorial or documentation site",
+      "summary": "Support reading, search, deep linking, and hierarchy for long-form information.",
+      "tags": [
+        "editorial",
+        "documentation",
+        "articles",
+        "content",
+        "blog",
+        "reading"
+      ],
+      "priorities": [
+        "Use a comfortable reading measure, descriptive headings, and scannable sections",
+        "Keep tables of contents and article navigation predictable",
+        "Distinguish examples, warnings, notes, and quotations semantically",
+        "Preserve heading order and anchor links for deep linking"
+      ],
+      "avoid": [
+        "Tiny gray body text or unnecessarily wide paragraphs",
+        "Using cards for every paragraph",
+        "Interactive content that blocks ordinary reading or browser navigation"
+      ]
+    },
+    {
+      "id": "portfolio-case-study",
+      "title": "Portfolio and case-study site",
+      "summary": "Show the work, constraints, decisions, and outcomes with visual confidence and restrained storytelling.",
+      "tags": [
+        "portfolio",
+        "case-study",
+        "creative",
+        "agency",
+        "personal-brand"
+      ],
+      "priorities": [
+        "Lead with a clear role and relevant work sample",
+        "Explain problem, constraints, contribution, process, and verifiable result",
+        "Give images useful alt text and preserve readable captions",
+        "Provide a clear contact or next-step path"
+      ],
+      "avoid": [
+        "Unsupported client logos or performance claims",
+        "Animation that delays access to the work",
+        "Same generic grid for every project regardless of content"
+      ]
+    },
+    {
+      "id": "booking-service-flow",
+      "title": "Booking and appointment flow",
+      "summary": "Help users choose a valid option, understand availability, confirm details, and recover from conflicts.",
+      "tags": [
+        "booking",
+        "calendar",
+        "appointment",
+        "reservation",
+        "schedule"
+      ],
+      "priorities": [
+        "Keep timezone, duration, location, and selected date explicit",
+        "Distinguish unavailable, loading, held, pending, and confirmed states",
+        "Preserve completed fields when availability changes",
+        "Summarize the booking and cancellation terms before final submission"
+      ],
+      "avoid": [
+        "Assuming local time without labeling it",
+        "Showing a success screen before confirmation",
+        "Clearing the whole flow after one unavailable slot"
+      ]
+    },
+    {
+      "id": "learning-platform",
+      "title": "Learning and education interface",
+      "summary": "Support focus, progress comprehension, useful feedback, and low-friction return to unfinished work.",
+      "tags": [
+        "education",
+        "learning",
+        "course",
+        "student",
+        "lesson",
+        "progress"
+      ],
+      "priorities": [
+        "Show course structure, current position, and a clear next step",
+        "Distinguish attempted, completed, graded, and saved states",
+        "Provide actionable feedback rather than only right/wrong color",
+        "Support keyboard navigation, captions, and flexible text sizes"
+      ],
+      "avoid": [
+        "Using streaks or notifications to obscure learning goals",
+        "Locking essential explanation behind motion",
+        "Confusing viewed content with mastered content"
+      ]
+    },
+    {
+      "id": "financial-data-interface",
+      "title": "Financial or money-management interface",
+      "summary": "Prioritize accurate amounts, clear units, transparent assumptions, and deliberate high-impact actions.",
+      "tags": [
+        "finance",
+        "fintech",
+        "money",
+        "budget",
+        "payments",
+        "transactions"
+      ],
+      "priorities": [
+        "Format currency and dates consistently and state the period covered",
+        "Explain calculations and distinguish estimates from confirmed values",
+        "Require clear confirmation for transfers, deletes, and other consequential actions",
+        "Make empty, pending, reversed, failed, and completed transactions distinct"
+      ],
+      "avoid": [
+        "Color-only gains/losses",
+        "Invented financial performance or account activity",
+        "Ambiguous totals that mix pending and settled amounts"
+      ]
+    }
+  ],
+  "styleDirections": [
+    {
+      "id": "style-quiet-minimal",
+      "title": "Quiet minimalism",
+      "summary": "Use a reduced visual vocabulary, strong alignment, and precise type to make the task feel calm and focused.",
+      "tags": [
+        "minimal",
+        "minimalism",
+        "clean",
+        "swiss",
+        "professional",
+        "whitespace"
+      ],
+      "fitWhen": [
+        "The content or workflow is the primary value",
+        "Frequent use requires low visual fatigue"
+      ],
+      "signature": [
+        "One clear hierarchy per viewport",
+        "Restrained borders and a consistent spacing scale",
+        "Color reserved for actions and semantic status"
+      ],
+      "implementation": [
+        "Use a neutral surface foundation and a single controlled accent",
+        "Use alignment and spacing before shadows to group content"
+      ],
+      "avoid": [
+        "Mistaking emptiness for hierarchy",
+        "Removing affordances or focus indicators to achieve a sparse look"
+      ]
+    },
+    {
+      "id": "style-editorial-premium",
+      "title": "Editorial premium",
+      "summary": "Use expressive typography, deliberate image cropping, and controlled asymmetry to create a considered magazine-like experience.",
+      "tags": [
+        "editorial",
+        "premium",
+        "luxury",
+        "serif",
+        "magazine",
+        "fashion"
+      ],
+      "fitWhen": [
+        "The brand depends on authorship, craft, or a curated point of view",
+        "Images and stories are important purchase or exploration cues"
+      ],
+      "signature": [
+        "Distinct display and reading type roles",
+        "Whitespace with clear caption and metadata styles",
+        "A limited, well-controlled image art direction"
+      ],
+      "avoid": [
+        "Low-contrast thin type",
+        "Asymmetry that damages mobile reading order",
+        "Treating every heading as a billboard"
+      ]
+    },
+    {
+      "id": "style-technical-instrument",
+      "title": "Technical instrument",
+      "summary": "Make dense capability feel precise with tabular data, monospaced accents, restrained surfaces, and explicit status.",
+      "tags": [
+        "technical",
+        "developer",
+        "instrument",
+        "terminal",
+        "precision",
+        "dashboard"
+      ],
+      "fitWhen": [
+        "Users monitor systems, inspect logs, or configure advanced tools"
+      ],
+      "signature": [
+        "Aligned numeric columns and clear units",
+        "Consistent status tokens and focus states",
+        "Compact but readable control groups"
+      ],
+      "avoid": [
+        "Monospaced body text everywhere",
+        "Glow effects that compete with data",
+        "Dense screens without sorting, filtering, or keyboard support"
+      ]
+    },
+    {
+      "id": "style-warm-organic",
+      "title": "Warm and human",
+      "summary": "Use warmer neutrals, organic imagery, friendly language, and generous rhythm without sacrificing precision.",
+      "tags": [
+        "warm",
+        "organic",
+        "wellness",
+        "community",
+        "friendly",
+        "natural"
+      ],
+      "fitWhen": [
+        "The product needs approachability, reassurance, or a human voice"
+      ],
+      "signature": [
+        "Warm neutral canvas with one grounded accent",
+        "Human, direct labels and non-judgmental error text",
+        "Natural imagery used with a clear content purpose"
+      ],
+      "avoid": [
+        "Pastel-on-pastel text",
+        "Overusing rounded pills and soft shadows",
+        "Infantilizing language for adult or professional users"
+      ]
+    },
+    {
+      "id": "style-bold-brutalist",
+      "title": "Bold constructive contrast",
+      "summary": "Use strong typography, visible structure, and decisive blocks as an intentional brand system—not as an excuse to ignore usability.",
+      "tags": [
+        "brutalist",
+        "bold",
+        "graphic",
+        "high-contrast",
+        "creative",
+        "expressive"
+      ],
+      "fitWhen": [
+        "The brand benefits from a distinctive editorial or cultural voice"
+      ],
+      "signature": [
+        "A deliberately limited high-contrast palette",
+        "A clear grid with intentionally bold breaks",
+        "Visible button and link affordances"
+      ],
+      "avoid": [
+        "Broken layout disguised as experimentation",
+        "Low legibility, hover-only actions, or accidental horizontal overflow"
+      ]
+    },
+    {
+      "id": "style-layered-glass",
+      "title": "Layered translucent surfaces",
+      "summary": "Use translucency to show depth and context sparingly, particularly for overlays floating above stable content.",
+      "tags": [
+        "glass",
+        "glassmorphism",
+        "translucent",
+        "blur",
+        "layered",
+        "overlay"
+      ],
+      "fitWhen": [
+        "A small number of overlays need visual separation from a rich background"
+      ],
+      "signature": [
+        "Opaque fallback surface behind translucent layers",
+        "Subtle boundary and clear elevation order",
+        "Foreground contrast tested on the brightest background region"
+      ],
+      "avoid": [
+        "Using blur as the primary hierarchy tool",
+        "Applying translucent cards to all content",
+        "Depending on backdrop-filter without a fallback"
+      ]
+    },
+    {
+      "id": "style-dark-technical",
+      "title": "Dark technical workspace",
+      "summary": "Use deep neutral surfaces and differentiated elevation for prolonged, data-rich work where a dark theme is appropriate.",
+      "tags": [
+        "dark",
+        "oled",
+        "developer",
+        "monitoring",
+        "workspace",
+        "night"
+      ],
+      "fitWhen": [
+        "The target environment or user preference benefits from a dark workspace"
+      ],
+      "signature": [
+        "Several distinguishable surface levels without pure-black everywhere",
+        "Readable muted text and clearly visible keyboard focus",
+        "Status colors tuned for the dark background"
+      ],
+      "avoid": [
+        "Neon glow around every control",
+        "Low-contrast gray metadata",
+        "Assuming dark mode alone improves accessibility or battery life"
+      ]
+    },
+    {
+      "id": "style-motion-storytelling",
+      "title": "Motion-led storytelling",
+      "summary": "Use staged transitions to explain sequence, reveal spatial relationships, or guide attention through a narrative.",
+      "tags": [
+        "motion",
+        "storytelling",
+        "animation",
+        "parallax",
+        "portfolio",
+        "immersive"
+      ],
+      "fitWhen": [
+        "Sequence or spatial continuity helps explain the content"
+      ],
+      "signature": [
+        "Motion connected to an explicit user or narrative purpose",
+        "Small, interruptible transitions with meaningful resting states",
+        "Reduced-motion behavior that preserves content order"
+      ],
+      "avoid": [
+        "Continuous movement behind text",
+        "Scroll hijacking or delayed primary content",
+        "Animating many unrelated elements simultaneously"
+      ]
+    }
+  ],
+  "colorStrategies": [
+    {
+      "id": "color-trustworthy-enterprise",
+      "title": "Trustworthy enterprise palette",
+      "summary": "A restrained blue-and-neutral foundation with clear semantic status roles for dependable business software.",
+      "tags": [
+        "color",
+        "palette",
+        "enterprise",
+        "saas",
+        "blue",
+        "trust"
+      ],
+      "tokens": {
+        "background": "#F8FAFC",
+        "surface": "#FFFFFF",
+        "text": "#0F172A",
+        "mutedText": "#475569",
+        "border": "#CBD5E1",
+        "primary": "#1D4ED8",
+        "onPrimary": "#FFFFFF",
+        "accent": "#0F766E",
+        "danger": "#B91C1C"
+      },
+      "fitWhen": [
+        "The product is data-heavy, operational, or professional"
+      ],
+      "priorities": [
+        "Use primary blue for the main action and active navigation, not every decoration",
+        "Reserve green, amber, and red for consistent status meanings",
+        "Test all text and focus combinations on actual surfaces"
+      ],
+      "avoid": [
+        "Making every link, card, chart, and status the same blue",
+        "Using muted text below readable contrast"
+      ]
+    },
+    {
+      "id": "color-direct-commerce",
+      "title": "Direct commerce palette",
+      "summary": "A stable neutral product canvas with one high-contrast purchase action and a small set of clear status colors.",
+      "tags": [
+        "color",
+        "palette",
+        "commerce",
+        "ecommerce",
+        "shop",
+        "conversion"
+      ],
+      "tokens": {
+        "background": "#FFFFFF",
+        "surface": "#F8FAFC",
+        "text": "#111827",
+        "mutedText": "#4B5563",
+        "border": "#D1D5DB",
+        "primary": "#111827",
+        "onPrimary": "#FFFFFF",
+        "accent": "#B45309",
+        "success": "#166534",
+        "danger": "#B91C1C"
+      },
+      "fitWhen": [
+        "Product photography, price, and variant information should dominate"
+      ],
+      "priorities": [
+        "Keep CTA color and wording consistent through product and checkout steps",
+        "Ensure sale labels do not overwhelm product information",
+        "Show discounts and totals as actual calculations"
+      ],
+      "avoid": [
+        "Urgency colors used for false scarcity",
+        "Multiple competing CTA colors on a single decision"
+      ]
+    },
+    {
+      "id": "color-editorial-warm",
+      "title": "Warm editorial palette",
+      "summary": "Cream-like backgrounds, dark ink, and a restrained earthy accent create a curated reading or premium retail mood.",
+      "tags": [
+        "color",
+        "palette",
+        "editorial",
+        "warm",
+        "cream",
+        "luxury"
+      ],
+      "tokens": {
+        "background": "#FAF7F2",
+        "surface": "#FFFFFF",
+        "text": "#211F1C",
+        "mutedText": "#514C46",
+        "border": "#D8D0C5",
+        "primary": "#33302C",
+        "onPrimary": "#FFFFFF",
+        "accent": "#8A4B32"
+      },
+      "fitWhen": [
+        "The brand depends on considered content, materials, or craft"
+      ],
+      "priorities": [
+        "Keep long-form text dark enough for reading",
+        "Use the earthy accent for links, selection, or small emphasis",
+        "Keep imagery and surface tones consistent across the site"
+      ],
+      "avoid": [
+        "Low-contrast tan text on cream",
+        "Treating every surface as the same shade with no hierarchy"
+      ]
+    },
+    {
+      "id": "color-dark-workspace",
+      "title": "Dark workspace palette",
+      "summary": "Use dark navy and slate surfaces with light text and restrained bright accents for a readable technical environment.",
+      "tags": [
+        "color",
+        "palette",
+        "dark",
+        "technical",
+        "developer",
+        "dashboard"
+      ],
+      "tokens": {
+        "background": "#0B1020",
+        "surface": "#121A2B",
+        "raisedSurface": "#1B263B",
+        "text": "#F8FAFC",
+        "mutedText": "#CBD5E1",
+        "border": "#334155",
+        "primary": "#93C5FD",
+        "onPrimary": "#0B1020",
+        "success": "#86EFAC",
+        "warning": "#FCD34D",
+        "danger": "#FDA4AF"
+      },
+      "fitWhen": [
+        "A user-selected or environment-appropriate dark theme is required"
+      ],
+      "priorities": [
+        "Test muted text, charts, focus rings, and disabled states independently",
+        "Use surface differences and borders rather than glow to show grouping",
+        "Provide a matching light theme when user or product requirements call for one"
+      ],
+      "avoid": [
+        "Assuming colors accessible on white remain accessible on dark surfaces",
+        "Using saturated accents for all elements"
+      ]
+    },
+    {
+      "id": "color-calm-wellbeing",
+      "title": "Calm wellbeing palette",
+      "summary": "A muted teal or green with bright neutral surfaces can signal reassurance while keeping controls and information clear.",
+      "tags": [
+        "color",
+        "palette",
+        "wellness",
+        "health",
+        "calm",
+        "teal"
+      ],
+      "tokens": {
+        "background": "#F0FDFA",
+        "surface": "#FFFFFF",
+        "text": "#134E4A",
+        "mutedText": "#426B66",
+        "border": "#B7D8D1",
+        "primary": "#0F766E",
+        "onPrimary": "#FFFFFF",
+        "accent": "#7C3AED",
+        "danger": "#B91C1C"
+      },
+      "fitWhen": [
+        "The product benefits from a calm and supportive tone"
+      ],
+      "priorities": [
+        "Use reassuring wording and clear next steps alongside color",
+        "Make medical or important alerts unmistakable even within a calm theme",
+        "Validate contrast for small labels and form feedback"
+      ],
+      "avoid": [
+        "Pastel-only status distinctions",
+        "Soft color being used to hide important risk information"
+      ]
+    },
+    {
+      "id": "color-semantic-multistate",
+      "title": "Semantic multi-state system",
+      "summary": "Choose colors by role and meaning so status, selected state, and actions remain consistent across the entire product.",
+      "tags": [
+        "color",
+        "semantic",
+        "design-system",
+        "status",
+        "contrast",
+        "theme"
+      ],
+      "priorities": [
+        "Define roles for text, surface, border, action, focus, success, warning, error, and informational states",
+        "Pair color with text or icon shape for non-decorative status",
+        "Check each role in all supported themes and component states"
+      ],
+      "avoid": [
+        "Red/green as the only difference between states",
+        "Raw one-off hex values scattered through components",
+        "Assuming palette names prove WCAG conformance"
+      ]
+    }
+  ],
+  "typographySystems": [
+    {
+      "id": "type-modern-product",
+      "title": "Modern product typography",
+      "summary": "A neutral sans-serif family with a clear size and weight scale supports interface controls, navigation, and product content.",
+      "tags": [
+        "typography",
+        "font",
+        "sans-serif",
+        "product",
+        "saas",
+        "interface"
+      ],
+      "pairing": "Inter or system UI for both headings and body; use weight, size, and spacing to create roles.",
+      "fitWhen": [
+        "The interface has many controls and mixed content types"
+      ],
+      "priorities": [
+        "Define semantic display, heading, body, label, helper, and numeric roles",
+        "Use a readable body baseline near 16 CSS px where the context permits",
+        "Keep line height and measure comfortable for real content"
+      ],
+      "avoid": [
+        "Using weight and color alone for every level of hierarchy",
+        "Loading many font files for minimal benefit"
+      ]
+    },
+    {
+      "id": "type-technical-contrast",
+      "title": "Technical heading and body pairing",
+      "summary": "A distinctive heading face can give a developer product character while a highly readable body face remains quiet.",
+      "tags": [
+        "typography",
+        "font",
+        "developer",
+        "technical",
+        "space-grotesk",
+        "dm-sans"
+      ],
+      "pairing": "A display face such as Space Grotesk for short headings plus a neutral sans such as Inter or DM Sans for body and controls.",
+      "fitWhen": [
+        "Brand distinction matters but technical detail must remain readable"
+      ],
+      "priorities": [
+        "Keep long code, logs, and numeric values in appropriate monospace roles",
+        "Check fallback font metrics to avoid layout jumps",
+        "Use font features and weights consistently"
+      ],
+      "avoid": [
+        "Using display type for paragraphs or form labels",
+        "Relying on a hosted font without system fallback"
+      ]
+    },
+    {
+      "id": "type-editorial-reading",
+      "title": "Editorial reading system",
+      "summary": "A readable serif for long-form expression paired with a neutral sans-serif for navigation and controls creates a clear content/utility distinction.",
+      "tags": [
+        "typography",
+        "font",
+        "editorial",
+        "serif",
+        "reading",
+        "articles"
+      ],
+      "pairing": "Source Serif 4 or a similar text serif for editorial content with a neutral sans-serif such as Inter for UI controls.",
+      "fitWhen": [
+        "Articles, essays, documentation, or stories are central"
+      ],
+      "priorities": [
+        "Test paragraph density, punctuation, italics, captions, and footnotes",
+        "Keep navigation and controls unambiguous",
+        "Set measure and line height for comfortable reading"
+      ],
+      "avoid": [
+        "Tiny footnotes for essential content",
+        "Low-contrast thin serif styles on mobile screens"
+      ]
+    },
+    {
+      "id": "type-luxury-display",
+      "title": "Refined display typography",
+      "summary": "A high-character display face can communicate craft when paired with simpler supporting text and restrained styling.",
+      "tags": [
+        "typography",
+        "font",
+        "luxury",
+        "fashion",
+        "beauty",
+        "premium"
+      ],
+      "pairing": "A display serif such as Fraunces or Cormorant Garamond for short headings with a neutral sans such as Manrope or Inter for body text.",
+      "fitWhen": [
+        "Visual identity and editorial atmosphere are key brand signals"
+      ],
+      "priorities": [
+        "Limit the decorative family to clear display roles",
+        "Check headings at narrow widths and increased text size",
+        "Use a robust fallback and avoid blocking first render"
+      ],
+      "avoid": [
+        "Using thin display weights for functional text",
+        "Making every heading oversized"
+      ]
+    },
+    {
+      "id": "type-friendly-service",
+      "title": "Friendly service typography",
+      "summary": "Open, approachable letterforms and a moderate weight scale support forms, help text, and public-facing services.",
+      "tags": [
+        "typography",
+        "font",
+        "friendly",
+        "service",
+        "education",
+        "health"
+      ],
+      "pairing": "A neutral humanist sans or system UI family used with a restrained weight scale and generous line height.",
+      "fitWhen": [
+        "Users need reassurance and quick comprehension"
+      ],
+      "priorities": [
+        "Prioritize letter clarity in labels and numerical fields",
+        "Use sentence case and predictable emphasis",
+        "Test localization and 200% text zoom"
+      ],
+      "avoid": [
+        "Tiny all-caps labels for important information",
+        "Overusing rounded display fonts that reduce information density"
+      ]
+    },
+    {
+      "id": "type-data-workspace",
+      "title": "Data and code typography",
+      "summary": "Use tabular numerals and a consistent monospace role where exact alignment or source-code recognition improves scanning.",
+      "tags": [
+        "typography",
+        "font",
+        "data",
+        "numeric",
+        "monospace",
+        "tables",
+        "code"
+      ],
+      "priorities": [
+        "Enable tabular numerals for columns of comparable values where supported",
+        "Differentiate code from prose without making code too small",
+        "Show units and precision consistently"
+      ],
+      "avoid": [
+        "Using monospace for every heading and body paragraph",
+        "Aligning data with repeated spaces instead of layout primitives"
+      ]
+    }
+  ],
+  "motionRecipes": [
+    {
+      "id": "motion-control-feedback",
+      "title": "Control feedback",
+      "summary": "A brief transform or color response should make activation feel acknowledged without interrupting the task.",
+      "tags": [
+        "motion",
+        "animation",
+        "button",
+        "hover",
+        "press",
+        "feedback"
+      ],
+      "duration": "120–180 ms",
+      "behavior": [
+        "Use opacity, color, or a very small transform for hover and press feedback",
+        "Return to the resting state reliably on pointer leave and keyboard blur",
+        "Keep the actual action synchronous with the input semantics"
+      ],
+      "priorities": [
+        "Support hover, focus-visible, active, disabled, and touch behavior as relevant"
+      ],
+      "avoid": [
+        "Moving controls out of reach",
+        "Motion that is the only sign of selection or activation"
+      ]
+    },
+    {
+      "id": "motion-section-reveal",
+      "title": "Section reveal",
+      "summary": "Use a subtle reveal only when it helps establish sequence or emphasize sections without hiding meaningful content.",
+      "tags": [
+        "motion",
+        "animation",
+        "scroll",
+        "reveal",
+        "entrance"
+      ],
+      "duration": "200–350 ms",
+      "behavior": [
+        "Prefer opacity and transform to layout-changing properties",
+        "Ensure content remains available when JavaScript or motion is unavailable",
+        "Observe reduced-motion preferences and render the final state directly"
+      ],
+      "avoid": [
+        "Delaying above-the-fold content",
+        "Replaying every element on each tiny scroll movement"
+      ]
+    },
+    {
+      "id": "motion-dialog-transition",
+      "title": "Dialog and overlay transition",
+      "summary": "A short opacity and scale transition can clarify an overlay entering or leaving while preserving focus and dismissal behavior.",
+      "tags": [
+        "motion",
+        "animation",
+        "dialog",
+        "modal",
+        "overlay",
+        "transition"
+      ],
+      "duration": "150–220 ms",
+      "behavior": [
+        "Animate the overlay and dialog with a clear shared timing",
+        "Move focus into the dialog and restore it to the trigger after close",
+        "Keep Escape, explicit close, and permitted backdrop behavior predictable"
+      ],
+      "avoid": [
+        "Animating past the point where the dialog is interactive",
+        "Closing a form on a backdrop click without protecting user input"
+      ]
+    },
+    {
+      "id": "motion-loading-progress",
+      "title": "Loading and progress",
+      "summary": "Show activity when work is genuinely pending and use determinate progress only when progress can be measured.",
+      "tags": [
+        "motion",
+        "loading",
+        "progress",
+        "skeleton",
+        "spinner",
+        "pending"
+      ],
+      "behavior": [
+        "For very short actions, prefer a clear pending label or button state",
+        "Use skeletons when the incoming content structure is known",
+        "Use determinate progress only when the value reflects actual work"
+      ],
+      "priorities": [
+        "Keep previous user input and stable layout when appropriate",
+        "Provide cancellation for long-running cancellable work"
+      ],
+      "avoid": [
+        "Fake percentage progress",
+        "Spinners that continue after failure or completion"
+      ]
+    },
+    {
+      "id": "motion-success-confirmation",
+      "title": "Success confirmation",
+      "summary": "A brief, non-blocking confirmation should tell users what completed and what they can do next.",
+      "tags": [
+        "motion",
+        "success",
+        "feedback",
+        "toast",
+        "confirmation"
+      ],
+      "duration": "Usually 150–250 ms for the visual transition; message persistence depends on importance.",
+      "behavior": [
+        "Announce important status changes accessibly",
+        "Use text and optional icon along with semantic color",
+        "Provide an undo path when reversal is safe and useful"
+      ],
+      "avoid": [
+        "Auto-dismissing critical information too quickly",
+        "Animating success before the system confirms completion"
+      ]
+    },
+    {
+      "id": "motion-data-transition",
+      "title": "Data and chart transition",
+      "summary": "Animate changes only when movement helps explain the relationship between two valid data states.",
+      "tags": [
+        "motion",
+        "chart",
+        "data",
+        "visualization",
+        "dashboard",
+        "transition"
+      ],
+      "duration": "180–350 ms when useful",
+      "behavior": [
+        "Use a stable scale and consistent mapping between old and new values",
+        "Keep labels and tooltips synchronized with the current data",
+        "Turn off or shorten movement for reduced-motion preferences"
+      ],
+      "avoid": [
+        "Racing charts, perpetual loops, and motion that exaggerates differences",
+        "Animating every datapoint when updates are frequent"
+      ]
+    },
+    {
+      "id": "motion-reorder-feedback",
+      "title": "Drag and reorder feedback",
+      "summary": "Make the drop target, current position, and final result obvious; provide a non-drag alternative when the task matters.",
+      "tags": [
+        "motion",
+        "drag",
+        "drop",
+        "reorder",
+        "sorting",
+        "interaction"
+      ],
+      "behavior": [
+        "Show a clear insertion indicator and selected item state",
+        "Support keyboard or explicit move-up/move-down alternatives where appropriate",
+        "Persist the resulting order only after the interaction is accepted"
+      ],
+      "avoid": [
+        "Relying on pointer movement alone",
+        "Using animation that hides the final location or changes the data silently"
+      ]
+    },
+    {
+      "id": "motion-reduced-mode",
+      "title": "Reduced-motion behavior",
+      "summary": "Motion must degrade to a usable static or low-motion experience without removing information or functionality.",
+      "tags": [
+        "motion",
+        "reduced-motion",
+        "accessibility",
+        "prefers-reduced-motion"
+      ],
+      "behavior": [
+        "Respect prefers-reduced-motion for non-essential motion",
+        "Remove parallax, large spatial transitions, and automatic looping when reduction is requested",
+        "Preserve state changes, progress, and content without animation"
+      ],
+      "priorities": [
+        "Test the reduced-motion experience, not only the default animation"
+      ],
+      "avoid": [
+        "Applying a global duration of zero when important feedback would disappear",
+        "Making content invisible until an animation fires"
+      ]
+    }
+  ],
+  "uxGuidelines": [
+    {
+      "id": "ux-contrast-roles",
+      "title": "Contrast and semantic color",
+      "summary": "Choose foreground and background pairs by actual contrast and reserve semantic colors for stable meanings.",
+      "tags": [
+        "ux",
+        "accessibility",
+        "contrast",
+        "color",
+        "wcag"
+      ],
+      "priority": "Critical",
+      "do": [
+        "Target at least 4.5:1 contrast for normal text and 3:1 for qualifying large text",
+        "Check focus indicators, disabled states, placeholder text, chart labels, and dark mode separately",
+        "Use labels or icon/shape cues alongside important colors"
+      ],
+      "avoid": [
+        "Assuming palette swatches are accessible as text/background pairs",
+        "Using color alone for errors, success, or chart series"
+      ],
+      "verify": [
+        "Measure actual rendered pairs and test forced-colors or high-contrast contexts where relevant"
+      ]
+    },
+    {
+      "id": "ux-visible-keyboard-focus",
+      "title": "Keyboard and focus",
+      "summary": "Every interactive control needs a predictable keyboard path and a visible focus state.",
+      "tags": [
+        "ux",
+        "accessibility",
+        "keyboard",
+        "focus",
+        "navigation"
+      ],
+      "priority": "Critical",
+      "do": [
+        "Use native semantics for buttons, links, fields, and dialogs",
+        "Ensure focus remains visible and unobscured",
+        "Return focus to a logical location after overlay workflows"
+      ],
+      "avoid": [
+        "Removing outlines without an equally visible replacement",
+        "Positive tabindex values and keyboard traps"
+      ],
+      "verify": [
+        "Complete the primary journey without a pointer"
+      ]
+    },
+    {
+      "id": "ux-touch-target-spacing",
+      "title": "Touch target and spacing",
+      "summary": "Provide adequately sized, separated targets for touch input while respecting dense desktop workflows.",
+      "tags": [
+        "ux",
+        "accessibility",
+        "touch",
+        "mobile",
+        "targets",
+        "responsive"
+      ],
+      "priority": "Critical",
+      "do": [
+        "Use the target platform's accessibility guidance; aim around 44 by 44 CSS px for common touch controls where practical",
+        "Separate destructive and primary actions",
+        "Provide visible pressed and disabled feedback"
+      ],
+      "avoid": [
+        "Tiny adjacent icon-only buttons",
+        "Hover-only menus or tooltips"
+      ],
+      "verify": [
+        "Test the smallest supported viewport and touch interaction"
+      ]
+    },
+    {
+      "id": "ux-form-label-validation",
+      "title": "Form labels and validation",
+      "summary": "Help people understand a field before entry, then identify and correct errors close to where they occur.",
+      "tags": [
+        "ux",
+        "forms",
+        "validation",
+        "errors",
+        "labels",
+        "input"
+      ],
+      "priority": "High",
+      "do": [
+        "Use persistent labels and explain required formats before submission when possible",
+        "Associate errors and help text with their fields",
+        "Preserve valid input and provide a specific recovery instruction"
+      ],
+      "avoid": [
+        "Placeholder-only labels",
+        "Clearing a whole form after a correctable error",
+        "Showing an error only by changing border color"
+      ],
+      "verify": [
+        "Test empty, malformed, server-rejected, and corrected submissions"
+      ]
+    },
+    {
+      "id": "ux-async-state-integrity",
+      "title": "Asynchronous state integrity",
+      "summary": "Make pending, success, failure, retry, and cancellation distinct and grounded in real system responses.",
+      "tags": [
+        "ux",
+        "async",
+        "loading",
+        "success",
+        "failure",
+        "retry"
+      ],
+      "priority": "High",
+      "do": [
+        "Prevent harmful duplicate submissions",
+        "Show pending feedback in the affected region",
+        "Only confirm success after a successful response",
+        "Make retries safe and explain whether entered data is retained"
+      ],
+      "avoid": [
+        "Optimistic success for irreversible or critical tasks without recovery",
+        "Infinite spinners and silent failures"
+      ],
+      "verify": [
+        "Test slow, rejected, cancelled, offline, and duplicate-request scenarios"
+      ]
+    },
+    {
+      "id": "ux-responsive-reflow",
+      "title": "Responsive reflow",
+      "summary": "Adapt information architecture and control behavior to available space rather than shrinking a desktop layout indefinitely.",
+      "tags": [
+        "ux",
+        "responsive",
+        "mobile",
+        "layout",
+        "reflow",
+        "breakpoints"
+      ],
+      "priority": "High",
+      "do": [
+        "Choose breakpoints where content stops working, not by device branding alone",
+        "Reflow wide tables, navigation, forms, and action groups deliberately",
+        "Preserve task order and state across layout changes"
+      ],
+      "avoid": [
+        "Fixed widths that cause horizontal page overflow",
+        "Removing essential content on mobile"
+      ],
+      "verify": [
+        "Check narrow, medium, wide, zoomed, and long-content conditions"
+      ]
+    },
+    {
+      "id": "ux-long-content-resilience",
+      "title": "Long text and localization resilience",
+      "summary": "Let labels, translations, user names, and user-generated text wrap or truncate with a discoverable recovery path.",
+      "tags": [
+        "ux",
+        "localization",
+        "i18n",
+        "text",
+        "overflow",
+        "rtl"
+      ],
+      "priority": "High",
+      "do": [
+        "Allow wrapping for ordinary text and long labels",
+        "Clamp only when the full text remains available through a clear action",
+        "Test translated strings, long tokens, right-to-left layouts, and browser zoom where applicable"
+      ],
+      "avoid": [
+        "Fixed-height text containers that clip content",
+        "Applying overflow hidden to entire interactive controls"
+      ],
+      "verify": [
+        "Test 2× label length and realistic localization"
+      ]
+    },
+    {
+      "id": "ux-empty-and-no-results",
+      "title": "Empty and no-results states",
+      "summary": "Differentiate a new workspace, a truly empty dataset, a filtered no-result state, and a failed request.",
+      "tags": [
+        "ux",
+        "empty",
+        "search",
+        "no-results",
+        "error",
+        "onboarding"
+      ],
+      "do": [
+        "Explain why the current view is empty",
+        "Offer a relevant next action, such as create, clear filters, or retry",
+        "Avoid implying failure when there is simply no data"
+      ],
+      "avoid": [
+        "Using one generic illustration for every empty condition",
+        "Providing a create action that does not fit the current permissions"
+      ],
+      "verify": [
+        "Test initial, filtered, permission-limited, and error states"
+      ]
+    },
+    {
+      "id": "ux-icon-button-labels",
+      "title": "Icon and icon-button clarity",
+      "summary": "Icons should reinforce meaning; controls that only show an icon need an accessible name and understandable target.",
+      "tags": [
+        "ux",
+        "icons",
+        "accessibility",
+        "button",
+        "aria-label"
+      ],
+      "do": [
+        "Use a consistent icon family and familiar metaphors where possible",
+        "Give icon-only controls a meaningful accessible name",
+        "Include text for unfamiliar, ambiguous, or high-consequence actions"
+      ],
+      "avoid": [
+        "Emoji as a substitute for a coherent product icon set",
+        "Same icon meaning different actions in different screens"
+      ],
+      "verify": [
+        "Inspect screen-reader names and tooltip behavior with keyboard and touch"
+      ]
+    },
+    {
+      "id": "ux-data-freshness-units",
+      "title": "Data freshness and units",
+      "summary": "Make time range, source, units, precision, and freshness visible wherever they change interpretation.",
+      "tags": [
+        "ux",
+        "data",
+        "dashboard",
+        "freshness",
+        "units",
+        "timezone"
+      ],
+      "do": [
+        "State the period and timezone for time-based metrics",
+        "Label currency, percentages, counts, and measurement units",
+        "Distinguish stale, partial, cached, and live data when that affects decisions"
+      ],
+      "avoid": [
+        "Mixing percentage points with percent change",
+        "Showing a timestamp without its meaning or relevant timezone"
+      ],
+      "verify": [
+        "Compare labels and values after filtering, refresh, and error recovery"
+      ]
+    },
+    {
+      "id": "ux-destructive-action-guard",
+      "title": "Destructive action protection",
+      "summary": "Scale confirmation to consequence and offer undo or recovery where feasible.",
+      "tags": [
+        "ux",
+        "destructive",
+        "delete",
+        "confirm",
+        "undo",
+        "safety"
+      ],
+      "do": [
+        "Name the affected object and consequence explicitly",
+        "Use a confirmation step only when it materially reduces risk",
+        "Offer undo or recovery when the system supports it"
+      ],
+      "avoid": [
+        "Generic 'Are you sure?' prompts without context",
+        "Using destructive styling for routine navigation"
+      ],
+      "verify": [
+        "Test cancel, confirm, permission failure, and repeated activation"
+      ]
+    },
+    {
+      "id": "ux-navigation-orientation",
+      "title": "Navigation and orientation",
+      "summary": "Make location, hierarchy, and escape paths consistent so users can move without losing context.",
+      "tags": [
+        "ux",
+        "navigation",
+        "breadcrumbs",
+        "back",
+        "deep-link"
+      ],
+      "do": [
+        "Use stable labels and predictable information architecture",
+        "Preserve back navigation and state where expected",
+        "Support deep links to meaningful locations when the product benefits"
+      ],
+      "avoid": [
+        "Overloaded top-level menus",
+        "Nested overlays without a clear route back",
+        "Using color alone for the active location"
+      ],
+      "verify": [
+        "Start from a deep link, navigate, then use browser or system back"
+      ]
+    },
+    {
+      "id": "ux-content-action-copy",
+      "title": "Action and error wording",
+      "summary": "Use concrete labels that explain what an action does and error messages that help recovery.",
+      "tags": [
+        "ux",
+        "content",
+        "microcopy",
+        "ux-writing",
+        "errors",
+        "labels"
+      ],
+      "do": [
+        "Use a verb plus an object when the action is ambiguous",
+        "Describe what happened, what is affected, and what to do next",
+        "Keep status language consistent across toast, button, and page"
+      ],
+      "avoid": [
+        "Generic 'Oops' without guidance",
+        "Button labels like 'Submit' when a more specific label is feasible",
+        "Blaming or shaming language"
+      ]
+    },
+    {
+      "id": "ux-table-comparison",
+      "title": "Operational table usability",
+      "summary": "Tables must support the comparison and row-level tasks that justify their density.",
+      "tags": [
+        "ux",
+        "table",
+        "grid",
+        "sort",
+        "filter",
+        "data"
+      ],
+      "do": [
+        "Align numbers and label units consistently",
+        "Expose sort state accessibly and keep row actions discoverable",
+        "Handle narrow screens with deliberate column prioritization or an alternate view"
+      ],
+      "avoid": [
+        "Using a table for unrelated cards",
+        "Color-coded cells without textual explanation",
+        "Unlabeled bulk actions"
+      ],
+      "verify": [
+        "Test long values, no results, sorting, filtering, selection, and keyboard access"
+      ]
+    },
+    {
+      "id": "ux-perceived-performance",
+      "title": "Perceived performance and stability",
+      "summary": "Communicate work in progress while preventing avoidable shifts and blocking interactions.",
+      "tags": [
+        "ux",
+        "performance",
+        "loading",
+        "cls",
+        "skeleton",
+        "lazy-loading"
+      ],
+      "do": [
+        "Reserve space for images, embeds, and async content",
+        "Lazy-load offscreen media when appropriate and avoid lazy-loading primary visible content",
+        "Use a stable skeleton only when it reflects the expected shape"
+      ],
+      "avoid": [
+        "Layout jumps when fonts or images load",
+        "Animating layout properties for routine feedback",
+        "Skeletons that look like real data indefinitely"
+      ],
+      "verify": [
+        "Check a slow connection, reduced motion, and content after failure"
+      ]
+    }
+  ],
+  "chartPatterns": [
+    {
+      "id": "chart-time-series",
+      "title": "Time-series line chart",
+      "summary": "Use a line chart to show trend and change over ordered time intervals with clearly stated sampling and scale.",
+      "tags": [
+        "chart",
+        "line",
+        "time-series",
+        "trend",
+        "analytics"
+      ],
+      "priorities": [
+        "Label the time range, interval, timezone, and value unit",
+        "Use honest axes and clearly indicate missing intervals",
+        "Keep tooltips available by keyboard or an accessible data alternative"
+      ],
+      "avoid": [
+        "Connecting gaps in data as if they were observed values",
+        "Changing y-axis range between comparisons without disclosure"
+      ]
+    },
+    {
+      "id": "chart-category-comparison",
+      "title": "Category comparison bar chart",
+      "summary": "Use bars to compare discrete categories on a consistent baseline, with labels and units that support quick ranking.",
+      "tags": [
+        "chart",
+        "bar",
+        "comparison",
+        "category",
+        "ranking"
+      ],
+      "priorities": [
+        "Sort categories when ranking is the main task",
+        "Keep a zero baseline for ordinary bar comparisons unless a justified design is clearly explained",
+        "Provide direct value labels when they improve scan speed"
+      ],
+      "avoid": [
+        "3D bars and decorative gradients that obscure comparison",
+        "Too many categories with unreadable labels"
+      ]
+    },
+    {
+      "id": "chart-composition",
+      "title": "Composition chart",
+      "summary": "Use stacked bars or a proportion-focused chart only when the whole and meaningful component relationships are clear.",
+      "tags": [
+        "chart",
+        "stacked",
+        "composition",
+        "part-to-whole",
+        "share"
+      ],
+      "priorities": [
+        "State the denominator and period",
+        "Keep component colors stable across screens",
+        "Use an accessible legend and values for small segments"
+      ],
+      "avoid": [
+        "Too many slices or nearly indistinguishable colors",
+        "Comparing pie angles across many categories when precise comparison matters"
+      ]
+    },
+    {
+      "id": "chart-distribution",
+      "title": "Distribution chart",
+      "summary": "Use histograms, box plots, or distribution summaries when variability and spread matter more than only the average.",
+      "tags": [
+        "chart",
+        "histogram",
+        "distribution",
+        "box-plot",
+        "statistics"
+      ],
+      "priorities": [
+        "Explain bin sizes or quartiles when the audience needs them",
+        "Include sample size and context for small datasets",
+        "Show outliers without implying they are errors by default"
+      ],
+      "avoid": [
+        "Using a single average to conceal a wide distribution",
+        "Comparing distributions with incompatible scales"
+      ]
+    },
+    {
+      "id": "chart-uncertainty-context",
+      "title": "Uncertainty and data context",
+      "summary": "Communicate uncertainty, sampling, source, and data freshness where they change a chart's interpretation.",
+      "tags": [
+        "chart",
+        "uncertainty",
+        "source",
+        "freshness",
+        "confidence",
+        "data-quality"
+      ],
+      "priorities": [
+        "Name the metric source and period",
+        "Show confidence intervals or uncertainty when relevant and supported",
+        "Distinguish measured, estimated, forecast, and incomplete values"
+      ],
+      "avoid": [
+        "Implying prediction is historical fact",
+        "Unsupported confidence percentages or made-up labels"
+      ]
+    },
+    {
+      "id": "chart-accessible-data-alternative",
+      "title": "Accessible chart alternative",
+      "summary": "Do not make the chart's colors or visual position the only way to retrieve important information.",
+      "tags": [
+        "chart",
+        "accessibility",
+        "screen-reader",
+        "table",
+        "alt-text"
+      ],
+      "priorities": [
+        "Give the chart an informative title and concise summary",
+        "Offer a table or downloadable structured data when detailed values matter",
+        "Use patterns, labels, line styles, or shape in addition to color"
+      ],
+      "avoid": [
+        "Legend-only meaning that cannot be understood without sight",
+        "Canvas-only chart output with no accessible description"
+      ]
+    },
+    {
+      "id": "chart-dashboard-interpretation",
+      "title": "Dashboard chart hierarchy",
+      "summary": "Organize charts around a question and decision path rather than maximizing chart count.",
+      "tags": [
+        "chart",
+        "dashboard",
+        "hierarchy",
+        "metrics",
+        "analytics"
+      ],
+      "priorities": [
+        "Lead with key status or comparison, then explain contributing factors",
+        "Align time ranges and filters across related charts",
+        "Provide drill-down to raw or supporting data where appropriate"
+      ],
+      "avoid": [
+        "Repeated KPI cards with no context",
+        "Sparklines without labels when the trend has decision consequences"
+      ]
+    }
+  ],
+  "stackGuides": [
+    {
+      "id": "stack-vanilla-web",
+      "title": "HTML, CSS, and JavaScript",
+      "summary": "Build resilient native interfaces with semantic HTML, scoped CSS, and small stateful modules before reaching for a framework.",
+      "tags": [
+        "stack",
+        "html",
+        "css",
+        "javascript",
+        "vanilla",
+        "single-html"
+      ],
+      "priorities": [
+        "Use native buttons, links, labels, forms, and dialogs when their semantics match",
+        "Keep visual tokens in CSS custom properties and behavior in clear modules",
+        "Handle focus, error, empty, and loading states directly"
+      ],
+      "avoid": [
+        "Clickable divs where native controls work",
+        "Large inline scripts that mix rendering, data, and event logic without structure",
+        "Assuming a CDN dependency is available offline"
+      ]
+    },
+    {
+      "id": "stack-react",
+      "title": "React interface implementation",
+      "summary": "Use components and state at the scope matching the user-visible behavior, and preserve the application's existing conventions.",
+      "tags": [
+        "stack",
+        "react",
+        "components",
+        "hooks",
+        "state"
+      ],
+      "priorities": [
+        "Use stable keys and controlled state where values affect rendering",
+        "Keep effects for synchronization, not derived render-time calculations",
+        "Extract shared components when there is real repeated behavior"
+      ],
+      "avoid": [
+        "Duplicated state for values derivable from props/state",
+        "Effects that create event-handler loops or fail cleanup",
+        "Adding a state library for a small isolated state"
+      ]
+    },
+    {
+      "id": "stack-nextjs",
+      "title": "Next.js and server-rendered React",
+      "summary": "Choose server and client boundaries deliberately and keep interactive code on the smallest client surface that needs it.",
+      "tags": [
+        "stack",
+        "nextjs",
+        "next",
+        "ssr",
+        "server-components",
+        "routing"
+      ],
+      "priorities": [
+        "Use server rendering for appropriate content and data access",
+        "Keep secrets and privileged operations off the client",
+        "Handle loading, error, metadata, and navigation using the project's router conventions"
+      ],
+      "avoid": [
+        "Making an entire page client-rendered without need",
+        "Exposing secrets in public environment variables",
+        "Mixing router-generation conventions from different Next.js versions"
+      ]
+    },
+    {
+      "id": "stack-vue-svelte",
+      "title": "Vue or Svelte interface",
+      "summary": "Use the framework's native reactive and component patterns rather than layering a second state model on top.",
+      "tags": [
+        "stack",
+        "vue",
+        "svelte",
+        "reactivity",
+        "component"
+      ],
+      "priorities": [
+        "Use clear component boundaries and typed or documented props",
+        "Keep async state explicit and cleanup subscriptions or event listeners",
+        "Follow the project's installed major version and established conventions"
+      ],
+      "avoid": [
+        "Invented APIs from another framework version",
+        "Direct DOM mutation that fights the framework's rendering model"
+      ]
+    },
+    {
+      "id": "stack-tailwind-design-system",
+      "title": "Tailwind and component primitives",
+      "summary": "Use utility classes and existing primitives to express a coherent token system rather than creating unrelated one-off styles.",
+      "tags": [
+        "stack",
+        "tailwind",
+        "shadcn",
+        "tokens",
+        "css",
+        "components"
+      ],
+      "priorities": [
+        "Inspect the existing theme configuration and installed version",
+        "Centralize semantic color and spacing roles",
+        "Reuse accessible primitive behavior before restyling it"
+      ],
+      "avoid": [
+        "Combining conflicting class utilities unpredictably",
+        "Copying a component while dropping keyboard or disabled behavior",
+        "Assuming a component library removes the need for accessibility checks"
+      ]
+    },
+    {
+      "id": "stack-react-native-flutter",
+      "title": "React Native and Flutter mobile UI",
+      "summary": "Map the design to native platform navigation, keyboard, safe area, accessibility, and touch behavior.",
+      "tags": [
+        "stack",
+        "react-native",
+        "flutter",
+        "mobile",
+        "native"
+      ],
+      "priorities": [
+        "Respect safe areas, keyboard avoidance, and platform navigation patterns",
+        "Size controls for touch and provide platform-relevant accessibility labels",
+        "Test on realistic screen dimensions and text scale settings"
+      ],
+      "avoid": [
+        "Applying browser hover assumptions to touch interfaces",
+        "Fixed-height layouts that clip dynamic text",
+        "Ignoring platform back behavior"
+      ]
+    },
+    {
+      "id": "stack-threejs-webgl",
+      "title": "Three.js and WebGL experiences",
+      "summary": "Treat the 3D scene as a progressive enhancement with a clear performance and accessibility budget.",
+      "tags": [
+        "stack",
+        "threejs",
+        "three",
+        "webgl",
+        "3d",
+        "canvas",
+        "animation"
+      ],
+      "priorities": [
+        "Provide a meaningful fallback and keep essential text in the DOM",
+        "Limit draw calls, texture size, and continuously active animation",
+        "Pause or reduce motion when hidden or when user preferences request it"
+      ],
+      "avoid": [
+        "Using the 3D canvas as the only navigation or data interface",
+        "Loading a heavy scene before the core page content",
+        "Infinite animation that drains mobile resources"
+      ]
+    },
+    {
+      "id": "stack-cross-platform-versioning",
+      "title": "Framework version and platform constraints",
+      "summary": "Use code patterns compatible with the installed framework version, build pipeline, and supported platforms.",
+      "tags": [
+        "stack",
+        "version",
+        "compatibility",
+        "migration",
+        "framework",
+        "build"
+      ],
+      "priorities": [
+        "Inspect package manifests and lockfiles before selecting APIs",
+        "Separate current guidance from legacy APIs and migration advice",
+        "Verify platform-specific behavior with the project's own build and tests"
+      ],
+      "avoid": [
+        "Combining examples from incompatible major versions",
+        "Adding dependencies without a clear need",
+        "Claiming a build or runtime check was performed when it was not"
       ]
     }
   ]
