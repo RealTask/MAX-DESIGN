@@ -33,19 +33,22 @@ Read repository instructions, routes, representative screens, shared components,
 
 ### 3. Search the bundled design knowledge
 
-Use the local catalog when a design direction, page pattern, interaction, or information-density decision would benefit from a structured starting point. It is guidance, not a preset or an instruction to copy a pattern blindly.
+Use the local catalog when a product, visual direction, page pattern, color, typography, motion, UX/accessibility, chart, implementation-stack, or density decision would benefit from a structured starting point. It is guidance, not a preset or an instruction to copy a pattern blindly. The knowledge is organized around original MAX-DESIGN records rather than imported third-party catalog files.
 
 Run from the installed MAX-DESIGN directory:
 
 ```bash
 node scripts/search-design-knowledge.mjs "dashboard charts"
-node scripts/search-design-knowledge.mjs "form errors" --domain interaction
-node scripts/search-design-knowledge.mjs "editorial" --domain direction --limit 5
-node scripts/search-design-knowledge.mjs "mobile animation" --explain
+node scripts/search-design-knowledge.mjs "AI assistant output states" --domain product
+node scripts/search-design-knowledge.mjs "dark dashboard palette" --domain color
+node scripts/search-design-knowledge.mjs "form errors" --domain ux
+node scripts/search-design-knowledge.mjs "reduced motion" --domain motion
+node scripts/search-design-knowledge.mjs "chart accessibility" --domain chart
+node scripts/search-design-knowledge.mjs "responsive charts" --domain stack
 node scripts/search-design-knowledge.mjs "responsive charts" --require-all --limit 5
 ```
 
-Available domains: `all`, `direction`, `page`, `interaction`, and `density`. Use `--json` for machine-readable results. The catalog is at `knowledge/design-patterns.json`; the search implementation is at `scripts/search-design-knowledge.mjs`.
+Available domains: `all`, `direction`, `page`, `interaction`, `density`, `product`, `style`, `color`, `typography`, `motion`, `ux`, `chart`, and `stack`. Use `--json` for machine-readable results. The catalog is at `knowledge/design-patterns.json`; the search implementation is at `scripts/search-design-knowledge.mjs`. Search remains local and requires no network connection or third-party runtime dependency.
 
 ### 4. Select a specific direction
 
