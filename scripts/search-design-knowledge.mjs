@@ -215,6 +215,7 @@ function printUsage() {
   console.log("");
   console.log("Usage:");
   console.log('  node scripts/search-design-knowledge.mjs "dashboard charts"');
+  console.log('  node scripts/search-design-knowledge.mjs "AI assistant output states" --domain product');
   console.log('  node scripts/search-design-knowledge.mjs "form errors" --domain interaction');
   console.log('  node scripts/search-design-knowledge.mjs "mobile animation" --explain');
   console.log('  node scripts/search-design-knowledge.mjs "dark dashboard palette" --domain color');
@@ -242,8 +243,17 @@ function printResults(query, results, options = {}) {
     console.log((index + 1) + ". [" + result.domain + "] " + record.title + " (score " + result.score + ")");
     console.log("   " + record.summary);
 
-    const focus = record.fitWhen ?? record.priorities ?? record.behavior ?? record.layoutRules ?? [];
-    if (focus.length) console.log("   Focus: " + focus.slice(0, 3).join("; "));
+    const focus = record.fitWhen ?? record.priorities ?? record.behavior
+      ?? record.layoutRules ?? record.useWhen ?? record.do ?? record.implementation
+      ?? record.signature ?? [];
+    if (Array.isArray(focus) && focus.length) console.log("   Focus: " + focus.slice(0, 3).join("; "));
+    if (typeof record.pairing === "string") console.log("   Pairing: " + record.pairing);
+    if (typeof record.duration === "string") console.log("   Timing: " + record.duration);
+    if (record.tokens && typeof record.tokens === "object") {
+      const tokenPreview = Object.entries(record.tokens).slice(0, 6)
+        .map(([name, value]) => name + "=" + value);
+      if (tokenPreview.length) console.log("   Token preview: " + tokenPreview.join("; "));
+    }
 
     const cautions = record.avoid ?? record.antiPatterns ?? record.cautions ?? [];
     if (cautions.length) console.log("   Avoid: " + cautions.slice(0, 2).join("; "));
