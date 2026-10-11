@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { searchKnowledge } from "../scripts/search-design-knowledge.mjs";
+import { loadCatalog, searchKnowledge } from "../scripts/search-design-knowledge.mjs";
 
 const catalog = {
   directions: [
@@ -67,6 +67,48 @@ test("restricts domains and respects the result limit", () => {
   const results = searchKnowledge(catalog, "animation", { domain: "interaction", limit: 1 });
   assert.ok(results.length <= 1);
   assert.ok(results.every((result) => result.domain === "interaction"));
+});
+
+test("loads a complete catalog with stable unique record IDs", async () => {
+  const actual = await loadCatalog();
+  const collections = [
+    "directions", "pagePatterns", "interactionPatterns", "densityProfiles",
+    "productProfiles", "styleDirections", "colorStrategies", "typographySystems",
+    "motionRecipes", "uxGuidelines", "chartPatterns", "stackGuides",
+  ];
+  const ids = [];
+  for (const collection of collections) {
+    assert.ok(Array.isArray(actual[collection]), collection + " must be an array");
+    assert.ok(actual[collection].length > 0, collection + " must not be empty");
+    for (const record of actual[collection]) {
+      assert.equal(typeof record.id, "string");
+      assert.equal(typeof record.title, "string");
+      assert.equal(typeof record.summary, "string");
+      assert.ok(Array.isArray(record.tags));
+      ids.push(record.id);
+    }
+  }
+  assert.equal(new Set(ids).size, ids.length, "record IDs must be unique");
+});
+
+test("searches every new knowledge domain against the real catalog", async () => {
+  const actual = await loadCatalog();
+  const cases = [
+    ["product", "AI assistant", "ai-saas-product"],
+    ["style", "editorial", "style-editorial-premium"],
+    ["color", "dark dashboard palette", "color-dark-workspace"],
+    ["typography", "editorial reading", "type-editorial-reading"],
+    ["motion", "reduced motion", "motion-reduced-mode"],
+    ["ux", "form errors", "ux-form-label-validation"],
+    ["chart", "chart accessibility", "chart-accessible-data-alternative"],
+    ["stack", "React hooks", "stack-react"],
+  ];
+  for (const [domain, query, expectedId] of cases) {
+    const results = searchKnowledge(actual, query, { domain, limit: 10 });
+    assert.ok(results.some((result) => result.record.id === expectedId),
+      domain + " search should include " + expectedId);
+    assert.ok(results.every((result) => result.domain === domain));
+  }
 });
 
 test("returns no results for blank input", () => {
