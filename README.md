@@ -147,6 +147,7 @@ Domains: `all`, `direction`, `page`, `interaction`, `density`, `product`, `style
 - `skills/` — 12 specialist playbooks bundled within the one skill
 - `docs/decision-framework.md` — brief intake, design direction, page-pattern heuristics, routing
 - `docs/quality-matrix.md` — states, responsive coverage, risk priority, evidence levels
+- `docs/knowledge-catalog.md` — knowledge domains, search examples, and data authoring rules
 - `docs/design-principles.md` — shared product and engineering principles
 - `docs/preflight-checklist.md` — before-delivery checklist
 - `examples/design-brief.md` — reusable brief and acceptance-criteria template
