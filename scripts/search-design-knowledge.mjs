@@ -12,6 +12,14 @@ const domains = {
   page: "pagePatterns",
   interaction: "interactionPatterns",
   density: "densityProfiles",
+  product: "productProfiles",
+  style: "styleDirections",
+  color: "colorStrategies",
+  typography: "typographySystems",
+  motion: "motionRecipes",
+  ux: "uxGuidelines",
+  chart: "chartPatterns",
+  stack: "stackGuides",
 };
 
 const synonymGroups = [
@@ -24,6 +32,17 @@ const synonymGroups = [
   ["form", "forms", "input", "inputs"],
   ["ui", "interface", "interfaces"],
   ["ux", "usability", "experience"],
+  ["color", "colour", "palette", "theme"],
+  ["typography", "typeface", "font", "fonts"],
+  ["style", "aesthetic", "visual"],
+  ["product", "industry", "domain"],
+  ["chart", "graph", "visualization", "visualisation"],
+  ["stack", "framework", "technology"],
+  ["commerce", "ecommerce", "shop", "shopping"],
+  ["ai", "llm", "assistant", "copilot"],
+  ["developer", "api", "devtool"],
+  ["table", "grid", "spreadsheet"],
+  ["contrast", "wcag", "readability"],
 ];
 
 const synonymIndex = new Map();
@@ -198,9 +217,12 @@ function printUsage() {
   console.log('  node scripts/search-design-knowledge.mjs "dashboard charts"');
   console.log('  node scripts/search-design-knowledge.mjs "form errors" --domain interaction');
   console.log('  node scripts/search-design-knowledge.mjs "mobile animation" --explain');
+  console.log('  node scripts/search-design-knowledge.mjs "dark dashboard palette" --domain color');
+  console.log('  node scripts/search-design-knowledge.mjs "reduced motion" --domain motion');
+  console.log('  node scripts/search-design-knowledge.mjs "chart accessibility" --domain chart');
   console.log('  node scripts/search-design-knowledge.mjs "responsive charts" --require-all --limit 5');
   console.log("");
-  console.log("Domains: all, direction, page, interaction, density.");
+  console.log("Domains: all, direction, page, interaction, density, product, style, color, typography, motion, ux, chart, stack.");
   console.log("Options: --domain <name>, --limit <1-50>, --require-all, --explain, --json, --help.");
 }
 
@@ -211,7 +233,7 @@ function printResults(query, results, options = {}) {
   if (results.length === 0) {
     console.log(options.requireAll
       ? "No matches containing every query term. Try fewer or broader terms."
-      : "No matches. Try a broader term such as dashboard, forms, accessibility, responsive, or loading.");
+      : "No matches. Try a broader term such as dashboard, forms, accessibility, responsive, color, typography, motion, charts, or stack.");
     return;
   }
 
@@ -258,7 +280,7 @@ async function main() {
   }
 
   if (!Object.hasOwn(domains, parsed.domain) && parsed.domain !== "all") {
-    console.error("Unknown domain: " + parsed.domain + ". Use all, direction, page, interaction, or density.");
+    console.error("Unknown domain: " + parsed.domain + ". Use all, " + Object.keys(domains).join(", ") + ".");
     process.exitCode = 2;
     return;
   }
