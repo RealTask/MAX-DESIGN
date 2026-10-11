@@ -8,6 +8,7 @@ const requiredSections = ["## When to use", "## Workflow", "## Quality gates"];
 const requiredReferenceFiles = [
   "docs/decision-framework.md",
   "docs/quality-matrix.md",
+  "docs/knowledge-catalog.md",
   "examples/design-brief.md",
 ];
 const errors = [];
@@ -67,6 +68,7 @@ async function main() {
   for (const bundledPath of [
     "docs/decision-framework.md",
     "docs/quality-matrix.md",
+    "docs/knowledge-catalog.md",
     "examples/design-brief.md",
     "knowledge/design-patterns.json",
     "scripts/search-design-knowledge.mjs",
@@ -213,6 +215,14 @@ async function main() {
       ["pagePatterns", 6],
       ["interactionPatterns", 5],
       ["densityProfiles", 3],
+      ["productProfiles", 11],
+      ["styleDirections", 8],
+      ["colorStrategies", 6],
+      ["typographySystems", 6],
+      ["motionRecipes", 8],
+      ["uxGuidelines", 15],
+      ["chartPatterns", 7],
+      ["stackGuides", 8],
     ];
     const knowledgeIds = new Set();
     for (const [collectionName, minimumCount] of collections) {
@@ -238,6 +248,14 @@ async function main() {
         ["forms", "all"],
         ["save", "interaction"],
         ["editorial", "direction"],
+        ["AI assistant", "product"],
+        ["editorial", "style"],
+        ["dark dashboard palette", "color"],
+        ["editorial reading", "typography"],
+        ["reduced motion", "motion"],
+        ["form errors", "ux"],
+        ["chart accessibility", "chart"],
+        ["React hooks", "stack"],
       ]) {
         if (searchKnowledge(catalog, query, { domain, limit: 3 }).length === 0) {
           fail("Design knowledge: search smoke test returned no results for " + query + " in " + domain + ".");
