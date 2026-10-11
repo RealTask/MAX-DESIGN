@@ -32,6 +32,17 @@ Read agent instructions, routes, package scripts, current screens, design tokens
 
 Use docs/decision-framework.md to decide the hierarchy, page structure, information density, type roles, semantic color, responsive behavior, and purposeful signature detail. Explain meaningful trade-offs. Do not select gradients, glass, giant radii, repeated card grids, or animation by default.
 
+When category-specific grounding helps, query the bundled offline catalog from the installed skill directory. Available domains include product profiles, style, color, typography, motion, UX/accessibility, charts, implementation stacks, directions, page patterns, interactions, and density:
+
+```bash
+node scripts/search-design-knowledge.mjs "AI assistant output states" --domain product
+node scripts/search-design-knowledge.mjs "dark dashboard palette" --domain color
+node scripts/search-design-knowledge.mjs "form errors" --domain ux
+node scripts/search-design-knowledge.mjs "chart accessibility" --domain chart
+```
+
+Use matches as starting points, inspect the actual product and installed framework versions, and validate palette contrast and interaction behavior before applying recommendations.
+
 ### 4. Route specialist work
 
 Use the narrowest relevant workflow; combine skills only when they address real parts of the task.
