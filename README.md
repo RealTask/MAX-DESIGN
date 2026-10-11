@@ -101,19 +101,23 @@ MAX-DESIGN reads only the specialist playbooks relevant to a task and combines t
 
 ## 🔎 Searchable design knowledge
 
-The included decision catalog has visual directions, page patterns, interaction patterns, and density guidance. Search it locally without a network connection or third-party runtime dependencies.
+The catalog is a curated, offline-first knowledge base covering product profiles, visual directions, page patterns, interaction patterns, density, color strategies, typography systems, motion recipes, UX/accessibility rules, chart patterns, and stack guidance. It uses original MAX-DESIGN guidance shaped by a comparative review of public UI/UX knowledge taxonomies; it does not bundle UI/UX Pro Max data files or scripts.
 
 Run these commands **from the installed `max-design` directory**:
 
 ```bash
 node scripts/search-design-knowledge.mjs "dashboard charts"
-node scripts/search-design-knowledge.mjs "form errors" --domain interaction
-node scripts/search-design-knowledge.mjs "editorial" --domain direction --limit 5
-node scripts/search-design-knowledge.mjs "mobile animation" --explain
+node scripts/search-design-knowledge.mjs "AI assistant output states" --domain product
+node scripts/search-design-knowledge.mjs "editorial" --domain style --limit 5
+node scripts/search-design-knowledge.mjs "dark dashboard palette" --domain color
+node scripts/search-design-knowledge.mjs "reduced motion" --domain motion
+node scripts/search-design-knowledge.mjs "form errors" --domain ux
+node scripts/search-design-knowledge.mjs "chart accessibility" --domain chart
+node scripts/search-design-knowledge.mjs "responsive charts" --domain stack
 node scripts/search-design-knowledge.mjs "responsive charts" --require-all --limit 5
 ```
 
-Domains: `all`, `direction`, `page`, `interaction`, and `density`. Use `--json` for structured output. Search uses weighted fields, related terms, Unicode text, and stable ordering. Treat matches as context-aware starting points, not automatic style prescriptions.
+Domains: `all`, `direction`, `page`, `interaction`, `density`, `product`, `style`, `color`, `typography`, `motion`, `ux`, `chart`, and `stack`. Use `--json` for structured output. Search uses weighted fields, related terms, Unicode normalization, related-term expansion, and stable ordering. Matches are contextual starting points, not automatic style prescriptions; verify colors, APIs, accessibility, and framework-version assumptions against the actual project.
 
 ## 🧭 Workflow
 
@@ -147,7 +151,7 @@ Domains: `all`, `direction`, `page`, `interaction`, and `density`. Use `--json` 
 - `docs/preflight-checklist.md` — before-delivery checklist
 - `examples/design-brief.md` — reusable brief and acceptance-criteria template
 - `examples/design-tokens.json` — illustrative semantic token structure
-- `knowledge/design-patterns.json` — local searchable design-knowledge catalog
+- `knowledge/design-patterns.json` — local searchable design-knowledge catalog across 12 domains
 - `scripts/validate-skills.mjs` — toolkit structure, token, catalog, and search smoke checks
 - `scripts/search-design-knowledge.mjs` — local design-knowledge search CLI
 
