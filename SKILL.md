@@ -46,9 +46,13 @@ node scripts/search-design-knowledge.mjs "reduced motion" --domain motion
 node scripts/search-design-knowledge.mjs "chart accessibility" --domain chart
 node scripts/search-design-knowledge.mjs "responsive charts" --domain stack
 node scripts/search-design-knowledge.mjs "responsive charts" --require-all --limit 5
+node scripts/search-design-knowledge.mjs "modal focus lifecycle" --domain ux
+node scripts/search-design-knowledge.mjs "offline retry" --domain ux
+node scripts/search-design-knowledge.mjs "subscription invoice" --domain page
+node scripts/search-design-knowledge.mjs "Core Web Vitals" --domain stack
 ```
 
-Available domains: `all`, `direction`, `page`, `interaction`, `density`, `product`, `style`, `color`, `typography`, `motion`, `ux`, `chart`, and `stack`. Use `--json` for machine-readable results. The catalog is at `knowledge/design-patterns.json`; the search implementation is at `scripts/search-design-knowledge.mjs`. Search remains local and requires no network connection or third-party runtime dependency.
+Available domains: `all`, `direction`, `page`, `interaction`, `density`, `product`, `style`, `color`, `typography`, `motion`, `ux`, `chart`, and `stack`. Use `--json` for machine-readable results. The search loader merges `knowledge/design-patterns.json` and `knowledge/advanced-patterns.json`; the search implementation is at `scripts/search-design-knowledge.mjs`. The supplementary records include advanced product workflows, AI streaming, account and billing, privacy and permissions, resilient network states, ARIA widget behavior, WCAG 2.2 checks, chart data integrity, and evidence-based performance review. Research provenance and source limitations are documented in `docs/knowledge-sources.md`. Search remains local and requires no network connection or third-party runtime dependency.
 
 ### 4. Select a specific direction
 

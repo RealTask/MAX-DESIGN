@@ -9,6 +9,7 @@ const requiredReferenceFiles = [
   "docs/decision-framework.md",
   "docs/quality-matrix.md",
   "docs/knowledge-catalog.md",
+  "docs/knowledge-sources.md",
   "examples/design-brief.md",
 ];
 const errors = [];
@@ -71,6 +72,8 @@ async function main() {
     "docs/knowledge-catalog.md",
     "examples/design-brief.md",
     "knowledge/design-patterns.json",
+    "knowledge/advanced-patterns.json",
+    "docs/knowledge-sources.md",
     "scripts/search-design-knowledge.mjs",
     "skills/frontend-design/SKILL.md",
   ]) {
@@ -202,28 +205,77 @@ async function main() {
 
 
   const knowledgePath = path.join(root, "knowledge", "design-patterns.json");
+  const advancedKnowledgePath = path.join(root, "knowledge", "advanced-patterns.json");
+  let baseCatalog = null;
+  let advancedCatalog = null;
   let catalog = null;
+
   try {
-    catalog = JSON.parse(await readFile(knowledgePath, "utf8"));
+    baseCatalog = JSON.parse(await readFile(knowledgePath, "utf8"));
   } catch (error) {
     fail("knowledge/design-patterns.json is missing or invalid JSON: " + error.message);
   }
 
+  try {
+    advancedCatalog = JSON.parse(await readFile(advancedKnowledgePath, "utf8"));
+  } catch (error) {
+    fail("knowledge/advanced-patterns.json is missing or invalid JSON: " + error.message);
+  }
+
+  const collections = [
+    ["directions", 6],
+    ["pagePatterns", 6],
+    ["interactionPatterns", 5],
+    ["densityProfiles", 3],
+    ["productProfiles", 11],
+    ["styleDirections", 8],
+    ["colorStrategies", 6],
+    ["typographySystems", 6],
+    ["motionRecipes", 8],
+    ["uxGuidelines", 15],
+    ["chartPatterns", 7],
+    ["stackGuides", 8],
+  ];
+
+  if (advancedCatalog) {
+    if (advancedCatalog.schemaVersion !== "1.0.0") {
+      fail("Advanced design knowledge must declare schemaVersion: 1.0.0.");
+    }
+    if (typeof advancedCatalog.title !== "string" || !Array.isArray(advancedCatalog.researchBasis)
+      || advancedCatalog.researchBasis.length === 0) {
+      fail("Advanced design knowledge needs a title and non-empty researchBasis.");
+    }
+
+    let addedRecordCount = 0;
+    for (const [collectionName] of collections) {
+      const records = advancedCatalog[collectionName] ?? [];
+      if (!Array.isArray(records)) {
+        fail("Advanced design knowledge collection " + collectionName + " must be an array.");
+        continue;
+      }
+      addedRecordCount += records.length;
+    }
+    if (addedRecordCount < 25) {
+      fail("Advanced design knowledge must contain at least 25 supplementary records.");
+    }
+  }
+
+  if (baseCatalog && advancedCatalog) {
+    catalog = { ...baseCatalog };
+    for (const [collectionName] of collections) {
+      const baseRecords = baseCatalog[collectionName] ?? [];
+      const additionalRecords = advancedCatalog[collectionName] ?? [];
+      if (!Array.isArray(baseRecords) || !Array.isArray(additionalRecords)) {
+        fail("Design knowledge: " + collectionName + " must be an array in both catalogs.");
+        continue;
+      }
+      catalog[collectionName] = [...baseRecords, ...additionalRecords];
+    }
+  } else {
+    catalog = baseCatalog;
+  }
+
   if (catalog) {
-    const collections = [
-      ["directions", 6],
-      ["pagePatterns", 6],
-      ["interactionPatterns", 5],
-      ["densityProfiles", 3],
-      ["productProfiles", 11],
-      ["styleDirections", 8],
-      ["colorStrategies", 6],
-      ["typographySystems", 6],
-      ["motionRecipes", 8],
-      ["uxGuidelines", 15],
-      ["chartPatterns", 7],
-      ["stackGuides", 8],
-    ];
     const knowledgeIds = new Set();
     for (const [collectionName, minimumCount] of collections) {
       const records = catalog[collectionName];
@@ -256,6 +308,15 @@ async function main() {
         ["form errors", "ux"],
         ["chart accessibility", "chart"],
         ["React hooks", "stack"],
+        ["privacy consent", "ux"],
+        ["modal focus lifecycle", "ux"],
+        ["time series freshness", "chart"],
+        ["subscription invoice", "page"],
+        ["streaming output", "interaction"],
+        ["Core Web Vitals", "stack"],
+        ["offline retry", "ux"],
+        ["semantic HTML", "stack"],
+        ["command palette", "interaction"],
       ]) {
         if (searchKnowledge(catalog, query, { domain, limit: 3 }).length === 0) {
           fail("Design knowledge: search smoke test returned no results for " + query + " in " + domain + ".");
