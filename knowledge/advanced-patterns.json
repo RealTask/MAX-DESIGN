@@ -459,7 +459,7 @@
       "id": "measure-performance-evidence",
       "title": "Performance evidence and reporting",
       "summary": "Separate code-level optimization hypotheses from measured user-facing results and state the scope of every performance claim.",
-      "tags": ["performance", "measurement", "profiling", "bundle", "field-data", "lab-data", "verification"],
+      "tags": ["performance", "core-web-vitals", "lcp", "inp", "cls", "measurement", "profiling", "bundle", "field-data", "lab-data", "verification"],
       "implementation": [
         "Inspect bundle cost, image dimensions, font behavior, long tasks, layout shifts, and repeated renders when relevant.",
         "Record device, route, network conditions, test method, and whether metrics are lab or field evidence.",
