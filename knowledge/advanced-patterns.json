@@ -1,0 +1,474 @@
+{
+  "schemaVersion": "1.0.0",
+  "title": "MAX-DESIGN advanced interaction and product patterns",
+  "description": "Supplementary original, searchable decision records for complex product workflows, accessibility behavior, privacy, resilient states, and measurable implementation quality.",
+  "guidance": "Use these records with knowledge/design-patterns.json. They are decision aids, not automatic prescriptions. Confirm normative requirements, browser support, and project conventions before implementation.",
+  "researchBasis": [
+    "WCAG 2.2 and WAI-ARIA Authoring Practices Guide for web accessibility expectations.",
+    "MDN accessibility guidance for native semantics, keyboard use, and dynamic updates.",
+    "web.dev Core Web Vitals guidance for field-oriented performance signals.",
+    "Apple Human Interface Guidelines for platform-aware interaction and purposeful motion."
+  ],
+  "pagePatterns": [
+    {
+      "id": "ai-conversation-workspace",
+      "title": "AI conversation workspace",
+      "summary": "A task workspace for prompts, generated output, tool activity, revision, and recovery rather than a decorative chat transcript.",
+      "tags": ["ai", "assistant", "chat", "generation", "streaming", "copilot", "workspace", "history"],
+      "question": "What is the user trying to create or decide, and how can they inspect, revise, reuse, or recover the result?",
+      "priorities": [
+        "Separate user input, generated output, tool activity, and system status visually and semantically.",
+        "Keep the active task and conversation context clear while longer responses arrive.",
+        "Support copy, edit, regenerate, stop, retry, and history actions only when their behavior is real.",
+        "Preserve user input when generation fails or the connection drops."
+      ],
+      "states": ["Idle", "Queued", "Streaming", "Tool activity", "Completed", "Stopped", "Rate-limited", "Failed with retry", "Partial result"],
+      "verify": ["Keyboard reachability of composer and message actions", "Announcements that do not read every streamed token", "Long output and code overflow", "Refresh and failed-request recovery"],
+      "avoid": ["Fake progress percentages", "Claiming a tool completed when it did not", "Unbounded auto-scroll that prevents reviewing earlier output"],
+      "references": ["https://www.w3.org/WAI/ARIA/apg/", "https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA"]
+    },
+    {
+      "id": "account-billing-settings",
+      "title": "Account and billing settings",
+      "summary": "A settings area for identity, plan, invoices, payment methods, security, and cancellation where consequences and status must remain unambiguous.",
+      "tags": ["account", "settings", "billing", "subscription", "invoice", "payment", "security", "saas"],
+      "question": "Which account change is being made, when does it take effect, and how can the user verify or reverse it?",
+      "priorities": [
+        "Group settings by user goal rather than internal service ownership.",
+        "Show current plan, renewal or expiry timing, billing period, and total cost before asking for confirmation.",
+        "Distinguish saved state from unsaved edits and pending server changes.",
+        "Explain cancellation, downgrade, deletion, and payment failure outcomes in plain language."
+      ],
+      "states": ["Loaded", "Loading", "Unsaved edits", "Saving", "Save failed", "Payment action pending", "Payment failed", "No invoices", "Access restricted"],
+      "verify": ["Currency and date formatting", "Retry does not duplicate a payment action", "Focus and message after save", "Consequences are clear before irreversible changes"],
+      "avoid": ["Dark patterns that hide cancellation", "Fabricated urgency", "Ambiguous success toasts when persistence failed"],
+      "references": ["https://www.w3.org/TR/WCAG22/", "https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA"]
+    },
+    {
+      "id": "search-first-resource-catalog",
+      "title": "Search-first resource catalog",
+      "summary": "A library or inventory interface where query, filters, sorting, and result context are the main navigation model.",
+      "tags": ["search", "filter", "catalog", "library", "inventory", "facets", "sort", "discovery"],
+      "question": "Can users express what they need, understand the current result set, and refine or clear a query without losing context?",
+      "priorities": [
+        "Keep the query visible and distinguish active filters from available filters.",
+        "Show the result count and the sort order when each affects interpretation.",
+        "Make clear-all and individual filter removal easy to find.",
+        "Represent no results separately from loading, unavailable data, and an empty collection."
+      ],
+      "states": ["Initial", "Typing", "Loading", "Results", "No results", "No data", "Request failed", "Filters applied", "Filters restored from URL"],
+      "verify": ["Browser Back/Forward preserves expected state", "Long filter names do not break layout", "Keyboard access to suggestion lists", "Mobile filter changes have an explicit apply or immediate-update model"],
+      "avoid": ["Silently clearing queries after a filter change", "Unlabeled icon-only filters", "Showing stale counts as if they match the current query"],
+      "references": ["https://www.w3.org/WAI/ARIA/apg/patterns/combobox/", "https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA"]
+    },
+    {
+      "id": "data-operations-workspace",
+      "title": "Data operations workspace",
+      "summary": "A dense work surface for reviewing records, comparing states, applying bulk actions, and investigating exceptions.",
+      "tags": ["operations", "admin", "data", "table", "bulk", "records", "analytics", "workflow"],
+      "question": "Which records need attention, what can be changed safely, and how will users understand the scope and result of an action?",
+      "priorities": [
+        "Make record identity, status, primary value, and next action scannable.",
+        "Provide selection count and scope before bulk actions.",
+        "Keep sort and filter context visible when users page or open a record.",
+        "Use explicit confirmation for high-impact bulk changes and report partial success honestly."
+      ],
+      "states": ["Loading", "Populated", "Empty dataset", "No filtered matches", "Partial data", "Stale data", "Bulk action pending", "Partial failure", "Permission denied"],
+      "verify": ["Column headings and row relationships", "Pagination and selection interaction", "Horizontal overflow on small screens", "Bulk action result reconciliation"],
+      "avoid": ["Ambiguous select-all scope", "Color-only status", "Replacing the entire table with a vague error after one row fails"],
+      "references": ["https://www.w3.org/TR/WCAG22/", "https://www.w3.org/WAI/ARIA/apg/"]
+    }
+  ],
+  "interactionPatterns": [
+    {
+      "id": "command-palette-keyboard-model",
+      "title": "Command palette and global search",
+      "summary": "A keyboard-first launcher that lets users search destinations or actions while retaining clear focus, selection, and escape behavior.",
+      "tags": ["command", "palette", "search", "keyboard", "shortcut", "combobox", "navigation"],
+      "behavior": [
+        "Open through a visible control and an optional documented shortcut; never make the shortcut the only entry point.",
+        "Move through options with a predictable keyboard model and expose the active option semantically.",
+        "Enter activates the selected item; Escape closes the overlay and returns focus to the opener.",
+        "Separate actions from navigation destinations and communicate destructive or privileged actions before execution."
+      ],
+      "verify": ["Keyboard-only open, search, selection, and close", "Focus restoration", "Screen-reader names and option count where supported", "Shortcut does not intercept typing in unrelated contexts"],
+      "avoid": ["Using a list of clickable divs without keyboard semantics", "Hidden shortcut-only functionality", "Executing a high-impact action on an ambiguous partial match"],
+      "references": ["https://www.w3.org/WAI/ARIA/apg/patterns/combobox/", "https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/", "https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA"]
+    },
+    {
+      "id": "optimistic-update-with-rollback",
+      "title": "Optimistic update with rollback",
+      "summary": "An interaction pattern for making low-risk changes feel immediate while keeping server truth and failure recovery explicit.",
+      "tags": ["optimistic", "save", "mutation", "pending", "rollback", "network", "state"],
+      "behavior": [
+        "Use optimistic UI only when the action is reversible and the likely result is sufficiently predictable.",
+        "Mark pending state subtly and prevent accidental duplicate submissions where necessary.",
+        "On failure, restore the known prior value or show a clearly recoverable conflict state.",
+        "For irreversible or financial actions, prefer a confirmed request flow over speculative success."
+      ],
+      "verify": ["Slow network", "Offline request", "Repeated activation", "Server conflict or validation failure", "State after navigation and refresh"],
+      "avoid": ["A success message before the server confirms a consequential action", "Silently reverting a change", "Discarding newer user edits during rollback"],
+      "references": ["https://web.dev/articles/vitals", "https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA"]
+    },
+    {
+      "id": "persistent-filter-state",
+      "title": "Persistent and shareable filter state",
+      "summary": "A state model for search and table controls that preserves user intent across refreshes, pagination, and shared links when appropriate.",
+      "tags": ["filters", "search", "url", "state", "pagination", "sort", "history", "deep-link"],
+      "behavior": [
+        "Define which state belongs in the URL, in-session state, or saved preferences.",
+        "Keep URL query parameters canonical and validate untrusted or unsupported values.",
+        "Restore state consistently on refresh and browser navigation.",
+        "Reset pagination when a new filter makes the current page invalid."
+      ],
+      "verify": ["Refresh", "Back and Forward", "Copied URL in a second session", "Unknown query parameters", "Filter change on a later page"],
+      "avoid": ["Storing shareable state only in ephemeral component memory", "Exposing secrets or personal data in URLs", "Creating navigation history for every keystroke without an explicit policy"],
+      "references": ["https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA", "https://web.dev/articles/vitals"]
+    },
+    {
+      "id": "streaming-output-control",
+      "title": "Streaming output controls",
+      "summary": "Controls and feedback for incremental output that preserve perceived responsiveness without overwhelming assistive technology or the main thread.",
+      "tags": ["streaming", "ai", "progressive", "cancel", "generation", "latency", "live-region"],
+      "behavior": [
+        "Communicate that generation is in progress and provide a stop or cancel action when supported.",
+        "Batch visual updates when needed; do not force excessive layout or announce every token.",
+        "Distinguish partial output from completed output and make continuation or retry behavior explicit.",
+        "Respect reduced motion and avoid making attention depend solely on animation."
+      ],
+      "verify": ["Slow stream", "Stream interruption", "Cancellation during output", "Long code block", "Screen-reader announcement frequency", "Reduced-motion preference"],
+      "avoid": ["A fake percentage without a measurable basis", "Unbounded DOM updates", "Auto-scrolling that fights manual reading"],
+      "references": ["https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA", "https://developer.apple.com/design/human-interface-guidelines/motion"]
+    }
+  ],
+  "densityProfiles": [
+    {
+      "id": "adaptive-operations-density",
+      "title": "Adaptive operational density",
+      "summary": "A density strategy for professional tools that supports fast scanning without shrinking essential text or hiding status.",
+      "tags": ["density", "enterprise", "operations", "dashboard", "table", "compact", "responsive"],
+      "useWhen": ["Users repeatedly compare many records", "Experienced users value scanning speed but still need readable controls"],
+      "layoutRules": [
+        "Use spacing rhythm and alignment to distinguish groups rather than enclosing every item in a card.",
+        "Expose a compact mode only when it has a clear benefit and stable, understandable behavior.",
+        "Keep row targets and focus indicators usable at every density setting.",
+        "On narrow screens, prioritize columns by user task or provide an explicit alternate record view."
+      ],
+      "verify": ["Browser zoom and text resize", "Keyboard focus at row boundaries", "Long values and wrapping", "Small-screen information priority"],
+      "avoid": ["Reducing body text simply to fit more data", "Relying on hover to reveal critical fields"]
+    }
+  ],
+  "productProfiles": [
+    {
+      "id": "ai-creation-product",
+      "title": "AI creation product",
+      "summary": "An interface for generating, editing, and exporting content or code where trust depends on clear process states and user control.",
+      "tags": ["ai", "generation", "writing", "code", "image", "assistant", "creation", "model"],
+      "priorities": ["Clear input intent and output format", "Visible generation, cancellation, and failure states", "Editable and exportable results", "Clear distinction between generated suggestions and verified facts"],
+      "risks": ["Streaming can overwhelm assistive technology", "A model or tool failure can lose user work", "Fake certainty or fake progress erodes trust"],
+      "verify": ["Empty prompt", "Long prompt", "Partial output", "Tool failure", "Rate limits", "Retry", "Copy/export", "Keyboard use"],
+      "avoid": ["Invented model capabilities", "Unverified success states", "Unclear data-retention or training controls"],
+      "references": ["https://www.w3.org/WAI/ARIA/apg/", "https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA"]
+    },
+    {
+      "id": "multi-tenant-admin-console",
+      "title": "Multi-tenant admin console",
+      "summary": "An administration product where users operate across organizations, workspaces, projects, roles, and environments.",
+      "tags": ["admin", "enterprise", "tenant", "workspace", "role", "permission", "settings", "audit"],
+      "priorities": ["Keep current organization and environment visible", "Explain role and access scope before a privileged action", "Confirm the target and scope of bulk changes", "Record outcome and partial failure clearly"],
+      "risks": ["Cross-workspace actions can affect the wrong tenant", "Permission state may change during a session", "Dense navigation can obscure context"],
+      "verify": ["Switch organization", "Deep link to a restricted item", "Expired session", "Permission removed mid-task", "Bulk action with partial failures"],
+      "avoid": ["Ambiguous tenant switchers", "Assuming a hidden role is equivalent to disabled access", "Displaying confidential values to an unauthorized user"],
+      "references": ["https://www.w3.org/TR/WCAG22/", "https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA"]
+    },
+    {
+      "id": "privacy-sensitive-account",
+      "title": "Privacy-sensitive account area",
+      "summary": "Settings for personal data, connected services, permissions, exports, and account deletion where informed consent and recovery matter.",
+      "tags": ["privacy", "personal-data", "consent", "permissions", "export", "delete", "account", "security"],
+      "priorities": ["Use plain descriptions of data use and sharing", "Request permissions at the moment of need with a clear benefit", "Offer understandable export, revoke, and deletion paths", "Confirm irreversible changes and explain their effects"],
+      "risks": ["Excessive permission prompts reduce trust", "Deletion and export workflows can be legally or operationally consequential", "Consent interfaces can accidentally manipulate choice"],
+      "verify": ["Denied permission", "Revoked connection", "Expired authorization", "Export pending or failed", "Deletion scope and confirmation", "Accessible confirmation dialog"],
+      "avoid": ["Preselected consent where it is not appropriate", "Bundled unrelated permission requests", "Dark patterns that obstruct refusal or cancellation"],
+      "references": ["https://www.w3.org/TR/WCAG22/", "https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/"]
+    },
+    {
+      "id": "subscription-commerce",
+      "title": "Subscription commerce",
+      "summary": "A purchase flow where price, billing interval, renewal, trial conversion, taxes, and cancellation terms must be legible before commitment.",
+      "tags": ["commerce", "subscription", "checkout", "pricing", "trial", "renewal", "payment", "conversion"],
+      "priorities": ["Show recurring total and interval near the decision point", "Keep selected plan and add-ons consistent through checkout", "Provide clear validation and payment recovery", "Confirm the final transaction outcome from the actual service response"],
+      "risks": ["Unexpected totals create distrust", "Double submits may create duplicate orders", "Locale and currency mismatch can confuse costs"],
+      "verify": ["Tax or shipping changes", "Payment declined", "Slow response and repeated clicks", "Expired discount", "Currency and date locale", "Confirmation after server success"],
+      "avoid": ["False scarcity or countdowns", "Hidden recurring charges", "Treating a client-side click as proof of payment"]
+    }
+  ],
+  "styleDirections": [
+    {
+      "id": "quiet-layered-utility",
+      "title": "Quiet layered utility",
+      "summary": "A restrained visual system for tools where information and task completion should dominate while hierarchy still feels polished.",
+      "tags": ["utility", "saas", "professional", "editorial", "layered", "minimal", "enterprise"],
+      "fitWhen": ["The interface is used repeatedly for work", "Many content types must coexist without competing for attention"],
+      "layout": ["Use surfaces and borders only to communicate grouping or interaction", "Create hierarchy with typography, alignment, spacing, and state before adding shadows"],
+      "colorApproach": "Start from neutral surfaces and semantic roles; reserve stronger accents for actions, selected states, and meaningful status.",
+      "signature": ["Consistent edge alignment", "A restrained surface elevation ladder", "Distinct focus and selected states"],
+      "avoid": ["Uniform card grids for unrelated content", "Excessive blur, gradients, glows, and shadows", "Low-contrast secondary text that disappears on mobile"],
+      "risks": ["Too little contrast can make boundaries unclear", "Overly restrained design can hide affordances"]
+    }
+  ],
+  "colorStrategies": [
+    {
+      "id": "semantic-status-and-dark-mode",
+      "title": "Semantic status and dark-mode roles",
+      "summary": "A token strategy that separates brand expression from success, warning, danger, information, focus, and selection meaning across themes.",
+      "tags": ["color", "dark-mode", "tokens", "status", "contrast", "theme", "accessibility"],
+      "tokens": {
+        "text-primary": "high-emphasis foreground for the current surface",
+        "text-muted": "secondary text that still meets the applicable contrast requirement",
+        "surface-page": "page canvas",
+        "surface-raised": "elevated or grouped surface",
+        "border-subtle": "nonessential structural boundary",
+        "focus-ring": "clearly visible keyboard focus",
+        "status-success": "positive completion state, paired with text or an icon",
+        "status-warning": "caution state, paired with text or an icon",
+        "status-danger": "error or destructive state, paired with text or an icon"
+      },
+      "verify": ["Test exact foreground/background pairs in each theme", "Test hover, selected, disabled, and focus states", "Do not encode the only meaning in hue"],
+      "avoid": ["Using brand accent as every status", "Applying identical hex values blindly across light and dark surfaces", "Assuming a palette is accessible without measuring rendered pairs"],
+      "references": ["https://www.w3.org/TR/WCAG22/", "https://developer.apple.com/design/human-interface-guidelines/accessibility"]
+    }
+  ],
+  "motionRecipes": [
+    {
+      "id": "incremental-feedback-motion",
+      "title": "Incremental feedback motion",
+      "summary": "Brief motion that helps users understand a state transition or arriving content while remaining optional and non-blocking.",
+      "tags": ["motion", "streaming", "feedback", "loading", "progressive", "reduced-motion", "transition"],
+      "useWhen": ["A change in state benefits from spatial continuity", "New content arrives incrementally and its origin matters"],
+      "duration": "Start with short, task-sensitive transitions and verify them in context; these are design starting points, not standard-mandated timings.",
+      "implementation": ["Prefer opacity and transform for simple transitions when appropriate", "Keep controls usable during animation", "Reduce or remove nonessential movement under prefers-reduced-motion", "Use text or a stable status indicator in addition to motion"],
+      "verify": ["Reduced-motion setting", "Slow device", "Repeated rapid actions", "Keyboard focus during transition", "Large blocks of arriving content"],
+      "avoid": ["Blocking an action until animation ends", "Infinite decorative motion", "Using animation as the only loading or success signal"],
+      "references": ["https://developer.apple.com/design/human-interface-guidelines/motion", "https://www.w3.org/TR/WCAG22/"]
+    }
+  ],
+  "uxGuidelines": [
+    {
+      "id": "wcag22-focus-target-verification",
+      "title": "WCAG 2.2 focus and target verification",
+      "summary": "Use WCAG 2.2 as the normative reference for focus visibility, focus not obscured, and target-size requirements rather than relying on informal pixel folklore.",
+      "tags": ["wcag", "accessibility", "focus", "target-size", "keyboard", "contrast", "compliance"],
+      "do": [
+        "Check keyboard focus remains visible and is not fully obscured by sticky headers, dialogs, or floating controls.",
+        "Check WCAG 2.2 target-size minimum and its exceptions for applicable controls; larger targets can still be a useful usability goal.",
+        "Test the actual rendered component states and background combinations.",
+        "Use native interactive semantics where available and ensure pointer actions have keyboard equivalents."
+      ],
+      "verify": ["Keyboard-only traversal", "Focus near sticky edges and overlays", "Real target spacing and dimensions", "Contrast and text resize", "Scope and method are documented"],
+      "avoid": ["Claiming WCAG conformance from an automated scan alone", "Treating a preferred 44px target as the exact universal WCAG 2.2 AA rule", "Removing default focus indication without a better visible alternative"],
+      "references": ["https://www.w3.org/TR/WCAG22/", "https://www.w3.org/WAI/ARIA/apg/", "https://developer.mozilla.org/en-US/docs/Web/Accessibility/Guides/Understanding_WCAG/Keyboard"]
+    },
+    {
+      "id": "modal-dialog-focus-lifecycle",
+      "title": "Modal dialog focus lifecycle",
+      "summary": "A modal overlay must create a coherent focus lifecycle and prevent interaction with obscured background content while open.",
+      "tags": ["dialog", "modal", "focus", "keyboard", "escape", "overlay", "accessibility"],
+      "do": [
+        "Move focus into the dialog when it opens, choosing an initial target appropriate to the content and task.",
+        "Keep keyboard navigation within a modal dialog while it remains open.",
+        "Close through an explicit control and support Escape when consistent with the dialog's purpose.",
+        "Return focus to the opener or another logical location when the dialog closes.",
+        "Make background content inert to pointer and keyboard interaction while a true modal is active."
+      ],
+      "verify": ["Open and close with keyboard", "Tab and Shift+Tab boundaries", "Escape behavior", "Focus restoration", "Long dialog content", "Validation error focus"],
+      "avoid": ["A visual overlay without modal behavior", "Losing the focused element after close", "Using a modal for information that could be inline"],
+      "references": ["https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/", "https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA"]
+    },
+    {
+      "id": "combobox-autocomplete-behavior",
+      "title": "Combobox and autocomplete behavior",
+      "summary": "Autocomplete is a keyboard interaction pattern, not merely a dropdown styled below an input.",
+      "tags": ["combobox", "autocomplete", "search", "keyboard", "listbox", "suggestions", "aria"],
+      "do": [
+        "Choose whether suggestions are automatic, list-like, or optional and document the behavior.",
+        "Keep DOM focus and active suggestion behavior consistent with the selected ARIA pattern.",
+        "Support arrow-key navigation and a clear acceptance/cancellation model.",
+        "Expose a useful empty-suggestions or loading status without announcing every keystroke noisily."
+      ],
+      "verify": ["Typing and editing", "Arrow keys", "Enter", "Escape", "No suggestions", "Async result race", "Screen-reader output"],
+      "avoid": ["A custom widget that only works with a mouse", "Using ARIA roles without implementing the associated keyboard model", "Accepting a stale response for an older query"],
+      "references": ["https://www.w3.org/WAI/ARIA/apg/patterns/combobox/", "https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA"]
+    },
+    {
+      "id": "privacy-aware-auth-errors",
+      "title": "Privacy-aware authentication errors",
+      "summary": "Authentication feedback should help legitimate users recover without unnecessarily revealing whether an account exists or exposing sensitive state.",
+      "tags": ["auth", "login", "privacy", "security", "password-reset", "error", "account"],
+      "do": [
+        "Use an error message appropriate to the security policy and threat model.",
+        "Keep password-reset and sign-in recovery routes understandable and accessible.",
+        "Do not remove the user's non-sensitive input after a recoverable failure.",
+        "Avoid placing credentials, session tokens, or sensitive personal details in query strings or logs."
+      ],
+      "verify": ["Unknown account and known account paths", "Rate-limited path", "Expired session", "Keyboard and screen-reader feedback", "No secret values in URLs"],
+      "avoid": ["Leaking account existence without a deliberate risk decision", "Clearing every field after a typo", "Pretending the user is signed in before authentication succeeds"],
+      "references": ["https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA", "https://www.w3.org/TR/WCAG22/"]
+    },
+    {
+      "id": "permission-request-timing",
+      "title": "Permission request timing and choice",
+      "summary": "Ask for browser, device, or connected-service permission when users understand its purpose and can still make progress where possible.",
+      "tags": ["permission", "consent", "privacy", "camera", "location", "notifications", "authorization"],
+      "do": [
+        "Explain the user-facing benefit immediately before the request.",
+        "Ask only for permissions relevant to the feature being used.",
+        "Provide a useful alternative when permission is denied, if an alternative exists.",
+        "Explain how to revisit or revoke a permission or connection."
+      ],
+      "verify": ["Allow", "Deny", "Dismiss", "Previously denied", "Revoked permission", "Feature fallback"],
+      "avoid": ["Repeatedly prompting after refusal without a meaningful context change", "Blocking unrelated tasks behind optional permissions", "Making refusal visually or functionally punitive"],
+      "references": ["https://developer.apple.com/design/human-interface-guidelines/accessibility", "https://www.w3.org/TR/WCAG22/"]
+    },
+    {
+      "id": "offline-and-degraded-network",
+      "title": "Offline and degraded-network resilience",
+      "summary": "Network failure is an ordinary product state that should preserve user intent and distinguish saved, pending, and unsaved work.",
+      "tags": ["offline", "network", "retry", "resilience", "timeout", "sync", "pending", "error"],
+      "do": [
+        "Distinguish a local draft from data confirmed by the server.",
+        "Preserve safe user input and explain whether an operation can be retried.",
+        "Use bounded retries with a clear recovery path rather than an endless spinner.",
+        "Handle duplicate submission and conflict resolution explicitly."
+      ],
+      "verify": ["Offline before submit", "Connection lost during submit", "Slow response", "Server timeout after possible success", "Retry after reconnection", "Conflicting edits"],
+      "avoid": ["Showing saved before persistence is confirmed", "Discarding drafts on refresh without warning", "Retrying non-idempotent actions blindly"],
+      "references": ["https://web.dev/articles/vitals", "https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA"]
+    },
+    {
+      "id": "status-announcement-priority",
+      "title": "Status and live-announcement priority",
+      "summary": "Make important async status perceivable without stealing focus or generating excessive screen-reader announcements.",
+      "tags": ["status", "live-region", "announcement", "async", "loading", "screen-reader", "accessibility"],
+      "do": [
+        "Prefer native status semantics and appropriate live-region politeness for non-urgent updates.",
+        "Announce meaningful milestones, completion, and recoverable failure rather than every internal state mutation.",
+        "Move focus only when the user needs to act at a new location, such as a failed form submission that requires correction.",
+        "Keep visible status text synchronized with the actual operation state."
+      ],
+      "verify": ["Async success", "Async error", "Repeated updates", "Screen-reader verbosity", "Focus does not jump unexpectedly"],
+      "avoid": ["Using assertive announcements for routine changes", "A spinner with no accessible context", "Assuming ARIA makes a broken interaction usable"],
+      "references": ["https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA", "https://www.w3.org/WAI/ARIA/apg/"]
+    },
+    {
+      "id": "empty-zero-stale-data",
+      "title": "Empty, zero, missing, and stale data",
+      "summary": "Different data conditions need different explanations so a view does not imply a false result or silently hide a system issue.",
+      "tags": ["empty", "zero", "missing", "null", "stale", "data-quality", "dashboard", "analytics"],
+      "do": [
+        "Distinguish a genuine numeric zero from missing, unavailable, invalid, and not-yet-loaded values.",
+        "Explain whether an empty view means no records exist or current filters match none.",
+        "Show timestamp, period, or freshness context when data can become stale.",
+        "Keep partial-data warnings close to the affected metrics."
+      ],
+      "verify": ["Zero values", "Null fields", "Partial API response", "Stale timestamp", "Filters produce no results", "Source unavailable"],
+      "avoid": ["Replacing missing values with zero without domain justification", "A stale metric presented as current", "A chart that implies continuous data across missing periods"]
+    },
+    {
+      "id": "destructive-action-recovery",
+      "title": "Destructive action and recovery design",
+      "summary": "High-impact actions need clear scope, proportional confirmation, a truthful outcome, and undo where feasible.",
+      "tags": ["destructive", "delete", "revoke", "confirmation", "undo", "recovery", "risk"],
+      "do": [
+        "State what will change, which item or scope is affected, and whether it can be reversed.",
+        "Use confirmation when consequences are serious or difficult to recover from; avoid redundant confirmation for trivial actions.",
+        "Prefer undo or soft-delete when product semantics and safety allow.",
+        "Confirm completion from the actual operation and expose partial failure."
+      ],
+      "verify": ["Wrong-item prevention", "Keyboard access", "Dialog focus lifecycle", "Undo expiration", "Bulk action scope", "Server failure"],
+      "avoid": ["Generic confirmation text such as Are you sure?", "A success toast before completion", "Using confirmation as a substitute for clear initial affordances"],
+      "references": ["https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/", "https://developer.apple.com/design/human-interface-guidelines/design-principles/"]
+    },
+    {
+      "id": "core-web-vitals-review",
+      "title": "Core Web Vitals and perceived performance",
+      "summary": "Assess real user experience with measured loading, responsiveness, and visual stability rather than using animation smoothness as a proxy.",
+      "tags": ["performance", "core-web-vitals", "lcp", "inp", "cls", "loading", "bundle", "layout-shift"],
+      "do": [
+        "Use current Core Web Vitals definitions and published thresholds from web.dev.",
+        "Measure with the available tool and state whether evidence is field data, lab data, or a source-code inspection.",
+        "Reserve image and media dimensions, avoid unnecessary layout shifts, and load only needed code and assets.",
+        "Prioritize the slow or unstable path observed rather than applying generic optimization rituals."
+      ],
+      "verify": ["Actual measurement source", "Representative route and device", "Image and font loading", "Interaction responsiveness", "Layout stability", "Before/after comparison when available"],
+      "avoid": ["Invented scores", "Claiming good field performance from one local run", "Optimizing a metric without checking task experience"],
+      "references": ["https://web.dev/articles/vitals"]
+    }
+  ],
+  "chartPatterns": [
+    {
+      "id": "time-series-gap-and-freshness",
+      "title": "Time-series gaps and freshness",
+      "summary": "A time-series display must distinguish actual zero, absent observations, delayed ingestion, and a period that has not completed.",
+      "tags": ["time-series", "chart", "stale", "gap", "analytics", "freshness", "zero", "data-quality"],
+      "useWhen": ["Data updates over time", "Missing samples or delayed ingestion can change interpretation"],
+      "implementation": [
+        "Label the time range, aggregation, timezone, units, and source when these affect interpretation.",
+        "Represent missing intervals intentionally rather than automatically connecting or zero-filling them.",
+        "Show freshness or delayed-data status beside the affected display.",
+        "Keep comparisons on compatible scales and disclose any normalization."
+      ],
+      "verify": ["Missing interval", "Actual zero", "Partial current period", "Timezone boundary", "Scale consistency", "Accessible table or summary"],
+      "avoid": ["Implying continuity through missing data", "Unlabeled units", "Using a truncated axis without a clear reason"],
+      "references": ["https://www.w3.org/TR/WCAG22/"]
+    },
+    {
+      "id": "chart-summary-and-data-alternative",
+      "title": "Chart summary and data alternative",
+      "summary": "Pair a visual chart with enough text and/or a structured data view to communicate values and trends beyond color, hover, and position.",
+      "tags": ["chart", "accessibility", "summary", "table", "legend", "color", "data-visualization"],
+      "useWhen": ["A chart communicates an important result", "Precise values or comparisons matter to a decision"],
+      "implementation": [
+        "Provide a concise summary of the major trend or comparison without overstating causation.",
+        "Name axes, units, series, date range, and meaningful reference values.",
+        "Use labels, line styles, markers, or patterns when color distinctions alone are insufficient.",
+        "Offer a table or equivalent text for exact values when useful to the task."
+      ],
+      "verify": ["Keyboard access to relevant detail", "Contrast and non-color encoding", "Screen-reader chart context", "Small-screen readability", "Data table matches chart data"],
+      "avoid": ["Tooltip-only essential values", "Unlabeled pie slices", "Decorative animation that changes interpretation"],
+      "references": ["https://www.w3.org/TR/WCAG22/", "https://www.w3.org/WAI/ARIA/apg/"]
+    }
+  ],
+  "stackGuides": [
+    {
+      "id": "semantic-html-progressive-enhancement",
+      "title": "Semantic HTML and progressive enhancement",
+      "summary": "Use native browser behavior as the baseline and add custom interaction only where it creates meaningful value.",
+      "tags": ["html", "semantic", "progressive-enhancement", "native", "accessibility", "keyboard", "web"],
+      "implementation": [
+        "Prefer buttons for actions, links for navigation, native form controls for input, and headings for document structure.",
+        "Add ARIA only when native semantics do not adequately express the interaction.",
+        "Keep essential content and navigation available when nonessential scripts or effects fail.",
+        "Avoid positive tabindex values and custom widgets without a documented keyboard model."
+      ],
+      "verify": ["Native keyboard behavior", "No-JavaScript behavior where required", "Form submission semantics", "Accessible names and states", "Focus order"],
+      "avoid": ["Clickable divs where a button or link fits", "ARIA attributes used as a substitute for interaction behavior", "Custom control design without corresponding state logic"],
+      "references": ["https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA", "https://developer.mozilla.org/en-US/docs/Web/Accessibility/Guides/Understanding_WCAG/Keyboard"]
+    },
+    {
+      "id": "measure-performance-evidence",
+      "title": "Performance evidence and reporting",
+      "summary": "Separate code-level optimization hypotheses from measured user-facing results and state the scope of every performance claim.",
+      "tags": ["performance", "measurement", "profiling", "bundle", "field-data", "lab-data", "verification"],
+      "implementation": [
+        "Inspect bundle cost, image dimensions, font behavior, long tasks, layout shifts, and repeated renders when relevant.",
+        "Record device, route, network conditions, test method, and whether metrics are lab or field evidence.",
+        "Use comparable conditions when reporting a before/after improvement.",
+        "Keep performance verification separate from usability and accessibility claims."
+      ],
+      "verify": ["Named tool and test scope", "Same route and conditions", "No regression in task behavior", "Field data when available", "No unsupported percentage claims"],
+      "avoid": ["Claiming a universal improvement from one test", "Reporting undocumented timings", "Optimizing a benchmark while breaking accessibility or product clarity"],
+      "references": ["https://web.dev/articles/vitals"]
+    }
+  ]
+}
