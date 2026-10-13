@@ -6,6 +6,7 @@ import { fileURLToPath } from "node:url";
 const scriptDirectory = path.dirname(fileURLToPath(import.meta.url));
 const repositoryRoot = path.resolve(scriptDirectory, "..");
 const catalogPath = path.join(repositoryRoot, "knowledge", "design-patterns.json");
+const advancedCatalogPath = path.join(repositoryRoot, "knowledge", "advanced-patterns.json");
 
 const domains = {
   direction: "directions",
@@ -43,6 +44,15 @@ const synonymGroups = [
   ["developer", "api", "devtool"],
   ["table", "grid", "spreadsheet"],
   ["contrast", "wcag", "readability"],
+  ["privacy", "consent", "personal-data"],
+  ["permission", "authorization", "revocation"],
+  ["billing", "subscription", "invoice", "payment"],
+  ["stream", "streaming", "incremental", "progressive"],
+  ["offline", "network", "reconnection", "timeout"],
+  ["missing", "null", "stale", "freshness"],
+  ["rollback", "optimistic", "revert"],
+  ["cwv", "lcp", "inp", "cls", "performance"],
+  ["focus", "keyboard", "tabbing"],
 ];
 
 const synonymIndex = new Map();
@@ -101,7 +111,31 @@ function scoreField(term, variants, fieldTokens, exactWeight, relatedWeight, fie
 }
 
 export async function loadCatalog() {
-  return JSON.parse(await readFile(catalogPath, "utf8"));
+  const [baseText, advancedText] = await Promise.all([
+    readFile(catalogPath, "utf8"),
+    readFile(advancedCatalogPath, "utf8"),
+  ]);
+  const catalog = JSON.parse(baseText);
+  const advanced = JSON.parse(advancedText);
+
+  if (!advanced || advanced.schemaVersion !== "1.0.0") {
+    throw new Error("The advanced design catalog has an unsupported schema version.");
+  }
+
+  for (const collectionName of Object.values(domains)) {
+    const baseRecords = catalog[collectionName] ?? [];
+    const additionalRecords = advanced[collectionName] ?? [];
+    if (!Array.isArray(baseRecords) || !Array.isArray(additionalRecords)) {
+      throw new Error("Invalid design-knowledge collection: " + collectionName);
+    }
+    catalog[collectionName] = [...baseRecords, ...additionalRecords];
+  }
+
+  catalog.catalogSources = [
+    "knowledge/design-patterns.json",
+    "knowledge/advanced-patterns.json",
+  ];
+  return catalog;
 }
 
 export function searchKnowledge(catalog, query, options = {}) {
