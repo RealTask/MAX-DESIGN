@@ -1,6 +1,6 @@
 # Searchable knowledge catalog
 
-MAX-DESIGN ships an offline-first JSON catalog at `knowledge/design-patterns.json`. It is designed for retrieval by an AI coding agent without a network connection or third-party runtime dependency.
+MAX-DESIGN ships an offline-first, merged JSON catalog sourced from `knowledge/design-patterns.json` and `knowledge/advanced-patterns.json`. The search utility loads both catalogs locally, so retrieval works without network access or third-party runtime dependencies.
 
 ## Knowledge domains
 
@@ -20,6 +20,13 @@ MAX-DESIGN ships an offline-first JSON catalog at `knowledge/design-patterns.jso
 | `stack` | `stackGuides` | Implementation advice and compatibility risks |
 
 Use `--domain all` (the default) for cross-domain retrieval, `--json` for structured results, `--explain` to see search matches, and `--require-all` only when every query term must match.
+
+
+## Advanced coverage
+
+The supplementary catalog adds original decision records for AI generation and streaming states, account and subscription settings, search-first catalogs, operational data workspaces, command palettes, optimistic updates and rollback, persistent filter state, permission requests, privacy-aware authentication, network failures, status announcements, destructive-action recovery, empty versus missing versus stale data, WCAG 2.2 focus and target checks, modal focus lifecycle, combobox keyboard behavior, Core Web Vitals evidence, and accessible time-series/chart alternatives.
+
+Keep specialist catalog entries task-specific: explain when a pattern fits, the expected behavior, edge states, risks, and how to verify it. A URL in a record is a research reference, not a claim that the entire design is certified or universally appropriate. Review [knowledge sources and research notes](knowledge-sources.md) when extending the catalog.
 
 ## Examples
 
@@ -50,7 +57,7 @@ Quality rules:
 
 ## Research and originality
 
-The knowledge structure was informed by a comparative review of public UI/UX catalog categories, including [UI/UX Pro Max](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill), whose project documents structured guidance for styles, product reasoning, palettes, typography, UX checks, motion, charts, icons, and framework stacks. MAX-DESIGN's records and search implementation are authored for this repository; the upstream project's data tables, catalog text, and scripts are not bundled here.
+The knowledge structure was informed by a comparative review of public UI/UX catalog categories, including [UI/UX Pro Max](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill), and checked against primary accessibility and platform documentation where relevant. MAX-DESIGN's records and search implementation are authored for this repository; upstream data tables, catalog text, and scripts are not bundled here. See [knowledge-sources.md](knowledge-sources.md) for source roles and limits.
 
 ## Verification
 
