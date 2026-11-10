@@ -101,7 +101,7 @@ MAX-DESIGN reads only the specialist playbooks relevant to a task and combines t
 
 ## 🔎 Searchable design knowledge
 
-The merged, offline-first knowledge base combines `knowledge/design-patterns.json` with `knowledge/advanced-patterns.json`. It covers visual directions, product profiles, page and interaction patterns, adaptive density, semantic color, typography, motion, UX/accessibility, charts, stack guidance, AI streaming and failure states, privacy and permissions, account/billing flows, search/filter persistence, data quality, and evidence-based performance review. The guidance is authored for MAX-DESIGN; it does not bundle UI/UX Pro Max data files or scripts. Research references and limits are documented in `docs/knowledge-sources.md`.
+The merged, offline-first knowledge base combines `knowledge/design-patterns.json` with `knowledge/advanced-patterns.json`. It covers visual directions, product profiles, page and interaction patterns, adaptive density, semantic color, typography, motion, UX/accessibility, charts, stack guidance, AI streaming and failure states, privacy and permissions, account/billing flows, search/filter persistence, data quality, evidence-based performance review, and product-specific visual refinement. The refinement workflow includes attributed, substantially rewritten ideas from [unslop](https://github.com/heydamir/unslop), with additional MAX-DESIGN guidance for brand preservation and verification; upstream scripts, datasets, and assets are not bundled. Research references and license attribution are documented in `docs/knowledge-sources.md` and `docs/visual-refinement.md`.
 
 Run these commands **from the installed `max-design` directory**:
 
@@ -150,6 +150,7 @@ Domains: `all`, `direction`, `page`, `interaction`, `density`, `product`, `style
 - `skill.json` — manifest for the unified skill
 - `skills/` — 12 specialist playbooks bundled within the one skill
 - `docs/decision-framework.md` — brief intake, design direction, page-pattern heuristics, routing
+- `docs/visual-refinement.md` — attributed visual audit, refinement modes, nine-pass polish workflow, and verification
 - `docs/quality-matrix.md` — states, responsive coverage, risk priority, evidence levels
 - `docs/knowledge-catalog.md` — knowledge domains, search examples, and data authoring rules
 - `docs/design-principles.md` — shared product and engineering principles
