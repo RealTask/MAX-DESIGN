@@ -7,6 +7,7 @@ const skillsRoot = path.join(root, "skills");
 const requiredSections = ["## When to use", "## Workflow", "## Quality gates"];
 const requiredReferenceFiles = [
   "docs/decision-framework.md",
+  "docs/visual-refinement.md",
   "docs/quality-matrix.md",
   "docs/knowledge-catalog.md",
   "docs/knowledge-sources.md",
@@ -68,6 +69,7 @@ async function main() {
 
   for (const bundledPath of [
     "docs/decision-framework.md",
+    "docs/visual-refinement.md",
     "docs/quality-matrix.md",
     "docs/knowledge-catalog.md",
     "examples/design-brief.md",
@@ -317,6 +319,9 @@ async function main() {
         ["offline retry", "ux"],
         ["semantic HTML", "stack"],
         ["command palette", "interaction"],
+        ["visual polish", "ux"],
+        ["product rooted visual", "direction"],
+        ["interface polish review", "page"],
       ]) {
         if (searchKnowledge(catalog, query, { domain, limit: 3 }).length === 0) {
           fail("Design knowledge: search smoke test returned no results for " + query + " in " + domain + ".");
