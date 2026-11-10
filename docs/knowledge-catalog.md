@@ -24,7 +24,7 @@ Use `--domain all` (the default) for cross-domain retrieval, `--json` for struct
 
 ## Advanced coverage
 
-The supplementary catalog adds original decision records for AI generation and streaming states, account and subscription settings, search-first catalogs, operational data workspaces, command palettes, optimistic updates and rollback, persistent filter state, permission requests, privacy-aware authentication, network failures, status announcements, destructive-action recovery, empty versus missing versus stale data, WCAG 2.2 focus and target checks, modal focus lifecycle, combobox keyboard behavior, Core Web Vitals evidence, and accessible time-series/chart alternatives.
+The supplementary catalog adds decision records for AI generation and streaming states, account and subscription settings, search-first catalogs, operational data workspaces, command palettes, optimistic updates and rollback, persistent filter state, permission requests, privacy-aware authentication, network failures, status announcements, destructive-action recovery, empty versus missing versus stale data, WCAG 2.2 focus and target checks, modal focus lifecycle, combobox keyboard behavior, Core Web Vitals evidence, accessible time-series/chart alternatives, and product-rooted visual audits and refinement.
 
 Keep specialist catalog entries task-specific: explain when a pattern fits, the expected behavior, edge states, risks, and how to verify it. A URL in a record is a research reference, not a claim that the entire design is certified or universally appropriate. Review [knowledge sources and research notes](knowledge-sources.md) when extending the catalog.
 
@@ -38,6 +38,9 @@ node scripts/search-design-knowledge.mjs "dark dashboard palette" --domain color
 node scripts/search-design-knowledge.mjs "reduced motion" --domain motion
 node scripts/search-design-knowledge.mjs "chart accessibility" --domain chart
 node scripts/search-design-knowledge.mjs "React hooks" --domain stack --json
+node scripts/search-design-knowledge.mjs "visual polish" --domain ux
+node scripts/search-design-knowledge.mjs "product rooted visual" --domain direction
+node scripts/search-design-knowledge.mjs "interface polish review" --domain page
 ```
 
 ## Record design
@@ -57,7 +60,7 @@ Quality rules:
 
 ## Research and originality
 
-The knowledge structure was informed by a comparative review of public UI/UX catalog categories, including [UI/UX Pro Max](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill), and checked against primary accessibility and platform documentation where relevant. MAX-DESIGN's records and search implementation are authored for this repository; upstream data tables, catalog text, and scripts are not bundled here. See [knowledge-sources.md](knowledge-sources.md) for source roles and limits.
+The knowledge structure was informed by a comparative review of public UI/UX catalog categories, including [UI/UX Pro Max](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill), and checked against primary accessibility and platform documentation where relevant. The visual-audit and staged-refinement workflow also adapts and substantially rewrites concepts from [unslop by Damir Sokolovsky](https://github.com/heydamir/unslop), under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/); attribution and changes are documented in [visual-refinement.md](visual-refinement.md). MAX-DESIGN's catalog records and search implementation are tailored to this repository. Upstream scripts, datasets, skill text, and visual assets are not bundled here. See [knowledge-sources.md](knowledge-sources.md) for source roles and limits.
 
 ## Verification
 
