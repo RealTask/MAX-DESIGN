@@ -26,7 +26,11 @@ Use severity based on evidence and impact, not personal taste. Do not inflate ur
 
 ### 3. Inspect key dimensions
 
-Review task clarity; layout, alignment, density and reading order; type and content; color roles, contrast and status meaning; consistency with tokens; responsive behavior and overflow; keyboard, focus, labels, semantics and errors; feedback and touch usability; motion, reduced motion, loading stability, and likely performance cost.
+Review task clarity; layout, alignment, density and reading order; type and content; color roles, contrast and status meaning; consistency with tokens; responsive behavior and overflow; keyboard, focus, labels, semantics and errors; feedback and touch usability; motion, reduced motion, loading stability, and likely performance cost. For visual polish requests, also inspect template-like repetition, decorative effects without a product purpose, inconsistent icon language, unsupported copy or metrics, competing focal points, and visuals that do not explain the product. Use the checklist in `docs/visual-refinement.md`, but treat each item as context-dependent rather than an automatic defect.
+
+### 3a. Separate visual noise from product character
+
+A distinctive brand may intentionally use expressive color, motion, illustration, large type, or unusual geometry. Do not classify those choices as defects merely because they are uncommon. A useful finding identifies the concrete problem: hierarchy is unclear, similar controls disagree, text is hard to read, decorative effects obscure status, content is unsupported, or responsive behavior breaks. If the screen is already coherent, recommend small optional refinements and stop.
 
 ### 4. Write actionable findings
 
@@ -47,4 +51,6 @@ Lead with the highest-value fixes. Group related issues to avoid churn. Prefer f
 - Each actionable finding includes a realistic remediation.
 - Relevant viewport and interaction states are covered.
 - Preference is separated from usability, accessibility, and implementation defects.
+- Existing brand character is preserved unless evidence and scope justify a change.
+- Visual audit items are tied to location, evidence, user impact, and a verifiable correction.
 - Unverified assumptions and unperformed checks are disclosed.
