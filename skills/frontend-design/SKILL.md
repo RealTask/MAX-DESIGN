@@ -19,6 +19,8 @@ Identify who uses the interface, what they need to do, what information they nee
 
 Read project instructions and inspect current files before coding. Reuse the established framework, router, styling method, components, icons, fonts, and asset pipeline. Check existing scripts. Do not add a dependency for something the project already does well.
 
+Before changing an existing screen, audit its current visual language and product identity. Record concrete findings across spacing, color/surfaces, icons, copy/data, typography, layout, component details, visuals, and motion. Distinguish defects from preferences, then choose the smallest effective mode: repair, polish, recompose, or no redesign. Use `docs/visual-refinement.md` for the checklist and ordered passes.
+
 ### 3. Design the page structure
 
 Plan the hierarchy before component details. Give each section a purpose. Establish a focal point, readable measure, alignment rules, spacing rhythm, and content order that supports the user journey. Use cards only when content represents a meaningful group; not every section needs a card.
@@ -39,7 +41,7 @@ Start from content and interaction needs, not fixed device mockups. Let grids co
 
 ### 7. Add polish last
 
-Use surfaces, borders, shadows, gradients, and animation only after hierarchy and spacing work. Give decorative effects a reason and provide alternatives when support, contrast, or performance makes an effect unsuitable.
+Refine in sequence: spacing and alignment, color and surfaces, icons, copy and content, typography, layout, component details, visuals, then motion. Use the sequence to reduce rework, not as a universal aesthetic. Preserve intentional brand choices; remove an effect only when it lacks purpose, harms clarity, or conflicts with the product. Give every decorative treatment a reason and provide alternatives when support, contrast, accessibility, or performance makes it unsuitable.
 
 ### 8. Verify in context
 
