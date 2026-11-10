@@ -41,3 +41,12 @@ Inspect the current system, record uncertainty, and make reviewable changes. Avo
 ## 10. Quality is verified, not declared
 
 Separate code inspection, automated tests, visual browser review, assistive-technology testing, and user research. Each answers different questions. Say what was checked, under what conditions, and what remains unknown.
+
+
+## 11. Focused expression, quiet support
+
+Let the product's meaningful content, object, result, or data carry the richest visual detail when that helps comprehension. Supporting chrome should clarify navigation and action without competing for attention. This is a hierarchy principle, not a ban on expressive interfaces: the product's audience and established brand decide how restrained or vivid the result should be.
+
+## 12. Refine from evidence, not fashion
+
+Audit the actual screen before changing it. Preserve coherent brand choices, distinguish observable defects from taste, and choose the smallest refinement mode that solves the problem. A good screen does not need a redesign merely to look different. See `docs/visual-refinement.md` for the process.
