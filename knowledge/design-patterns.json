@@ -239,6 +239,38 @@
         "docs/decision-framework.md",
         "docs/quality-matrix.md"
       ]
+    },
+    {
+      "id": "product-rooted-visual-refinement",
+      "title": "Product-rooted visual refinement",
+      "summary": "Improve a screen's visual craft by auditing evidence, preserving its identity, and concentrating detail where it helps the product story.",
+      "tags": [
+        "visual",
+        "polish",
+        "refinement",
+        "visual-audit",
+        "anti-slop",
+        "product-specific",
+        "direction"
+      ],
+      "fitWhen": [
+        "An existing screen feels generic, noisy, or inconsistent",
+        "The product needs stronger visual character without an unnecessary redesign"
+      ],
+      "priorities": [
+        "Record existing brand signals and the actual user task before changing the look",
+        "Choose repair, polish, recompose, or no-redesign mode from the evidence",
+        "Use a small number of product-specific focal moments and keep supporting UI coherent"
+      ],
+      "avoid": [
+        "Treating any one palette, font, radius, or layout as universally correct",
+        "Replacing a real brand system with a fashionable template",
+        "Changing good components simply to create visible churn"
+      ],
+      "references": [
+        "docs/visual-refinement.md",
+        "docs/decision-framework.md"
+      ]
     }
   ],
   "pagePatterns": [
@@ -446,6 +478,40 @@
       ],
       "references": [
         "docs/quality-matrix.md"
+      ]
+    },
+    {
+      "id": "interface-polish-review",
+      "title": "Interface polish review",
+      "summary": "A structured review that finds visual noise and inconsistent craft without confusing taste with usability defects.",
+      "tags": [
+        "visual",
+        "polish",
+        "audit",
+        "review",
+        "slop",
+        "refinement",
+        "existing-interface"
+      ],
+      "question": "Which visible inconsistencies harm task clarity, trust, accessibility, or visual coherence, and which are only preferences?",
+      "priorities": [
+        "Record the location and observable evidence for each finding",
+        "Group findings by spacing, color, type, icons, copy, layout, component detail, visuals, and motion",
+        "Apply the smallest effective correction while preserving the product identity"
+      ],
+      "states": [
+        "Original screen and key viewport",
+        "Primary and secondary interaction states",
+        "Narrow layout and long-content cases"
+      ],
+      "antiPatterns": [
+        "Aesthetic rewrites without an audit",
+        "Treating a screenshot as proof of untested behavior",
+        "Removing a distinctive brand treatment merely because it is uncommon"
+      ],
+      "references": [
+        "docs/visual-refinement.md",
+        "skills/design-review/SKILL.md"
       ]
     }
   ],
@@ -1148,6 +1214,39 @@
         "Scroll hijacking or delayed primary content",
         "Animating many unrelated elements simultaneously"
       ]
+    },
+    {
+      "id": "quiet-chrome-product-moment",
+      "title": "Quiet chrome, meaningful product moment",
+      "summary": "Keep navigation and supporting controls restrained while giving one or two product-relevant content moments enough color and detail to communicate value.",
+      "tags": [
+        "quiet-chrome",
+        "product-moment",
+        "visual-polish",
+        "dashboard",
+        "landing",
+        "content-led"
+      ],
+      "fitWhen": [
+        "A screen has a clear product object, chart, output, or result worth emphasizing",
+        "Supporting controls currently compete with the content"
+      ],
+      "signature": [
+        "A distinct content focal point",
+        "Supporting surfaces that clarify rather than compete"
+      ],
+      "implementation": [
+        "Reserve stronger color and detail for meaningful content or action",
+        "Use semantic neutral surfaces and stable text roles for surrounding UI",
+        "Keep the focal visual consistent with the product's real data and materials"
+      ],
+      "avoid": [
+        "Applying the same sparse visual system to every product",
+        "Using a decorative hero object when a product preview would explain more"
+      ],
+      "references": [
+        "docs/visual-refinement.md"
+      ]
     }
   ],
   "colorStrategies": [
@@ -1355,6 +1454,48 @@
         "Raw one-off hex values scattered through components",
         "Assuming palette names prove WCAG conformance"
       ]
+    },
+    {
+      "id": "focused-neutral-ramp",
+      "title": "Focused neutral ramp with semantic accents",
+      "summary": "Use consistent surface and text roles, then reserve stronger accents for actions, selection, and meaningful data.",
+      "tags": [
+        "color",
+        "neutral",
+        "ramp",
+        "accent",
+        "visual-noise",
+        "polish",
+        "semantic"
+      ],
+      "tokens": {
+        "background": "product-specific neutral surface",
+        "surface": "one consistent content surface",
+        "raised": "a clearly distinguishable raised state",
+        "text": "high-contrast primary text",
+        "mutedText": "readable secondary text",
+        "border": "subtle consistent divider",
+        "accent": "existing brand or product-derived accent",
+        "focus": "visible high-contrast focus indicator"
+      },
+      "fitWhen": [
+        "Color is spread across too many decorative surfaces",
+        "Users cannot identify the primary action or important data"
+      ],
+      "priorities": [
+        "Preserve established brand colors and semantic status meanings",
+        "Measure foreground and background pairs rather than trusting swatches",
+        "Use accent color to signal meaning, not merely to fill empty space"
+      ],
+      "avoid": [
+        "A universal ban on gradients or expressive color",
+        "Using one accent for unrelated statuses",
+        "Reducing text contrast in the name of subtlety"
+      ],
+      "references": [
+        "docs/visual-refinement.md",
+        "docs/design-principles.md"
+      ]
     }
   ],
   "typographySystems": [
@@ -1509,6 +1650,38 @@
       "avoid": [
         "Using monospace for every heading and body paragraph",
         "Aligning data with repeated spaces instead of layout primitives"
+      ]
+    },
+    {
+      "id": "restrained-interface-type-rhythm",
+      "title": "Restrained interface type rhythm",
+      "summary": "Create hierarchy with a small, consistent set of type roles while preserving intentional brand typography.",
+      "tags": [
+        "typography",
+        "type",
+        "font",
+        "hierarchy",
+        "readability",
+        "visual-polish",
+        "numbers"
+      ],
+      "pairing": "Keep the established brand family where it is deliberate; otherwise use one highly readable interface family and a purposeful mono or display partner only where it adds meaning.",
+      "fitWhen": [
+        "The screen mixes too many sizes, weights, tracking styles, or families",
+        "Labels, numbers, and headings lack a clear hierarchy"
+      ],
+      "priorities": [
+        "Define roles for page title, section heading, body, labels, helper text, and numeric data",
+        "Keep small text readable at zoom and on narrow screens",
+        "Format comparable numbers consistently and use tabular figures where comparison benefits"
+      ],
+      "avoid": [
+        "Changing a recognizable brand font without a reason",
+        "Using weight alone to create hierarchy",
+        "Shrinking metadata until it is difficult to read"
+      ],
+      "references": [
+        "docs/visual-refinement.md"
       ]
     }
   ],
@@ -1698,6 +1871,39 @@
       "avoid": [
         "Applying a global duration of zero when important feedback would disappear",
         "Making content invisible until an animation fires"
+      ]
+    },
+    {
+      "id": "purposeful-low-cost-motion",
+      "title": "Purposeful, low-cost motion",
+      "summary": "Use short transitions to explain feedback or state, not to keep decorative elements moving.",
+      "tags": [
+        "motion",
+        "animation",
+        "visual-polish",
+        "performance",
+        "reduced-motion",
+        "feedback"
+      ],
+      "duration": "120–220 ms for local feedback; longer only when spatial context needs it",
+      "behavior": [
+        "Prefer color, opacity, and small transforms for local state feedback",
+        "Keep persistent status visible without relying on animation",
+        "Provide a clear final state when reduced motion is requested"
+      ],
+      "priorities": [
+        "Animate only a meaningful state change or spatial relationship",
+        "Avoid unnecessary loops and layout-triggering animation",
+        "Test low-power devices and reduced-motion preferences"
+      ],
+      "avoid": [
+        "Pulsing static status badges",
+        "Animating width, height, or layout positions for routine feedback",
+        "Making animation the only indicator of state"
+      ],
+      "references": [
+        "docs/visual-refinement.md",
+        "skills/interaction-motion/SKILL.md"
       ]
     }
   ],
@@ -2081,6 +2287,163 @@
       ],
       "verify": [
         "Check a slow connection, reduced motion, and content after failure"
+      ]
+    },
+    {
+      "id": "visual-noise-audit",
+      "title": "Visual noise and template-pattern audit",
+      "summary": "Find repeated decoration and inconsistent visual decisions that compete with product information or task clarity.",
+      "tags": [
+        "visual",
+        "noise",
+        "slop",
+        "audit",
+        "polish",
+        "gradients",
+        "glow",
+        "spacing"
+      ],
+      "priority": "High when it harms hierarchy; otherwise a polish opportunity",
+      "do": [
+        "Inspect surface, type, icons, spacing, copy, components, imagery, and motion as separate dimensions",
+        "Record location, observed evidence, user impact, and the smallest useful correction",
+        "Treat style-specific effects as context-dependent rather than automatic defects"
+      ],
+      "avoid": [
+        "Calling a design bad without naming the observable issue",
+        "Removing all color, animation, or decorative detail regardless of purpose"
+      ],
+      "verify": [
+        "Compare the same screen and state before and after",
+        "Check one narrow and one wide layout",
+        "Confirm the primary task remains obvious"
+      ],
+      "references": [
+        "docs/visual-refinement.md"
+      ]
+    },
+    {
+      "id": "brand-preserving-polish",
+      "title": "Brand-preserving visual polish",
+      "summary": "Refine the weak parts of a screen while keeping recognizable, coherent product identity intact.",
+      "tags": [
+        "brand",
+        "preservation",
+        "polish",
+        "refinement",
+        "visual",
+        "design-system"
+      ],
+      "priority": "High",
+      "do": [
+        "Identify intentional logo, palette, typography, imagery, and interaction conventions before editing",
+        "Choose the smallest refinement mode that addresses the findings",
+        "Explain any proposed change that would materially replace established brand signals"
+      ],
+      "avoid": [
+        "Swapping a real design system for a generic trend",
+        "Treating a coherent existing screen as a redesign brief"
+      ],
+      "verify": [
+        "Compare against existing product screens and tokens",
+        "Check consistency across sibling components"
+      ],
+      "references": [
+        "docs/visual-refinement.md",
+        "docs/decision-framework.md"
+      ]
+    },
+    {
+      "id": "credible-interface-content",
+      "title": "Credible interface content and proof",
+      "summary": "Use specific, plausible content and transparent evidence so a polished interface does not depend on invented credibility.",
+      "tags": [
+        "content",
+        "copy",
+        "mock-data",
+        "metrics",
+        "testimonials",
+        "credibility",
+        "polish"
+      ],
+      "priority": "High",
+      "do": [
+        "Use realistic sample values and label demonstration data when needed",
+        "Include units, time ranges, and comparison baselines for metrics",
+        "Retain testimonials, logos, certifications, and quantitative claims only when their source is confirmed"
+      ],
+      "avoid": [
+        "Invented customer counts, reviews, performance claims, or success states",
+        "Unexplained numbers and placeholder-looking values"
+      ],
+      "verify": [
+        "Trace visible claims to supplied or verified evidence",
+        "Check that example data is not presented as live customer data"
+      ],
+      "references": [
+        "docs/visual-refinement.md",
+        "docs/design-principles.md"
+      ]
+    },
+    {
+      "id": "coherent-icon-language",
+      "title": "Coherent icon language",
+      "summary": "Use a consistent icon system so symbols clarify navigation, actions, and status instead of acting as decoration.",
+      "tags": [
+        "icons",
+        "emoji",
+        "symbols",
+        "lucide",
+        "alignment",
+        "visual-polish"
+      ],
+      "priority": "Moderate",
+      "do": [
+        "Reuse the project's icon library when it is consistent",
+        "Align icon boxes, sizes, stroke weights, and text-role colors",
+        "Use labels or accessible names where an icon alone would be ambiguous"
+      ],
+      "avoid": [
+        "Mixing emoji and unrelated icon families as interface chrome",
+        "Using icons that do not add information"
+      ],
+      "verify": [
+        "Inspect alignment in repeated rows",
+        "Check accessible names and touch targets"
+      ],
+      "references": [
+        "docs/visual-refinement.md"
+      ]
+    },
+    {
+      "id": "product-specific-focal-point",
+      "title": "Product-specific focal point",
+      "summary": "Choose a meaningful content moment that demonstrates the product instead of using abstract decoration as a substitute.",
+      "tags": [
+        "hero",
+        "visual",
+        "focal-point",
+        "product-preview",
+        "imagery",
+        "landing",
+        "dashboard"
+      ],
+      "priority": "Moderate",
+      "do": [
+        "Describe the visual's purpose in one sentence before making it",
+        "Prefer a real product view, relevant data, or one object from the product's world",
+        "Keep supporting interface chrome subordinate to the content"
+      ],
+      "avoid": [
+        "Robots, blobs, or generic illustrations when they do not explain the product",
+        "Adding a visual to every section without a content reason"
+      ],
+      "verify": [
+        "Confirm the visual supports the headline and the real product capability",
+        "Check image loading, crop, alt text, and small-screen composition"
+      ],
+      "references": [
+        "docs/visual-refinement.md"
       ]
     }
   ],
