@@ -27,9 +27,13 @@ Read project instructions, package scripts, representative pages, components, to
 
 Do not replace brand colors, add a second component library, or rewrite the stack merely to make output look novel.
 
+For an existing screen, make a short visual inventory before selecting a direction: current type, color roles, surfaces, icon language, spacing rhythm, component shapes, imagery, motion, and responsive behavior. Mark what is coherent and should be preserved, what is inconsistent, and what has not been verified. See `docs/visual-refinement.md` for the audit and refinement modes.
+
 ## 3. Choose a visual direction deliberately
 
 Describe the direction in a short paragraph with concrete choices:
+
+For a substantial visual refinement, it can help to define five anchors first: product and audience; two or three concrete character traits; the product's natural visual world; one or two meaningful focal moments; and one restrained signature detail. These are prompts for reasoning, not mandatory labels or a replacement for an established brand.
 
 1. **Personality:** two or three traits supported by the audience and product.
 2. **Hierarchy:** the focal point, primary action, and what should recede.
