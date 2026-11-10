@@ -1,6 +1,6 @@
 # Design-knowledge research notes and sources
 
-Reviewed for this catalog update: 13 October 2026.
+Reviewed for this catalog update: 10 November 2026.
 
 This document records the role and limits of the external references used to shape MAX-DESIGN's original guidance. It is intentionally separate from the catalog records: agents should use concise, task-specific decision records, while humans can audit their evidence basis here.
 
@@ -25,6 +25,11 @@ This document records the role and limits of the external references used to sha
 | Platform-aware motion | [Apple Human Interface Guidelines: Motion](https://developer.apple.com/design/human-interface-guidelines/motion) | Purposeful, brief, optional motion; reduce unnecessary movement; keep interactions responsive | Apple guidance is platform-specific inspiration, not automatically a web standard or a substitute for reduced-motion checks. |
 | Inclusive platform design | [Apple Human Interface Guidelines: Accessibility](https://developer.apple.com/design/human-interface-guidelines/accessibility) | Larger text support, multiple ways to perceive status, accessible control size, and motion sensitivity considerations | Use guidance appropriate to the target platform; do not transfer platform-specific dimensions to web WCAG claims without checking the relevant standard. |
 | Catalog taxonomy and retrieval ideas | [UI/UX Pro Max repository](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill) | Comparative review of topics such as product profiles, styles, typography, UX, charts, and stack guidance | Used for topic discovery only. MAX-DESIGN does not bundle its datasets, catalog text, or scripts. |
+| Visual audit and staged refinement | [unslop by Damir Sokolovsky](https://github.com/heydamir/unslop) ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)) | Adapted workflow concepts for spotting generic visual noise, defining a product-rooted direction, and refining an interface in deliberate passes | MAX-DESIGN substantially rewrites and extends the method with brand preservation, evidence levels, accessibility, responsive resilience, and verification. No upstream scripts, data files, or visual assets are bundled. |
+
+## Adapted visual-refinement method
+
+The visual refinement guide and related searchable records include a substantially rewritten adaptation of workflow concepts from [heydamir/unslop](https://github.com/heydamir/unslop), by Damir Sokolovsky ([@heydamir](https://x.com/heydamir)), under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Attribution is retained in `docs/visual-refinement.md`. MAX-DESIGN adds its own guidance for preserving established brands, separating observable defects from taste, grounding interface content, and verifying accessibility, responsive behavior, and real interaction states. The repository does not copy upstream scripts, datasets, reference images, or skill text.
 
 ## Evidence labels for future records
 
