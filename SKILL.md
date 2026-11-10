@@ -33,7 +33,7 @@ Read repository instructions, routes, representative screens, shared components,
 
 ### 3. Search the bundled design knowledge
 
-Use the local catalog when a product, visual direction, page pattern, color, typography, motion, UX/accessibility, chart, implementation-stack, or density decision would benefit from a structured starting point. It is guidance, not a preset or an instruction to copy a pattern blindly. The knowledge is organized around original MAX-DESIGN records rather than imported third-party catalog files.
+Use the local catalog when a product, visual direction, page pattern, color, typography, motion, UX/accessibility, chart, implementation-stack, or density decision would benefit from a structured starting point. It is guidance, not a preset or an instruction to copy a pattern blindly. The catalog is authored for MAX-DESIGN. Its visual-refinement guidance includes clearly attributed, substantially rewritten workflow ideas from unslop, while preserving MAX-DESIGN's own evidence, accessibility, brand-preservation, and verification requirements; it does not bundle upstream skill text, scripts, datasets, or assets.
 
 Run from the installed MAX-DESIGN directory:
 
@@ -56,7 +56,7 @@ Available domains: `all`, `direction`, `page`, `interaction`, `density`, `produc
 
 ### 4. Select a specific direction
 
-Read `docs/decision-framework.md` before substantial design work. Define the product personality, content hierarchy, focal point, type roles, semantic color, density, responsive behavior, one or two product-relevant signature details, motion rationale, and trade-offs. Do not default to gradients, glass, giant radii, repeated card grids, oversized headlines, or animated backgrounds without product-specific reasons.
+Read `docs/decision-framework.md` before substantial design work. Define the product personality, content hierarchy, focal point, type roles, semantic color, density, responsive behavior, one or two product-relevant signature details, motion rationale, and trade-offs. Do not default to gradients, glass, giant radii, repeated card grids, oversized headlines, or animated backgrounds without product-specific reasons. For an existing screen that needs polish, also read `docs/visual-refinement.md`: audit visible evidence, choose repair/polish/recompose/no-redesign mode, preserve coherent brand signals, then refine in the documented order.
 
 ### 5. Load the relevant specialist playbooks
 
@@ -121,7 +121,7 @@ For substantial work, summarize what changed, why major design decisions were ma
 
 ## Bundled content map
 
-- `docs/` — decision framework, design principles, quality matrix, and preflight checks.
+- `docs/` — decision framework, visual refinement guide, design principles, quality matrix, knowledge provenance, and preflight checks.
 - `examples/` — design brief template and semantic design-token example.
 - `knowledge/design-patterns.json` — local searchable catalog of design directions, page patterns, interaction patterns, and density profiles.
 - `scripts/search-design-knowledge.mjs` — offline catalog-search CLI.
